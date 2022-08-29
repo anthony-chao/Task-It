@@ -11,7 +11,7 @@ const ProjectSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    membersId: [{
+    members: [{
         type: Schema.Types.ObjectId,
         ref: 'users'
     }],
@@ -19,10 +19,10 @@ const ProjectSchema = new Schema({
         type: String,
         required: true
     },
-    rootTask: {
+    tasks: [{
         type: Schema.Types.ObjectId,
-        ref: 'task'
-    }
+        ref: 'tasks'
+    }]
 })
 
-module.exports = Project = mongoose.model('project', ProjectSchema)
+module.exports = Project = mongoose.model('projects', ProjectSchema)

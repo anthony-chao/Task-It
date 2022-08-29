@@ -16,12 +16,15 @@ const TaskSchema = new Schema({
     },
     projectId : {
         type: Schema.Types.ObjectId,
-        ref: 'project'
+        ref: 'project',
+        required: true
     },
     status: {
         type: String,
-        enum: ["Completed", "In Progress", "Invalid"]
-    }
+        enum: ["Completed", "In Progress", "Invalid"],
+        required: true
+    },
+    subtasks: [this]
 })
 
-module.exports = Task = mongoose.model('task', TaskSchema)
+module.exports = Task = mongoose.model('tasks', TaskSchema)
