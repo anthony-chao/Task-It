@@ -7,6 +7,8 @@ const app = express();
 const db = require('./config/keys').mongoURI;
 
 const users = require("./routes/api/users");
+const projects = require("./routes/api/projects")
+const tasks = require("./routes/api/tasks");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -22,6 +24,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/api/users", users);
+app.use("/api/projects", projects);
+app.use("/api/tasks", tasks);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
