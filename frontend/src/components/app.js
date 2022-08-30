@@ -8,6 +8,8 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import SplashContainer from './splash/splash';
 
+import ProjectIndexContainer from './projects/project_index';
+
 const App = () => (
   <div>
     <NavBarContainer />
@@ -15,6 +17,7 @@ const App = () => (
         {/* <AuthRoute exact path="/" component={MainPage} /> */}
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        <ProtectedRoute exact path="/projects" component={ProjectIndexContainer} />
         <Route path="/" component={SplashContainer} />
     </Switch>
   </div>
