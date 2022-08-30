@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import "../../assets/stylesheets/splash/splash.css";
+import "../../assets/stylesheets/splash/splash.css"
 import Main from '../main/main_page';
 
 const Splash = ({ currentUser, login, history }) => {
