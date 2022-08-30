@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { login } from "../../actions/sessionActions";
+import { login, clearReceiveErrors } from "../../actions/sessionActions";
 import { openModal, closeModal } from "../../actions/modalActions";
 import SessionForm from "./SessionForm";
 
@@ -14,6 +14,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     processForm: (user) => dispatch(login(user)),
     login: (user) => dispatch(login(user)),
+    clearReceiveErrors: () => dispatch(clearReceiveErrors()),
     closeModal: () => dispatch(closeModal()),
     otherForm: (
       <p>
