@@ -25,7 +25,6 @@ const SessionForm = props => {
     e.preventDefault();
     props.closeModal();
   };  
-
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,23 +32,24 @@ const SessionForm = props => {
     props.processForm(user);
   };
 
-  const renderErrors = () => {
-    return (
-      <ul>
-        {props.errors.map((error, i) => (
-          <li key={`error-${i}`} className="session-errors">
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
-  };
+  // const renderErrors = () => {
+  //   debugger;
+  //   return (
+  //     <ul>
+  //       {props.errors.map((error, i) => (
+  //         <li key={`error-${i}`} className="session-errors">
+  //           {error}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   );
+  // };
   
   const demoLogin = (e) => {
     e.preventDefault();
     props.login({
-      email: 'demouser@yourbnb.com',
-      password: '123456',
+      email: 'demouser@branches.com',
+      password: 'password',
     }).then(props.closeModal)
   };
 
@@ -64,7 +64,7 @@ const SessionForm = props => {
 
       <form onSubmit={handleSubmit} className="login-signup-form">
         <h3>Login</h3>
-        <div className="session-errors">{renderErrors()}</div>
+        {/* <div className="session-errors">{renderErrors()}</div> */}
           {
             props.formType === 'Sign Up' && (
               <>
@@ -91,6 +91,7 @@ const SessionForm = props => {
               value={userInfo.email} 
               onChange={update('email')}
             />
+            {(props.errors.email) ? <p className="session-error">{props.errors.email}</p> : null}
           </label>  
           <label htmlFor="modal-password">
             <input type="password" 

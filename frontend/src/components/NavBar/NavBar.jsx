@@ -101,13 +101,10 @@ const { loggedIn, logout, openModal } = props;
         {
           loggedIn ? logoutButton() : loginButton()
         }
-        
       </div>
-
     </header>
   )
 }
-
 
 const mapStateToProps = state => {
   return {
