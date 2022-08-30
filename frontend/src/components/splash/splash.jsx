@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import "../../scss/splash.css";
+import "../../assets/stylesheets/splash/splash.css";
 import Main from '../main/main_page';
 
 const Splash = ({ currentUser, login, history }) => {
@@ -12,14 +12,14 @@ const Splash = ({ currentUser, login, history }) => {
 
     return (
       <div className="splashContainer">
-        <nav className="splashNav">
+        {/* <nav className="splashNav">
         <Link to="/">
             <img id="splashLogo" src="https://i.ibb.co/hF4GNPW/newLogo.png" alt="spashLogo" />
           </Link>
           <Link to="/login">
             <img id="sLink" src="https://i.ibb.co/pJqjmSb/imageedit-3-5201840979.png" alt="splashLink" />
           </Link>
-        </nav>
+        </nav> */}
 
         <main id="splash">
           <div id="tagline">
