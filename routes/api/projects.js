@@ -10,8 +10,8 @@ const validateTaskInput = require("../../validation/task");
 
 router.get("/test", (req, res) => res.json({ msg: "This is the projects route" }));
 
-router.get('/users/:user_id', (req, res) => {          // Backend - only the current user should have access to this route on the front end.
-    Project.find({user: req.params.user_id})
+router.get('/users/:user_id', (req, res) => {          // Hmmm how do we do find by the ownerId and by the members? because this should also get the projects for the members
+    Project.find({ownerId: req.params.user_id})
         .then(projects => res.json(projects))
         .catch(err =>
             res.status(404).json({ noprojectsfound: 'The user does not have any projects' }
