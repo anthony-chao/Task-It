@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import entitiesReducer from "./entititeReducer";
+import entitiesReducer from "./entitiesReducer";
 import uiReducer from "./uiReducer";
 import errorsReducer from "./errorsReducer";
 import sessionReducer from "./sessionReducer";
