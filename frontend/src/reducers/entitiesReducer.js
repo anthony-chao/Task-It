@@ -4,7 +4,7 @@ import projectsReducer from "./projectsReducer";
 
 const entitiesReducer = combineReducers({
   projects: projectsReducer,
-  users: usersReducer
+  users: usersReducer,
 });
 
 export default entitiesReducer;

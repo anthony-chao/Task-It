@@ -1,34 +1,66 @@
-import React, { useState } from 'react';
-// Placeholder for create project
+import React from 'react';
 
-const ProjectForm = props => {
+class ProjectForm extends React.Component{
+    constructor(props){
 
-    const [projectInfo, setProjectInfo] = useState({
-        name: '',
-        ownerId: '',
-        members: [],
-        description: '',
-        tasks: []
-    })
+        super(props)
 
-    const update = field => {
-        return e => setProjectInfo({
-            ...userInfo, [field]: e.currentTarget.value
-        });
+        this.state = {
+            name: "",
+            ownerId: props.currentUser,
+            members: [],
+            description: "",
+            tasks: []
+        }
+
+        this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    const closeModal = (e) => {
+    componentDidMount() {
+        if (this.formType === "Update Project") {
+            this.setState({
+                // do I also need to set the ID to the project's id? 
+                name: this.props.project.name,
+                description: this.props.project.description
+            })
+        }
+    }
+
+    handleSubmit(e){
         e.preventDefault();
-        props.closeModal();
+        this.props.createProject(this.state);
+        this.props.closeModal();
     }
 
-    const { formType, otherForm } = props;
+    handleUpdate(field){
+        return (e) => {
+            this.setState({[field]: e.currentTarget.value})
+        }
+    }
 
-    return (
-        <div className="modal-content">
-            <h1>{}</h1>
-
+    render() {
+        return(
+        <div>
+            <h1>{this.props.formType}</h1>
+            <form onSubmit={this.handleSubmit}>
+                <label>Title:
+                    <input type="text"
+                            value={this.state.name}
+                            onChange={this.handleUpdate("title")} />
+                </label>
+                <label>Description:
+                    <input type="text" 
+                            value={this.state.description}
+                            onChange={this.handleUpdate("description")} />
+                </label>
+                <input type="submit" value={ this.props.formType === "Create a Project" ? 'Create Project' : 'Update Project'} />
+                {(this.props.formType === "Update Project") ? 
+                        <button onClick={() => { this.props.deleteProject(this.state.id), this.props.closeModal()}}>Delete project</button>
+                        : null }
+            </form>
         </div>
-    )
-    
+    )}
 }
+
+export default ProjectForm;
