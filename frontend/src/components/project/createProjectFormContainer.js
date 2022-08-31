@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createProject } from '../../actions/projects';
+import { createProject } from '../../actions/projectActions';
 import ProjectForm from './ProjectForm';
 import { closeModal } from '../../actions/modalActions';
 

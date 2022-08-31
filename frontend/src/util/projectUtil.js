@@ -9,7 +9,7 @@ export const fetchProject = projectId => {
 }
 
 export const createProject = project => {
-    return axios.post('/api/tweets/', project)
+    return axios.post('/api/projects/', project)
 }
 
 export const updateProject = projectId => {

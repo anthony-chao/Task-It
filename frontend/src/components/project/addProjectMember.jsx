@@ -22,9 +22,7 @@ class AddProjectMember extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-
-        this.props.addProjectMember(this.state.email);                  // Can we add a project Id as a parameter to addProjectMember?
-        setTimeout(() => {this.props.fetchUserTeams(this.props.currentUser)}, 300);
+        this.props.addProjectMember(this.state.email);
     }
 
     render(){
@@ -41,3 +39,5 @@ class AddProjectMember extends React.Component {
             </form>
         </div>)}
 }
+
+export default AddProjectMember;

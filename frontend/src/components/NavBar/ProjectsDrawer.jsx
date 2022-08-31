@@ -12,8 +12,10 @@ import { TbCircles } from 'react-icons/tb';
 import { MdOutlineCreateNewFolder } from 'react-icons/md';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { openModal } from '../../actions/modalActions';
+import { connect } from 'react-redux';
 
-export default function ProjectsDrawer() {
+const ProjectsDrawer = ({ openModal }) => {
   const [state, setState] = useState({
     left: false,
   });
@@ -34,7 +36,7 @@ export default function ProjectsDrawer() {
       onKeyDown={toggleDrawer(projects, false)}
     >
       <List>
-        {['Projects'].map((text, index) => (
+        {['All Projects'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -49,7 +51,7 @@ export default function ProjectsDrawer() {
       <List>
         {['Create a Project'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => openModal('createProject')} >
               <ListItemIcon>
                 <MdOutlineCreateNewFolder size={'1.5em'} />
               </ListItemIcon>
@@ -78,3 +80,13 @@ export default function ProjectsDrawer() {
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+  openModal: (formType) => dispatch(openModal(formType))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectsDrawer)
