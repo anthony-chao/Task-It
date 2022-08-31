@@ -10,63 +10,23 @@ const validateTaskInput = require("../../validation/task");
 
 router.get("/test", (req, res) => res.json({ msg: "This is the projects route" }));
 
-router.get('/users/:user_id', (req, res) => {          // Hmmm how do we do find by the ownerId and by the members? because this should also get the projects for the members
-    Project.find({ownerId: req.params.user_id})
-        .then(projects => res.json(projects))
-        .catch(err =>
-            res.status(404).json({ noprojectsfound: 'The user does not have any projects' }
-        )
-    );
-});
+// GET ALL PROJECTS
 
+// router.get('/user/user:id', (req, res) => {
+//   Project.find({ownerId: req.params.user_id})
+// })
+
+
+// GET PROJECT BY PROJECT ID
 router.get('/:id', (req, res) => {
-    Project.findById(req.params.id)
-        .then(project => res.json(project))
-        .catch(err =>
-            res.status(404).json({ noprojectfound: 'No project found with that ID' })
-        );
+  Project.findById(req.params.id)
+      .then(project => res.json(project.data))
+      .catch(err =>
+          res.status(404).json({ noprojectfound: 'No project found with that ID' })
+      );
 });
 
-router.patch('/:id/addMember', (req, res) => {
-      // const { errors, isValid } = validateProjectInput(req.body);
-  
-      // if (!isValid) {
-      //   return res.status(400).json(errors);
-      // }
-    Project.findById(req.params.id)
-      .then(project => {
-        User.findOne({email: req.body.email})
-          .then( user => { 
-            project.members.push(user.id)
-            project.save()
-            .then(res.json(project))
-          })
-          .catch(err => res.status(404).json({usernotfound: "No user found with this email"}))
-      })
-      
-    }
-);
-
-router.patch('/:id/deleteMember', (req, res) => {
-  // const { errors, isValid } = validateProjectInput(req.body);
-
-  // if (!isValid) {
-  //   return res.status(400).json(errors);
-  // }
-
-    Project.findById(req.params.id)
-      .then( project => {
-        User.findOne({email: req.body.email})
-          .then( user => { 
-            project.members.pull(user.id)
-            project.save()
-            .then(res.json(project))
-          })
-          .catch(err => res.status(404).json({usernotfound: "No user found with this email"}))
-      })
-
-});
-
+// CREATE PROJECT
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
@@ -85,6 +45,55 @@ router.post('/',
       newProject.save().then(project => res.json(project));
     }
   );
+
+router.get('/users/:user_id', (req, res) => {          // Hmmm how do we do find by the ownerId and by the members? because this should also get the projects for the members
+    Project.find({ownerId: req.params.user_id})
+        .then(projects => res.json(projects))
+        .catch(err =>
+            res.status(404).json({ noprojectsfound: 'The user does not have any projects' }
+        )
+    );
+});
+
+// router.patch('/:id/addMember', (req, res) => {
+//       // const { errors, isValid } = validateProjectInput(req.body);
+  
+//       // if (!isValid) {
+//       //   return res.status(400).json(errors);
+//       // }
+//     Project.findById(req.params.id)
+//       .then(project => {
+//         User.findOne({email: req.body.email})
+//           .then( user => { 
+//             project.members.push(user.id)
+//             project.save()
+//             .then(res.json(project))
+//           })
+//           .catch(err => res.status(404).json({usernotfound: "No user found with this email"}))
+//       })
+      
+//     }
+// );
+
+// router.patch('/:id/deleteMember', (req, res) => {
+//   // const { errors, isValid } = validateProjectInput(req.body);
+
+//   // if (!isValid) {
+//   //   return res.status(400).json(errors);
+//   // }
+
+//     Project.findById(req.params.id)
+//       .then( project => {
+//         User.findOne({email: req.body.email})
+//           .then( user => { 
+//             project.members.pull(user.id)
+//             project.save()
+//             .then(res.json(project))
+//           })
+//           .catch(err => res.status(404).json({usernotfound: "No user found with this email"}))
+//       })
+
+// });
 
   router.post('/:id/',
     passport.authenticate('jwt', { session: false }),
