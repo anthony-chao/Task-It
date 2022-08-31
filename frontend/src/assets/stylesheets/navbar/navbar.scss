@@ -76,7 +76,7 @@
 
 .logout-button button {
   color: $default-blue;
-  font-size: $font-size;
+  font-size: $font-size-30;
   font-family: $font-family;
   text-transform: capitalize;
   line-height: 0;
@@ -84,7 +84,6 @@
   border: 1px solid $default-blue;
   padding: 25px 15px 25px 15px;
   border-radius: 20px;
-  font-size: $font-size;
   margin-right: 20px;
   margin-top: 20px;
   background-color: transparent;

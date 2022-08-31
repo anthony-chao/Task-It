@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import "../../scss/splash.css";
 import Dashboard from '../dashboard/Dashboard';
 
 const Splash = ({ currentUser, login, history }) => {
