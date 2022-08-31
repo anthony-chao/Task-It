@@ -7,7 +7,7 @@ export const REMOVE_PROJECT = "REMOVE_PROJECT";
 
 const receiveProjects = projects => ({
     type: RECEIVE_PROJECTS,
-    projects
+    projects: projects.data
 })
 
 const receiveProject = project => ({

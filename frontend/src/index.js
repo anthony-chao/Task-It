@@ -5,11 +5,8 @@ import configureStore from "./store/store";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./util/sessionApiUtil";
 import { login, logout } from "./actions/sessionActions";
-import {
-  fetchProjects,
-  fetchProject,
-  fetchUserProjects,
-} from "./actions/projectActions";
+import { fetchProjects, fetchProject, fetchUserProjects, deleteProject } from "./actions/projectActions";
+
 import "./assets/stylesheets/main.scss";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -41,5 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.fetchProjects = fetchProjects;
   window.fetchProject = fetchProject;
   window.fetchUserProjects = fetchUserProjects;
+  window.deleteProject = deleteProject;
   window.login = login;
 });

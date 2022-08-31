@@ -13,7 +13,8 @@ const ProjectSchema = new Schema({
     },
     members: [{
         type: Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'users',
+        default: []
     }],
     description: {
         type: String,
@@ -21,7 +22,8 @@ const ProjectSchema = new Schema({
     },
     tasks: [{
         type: Schema.Types.ObjectId,
-        ref: 'tasks'
+        ref: 'tasks',
+        default: []
     }]
 })
 
