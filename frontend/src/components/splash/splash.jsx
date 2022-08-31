@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import "../../assets/stylesheets/splash/splash.css";
-import Main from '../main/main_page';
+import "../../scss/splash.css";
+import Dashboard from '../dashboard/Dashboard';
 
 const Splash = ({ currentUser, login, history }) => {
 
@@ -12,6 +12,7 @@ const Splash = ({ currentUser, login, history }) => {
 
     return (
       <div className="splashContainer">
+
         {/* <nav className="splashNav">
         <Link to="/">
             <img id="splashLogo" src="https://i.ibb.co/hF4GNPW/newLogo.png" alt="spashLogo" />
@@ -52,13 +53,13 @@ const Splash = ({ currentUser, login, history }) => {
     )
   }
 
-  const mainContent = () => {
+  const dashboardContent = () => {
     return (
-      <Main history={history}/>
+      <Dashboard />
     )
   };
 
-  return currentUser ? mainContent() : splashContent();
+  return currentUser ? dashboardContent() : splashContent();
 };
 
 const msp = state => {
