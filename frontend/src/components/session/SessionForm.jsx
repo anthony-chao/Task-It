@@ -59,12 +59,11 @@ const SessionForm = props => {
     <>
       <div className="session-form-header">
         <div className="exit-modal" onClick={closeModal}>&times;</div>
-        <h1>{formType}</h1>
+        <div className='modalImg'><img id='splashLogo' src='https://i.ibb.co/zRxzj9T/logo-For-Andrea.png' alt='splashLogo'></img> </div>
+        <h1>Welcome to Branches!</h1>
       </div>
 
       <form onSubmit={handleSubmit} className="login-signup-form">
-        <h3>Login</h3>
-        {/* <div className="session-errors">{renderErrors()}</div> */}
           {
             props.formType === 'Sign Up' && (
               <>
@@ -91,7 +90,8 @@ const SessionForm = props => {
               value={userInfo.email} 
               onChange={update('email')}
             />
-            {(props.errors.email) ? <p className="session-error">{props.errors.email}</p> : null}
+            {(props.errors.email) ? <p className="session-error">{props.errors.email} </p> : null}
+
           </label>  
           <label htmlFor="modal-password">
             <input type="password" 
@@ -99,6 +99,7 @@ const SessionForm = props => {
               value={userInfo.password}
               onChange={update('password')}
             />
+            {(props.errors.password) ? <p className="session-error">{props.errors.password}</p> : null}
           </label>
             <button value={formType} className="session-button">{formType}</button>
             <button value="Demo Login" className="demo-login-button" onClick={demoLogin}>Demo Login</button>

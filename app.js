@@ -10,6 +10,8 @@ const users = require("./routes/api/users");
 const projects = require("./routes/api/projects")
 const tasks = require("./routes/api/tasks");
 
+const path = require('path');
+
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
@@ -22,6 +24,13 @@ require('./config/passport')(passport);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
 
 app.use("/api/users", users);
 app.use("/api/projects", projects);

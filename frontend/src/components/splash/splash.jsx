@@ -12,6 +12,16 @@ const Splash = ({ currentUser, login, history }) => {
 
     return (
       <div className="splashContainer">
+
+        {/* <nav className="splashNav">
+        <Link to="/">
+            <img id="splashLogo" src="https://i.ibb.co/hF4GNPW/newLogo.png" alt="spashLogo" />
+          </Link>
+          <Link to="/login">
+            <img id="sLink" src="https://i.ibb.co/pJqjmSb/imageedit-3-5201840979.png" alt="splashLink" />
+          </Link>
+        </nav> */}
+
         <main id="splash">
           <div id="tagline">
             <h1 id="tagline-1">Branches1 is a project management tool that allows logged in users to deconstruct their projects into manageable tasks while also enabling them to visualize the completion status of the project.</h1>

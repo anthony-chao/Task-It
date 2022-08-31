@@ -1,10 +1,12 @@
 #splash{
     background-color: #0a1929;
+    position: relative;
+    /* background-image: url("https://i.ibb.co/D84PRd9/imageedit-1-3378202381.png"); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     padding: 20px;
-    margin-bottom: 20px;
+    /* overflow-y: hidden; */
 }
 
 .splashNav {
@@ -21,12 +23,12 @@
     height: 80px;
     z-index: 1;
   }
-  
+/*   
   #splashLogo {
     height: 50px;
     width: 100%;
     margin-top: 10px;
-  }
+  } */
   
   #sLink {
     height: 50px;
@@ -62,29 +64,26 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    height: 167vh;
+    height: 100vh;
     width: 100vw;
     background-color: #0a1929;
   }
   
   #tagline {
-    position: absolute;
-    margin-left: 580px;
-    margin-top: 120px;
+    margin-left: 590px;
     background: #FC766A;
     border: 0.1875em solid #0F1C3F;
     border-radius: 50%;
     box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
-    height: 10em;
-    width: 10em;
-    animation: fadeIn 5s;
+    height: 15em;
+    width: 15em;
   }
 
   #tagline h1 {
-    font-size: 0.1em;
+    font-size: 5px;
     color: transparent;
     text-align: center;
-    margin-top: 30em;
+    margin-top: 25em;
   }
 
   #tagline:hover {
@@ -102,7 +101,7 @@
   }
 
   #tagline2 {
-    margin-left: 840px;
+    margin-left: 70vw;
     background: #FC766A;
     border: 0.1875em solid #0F1C3F;
     border-radius: 50%;
@@ -112,10 +111,10 @@
   }
 
   #tagline2 h1 {
-    font-size: 0.1em;
+    font-size: 5px;
     color: transparent;
     text-align: center;
-    margin-top: 30em;
+    margin-top: 15em;
   }
 
   #tagline2:hover {
@@ -138,15 +137,15 @@
     border: 0.1875em solid #0F1C3F;
     border-radius: 50%;
     box-shadow: 0.375em 0.375em 0.375em 0.375em rgba(15, 28, 63, 0.125);
-    height: 10em;
-    width: 10em;
+    height: 7em;
+    width: 7em;
   }
 
   #tagline3 h1 {
-    font-size: 0.1em;
+    font-size: 5px;
     color: transparent;
     text-align: center;
-    margin-top: 30em;
+    margin-top: 10em;
   }
 
   #tagline3:hover {
@@ -169,15 +168,15 @@
     border: 0.1875em solid #0F1C3F;
     border-radius: 50%;
     box-shadow: 0.375em 0.375em 0.375em 0.375em rgba(15, 28, 63, 0.125);
-    height: 10em;
-    width: 10em;
+    height: 5em;
+    width: 5em;
   }
 
   #tagline4 h1 {
-    font-size: 0.1em;
+    font-size: 5px;
     color: transparent;
     text-align: center;
-    margin-top: 30em;
+    margin-top: 4em;
   }
 
   #tagline4:hover {
@@ -204,7 +203,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    height: 67vh;
+    height: 70vh;
   }
   
   #memberTitle {
@@ -235,3 +234,4 @@
     color: #FC766A;
     transition: 0.3ms;
 }
+
