@@ -28,8 +28,9 @@ class ProjectForm extends React.Component{
     }
 
     handleSubmit(e){
+        debugger
         e.preventDefault();
-        this.props.createProject(this.state);
+        this.props.processForm(this.state);
         this.props.closeModal();
     }
 
@@ -43,21 +44,23 @@ class ProjectForm extends React.Component{
         return(
         <div>
             <h1>{this.props.formType}</h1>
-            <form onSubmit={this.handleSubmit}>
-                <label>Title:
-                    <input type="text"
+            <form className="create-project-header" onSubmit={this.handleSubmit}>
+                <label className="create-project-label">Name:
+                    <input className="create-project-input" type="text"
                             value={this.state.name}
-                            onChange={this.handleUpdate("title")} />
+                            onChange={this.handleUpdate("name")} />
                 </label>
-                <label>Description:
-                    <input type="text" 
+                <br />
+                <label className="create-project-label">Description:
+                    <input className="create-project-input" type="text" 
                             value={this.state.description}
                             onChange={this.handleUpdate("description")} />
                 </label>
+                <br />
                 <input type="submit" value={ this.props.formType === "Create a Project" ? 'Create Project' : 'Update Project'} />
-                {(this.props.formType === "Update Project") ? 
+                {/* {(this.props.formType === "Update Project") ? 
                         <button onClick={() => { this.props.deleteProject(this.state.id), this.props.closeModal()}}>Delete project</button>
-                        : null }
+                        : null } */}
             </form>
         </div>
     )}

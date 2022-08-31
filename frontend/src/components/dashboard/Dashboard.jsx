@@ -4,13 +4,14 @@ import 'react-tabs/style/react-tabs.css';
 import Chart from './Chart';
 // import Dnd from './Calendar';
 import Chat from '../chat/chat';
+import Task from '../task/task'
 
 const Dashboard = (props) => {
 
   const data = [
     {
       heading: "Dashboard",
-      body: "Dashboard content",
+      body: <Task />,
     },
     {
       heading: "Calendar",
