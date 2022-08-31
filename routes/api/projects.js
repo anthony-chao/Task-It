@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Project = require('../../models/Project');
+const Task = require('../../models/Task');
 const User = require('../../models/User');
 const validateProjectInput = require('../../validation/project');
 const validateTaskInput = require("../../validation/task");
@@ -12,15 +13,16 @@ router.get("/test", (req, res) => res.json({ msg: "This is the projects route" }
 
 // GET ALL PROJECTS
 
-// router.get('/user/user:id', (req, res) => {
-//   Project.find({ownerId: req.params.user_id})
-// })
+router.get('/', (req, res) => {
+  Project.find({})
+    .then(projects => res.json(projects))
+})
 
 
 // GET PROJECT BY PROJECT ID
 router.get('/:id', (req, res) => {
   Project.findById(req.params.id)
-      .then(project => res.json(project.data))
+      .then(project => res.json(project))
       .catch(err =>
           res.status(404).json({ noprojectfound: 'No project found with that ID' })
       );
@@ -46,14 +48,44 @@ router.post('/',
     }
   );
 
-router.get('/users/:user_id', (req, res) => {          // Hmmm how do we do find by the ownerId and by the members? because this should also get the projects for the members
+// GET ALL OF THE CURRENT USER'S PROJECTS
+router.get('/users/:user_id', (req, res) => {
     Project.find({ownerId: req.params.user_id})
-        .then(projects => res.json(projects))
+        .then(projects => {
+          const projectObj = {};
+          projects.forEach(project => {
+            projectObj[project.id] = project
+          });
+          res.json(projectObj)
+        })
         .catch(err =>
             res.status(404).json({ noprojectsfound: 'The user does not have any projects' }
         )
     );
 });
+
+// UPDATE PROJECT
+
+router.patch('/:id', (req, res) => {
+  Project.findById(req.params.id)
+    .then( project => {
+      project.name = req.body.name;
+      project.description = req.body.description;
+      // project.members = req.body.members;
+      // project.tasks = req.body.tasks;
+
+      project.save()
+        .then(project => res.json(project))
+        .catch(err => console.log(err))
+    })
+})
+
+// DELETE PROJECT BY ID
+router.delete('/:id', (req, res) => {
+  Project.findByIdAndDelete(req.params.id)
+    .then(project => res.json(project.id))
+})
+
 
 // router.patch('/:id/addMember', (req, res) => {
 //       // const { errors, isValid } = validateProjectInput(req.body);
@@ -95,7 +127,34 @@ router.get('/users/:user_id', (req, res) => {          // Hmmm how do we do find
 
 // });
 
-  router.post('/:id/',
+// GET PROJECT'S TASKS
+router.get("/:id/tasks", (req, res) => {
+  // Project.findById(req.params.id)
+  //   .then( project => {
+  //     const projectTasks = {};
+  //     Promise.all(
+  //       project.tasks.map( task => {
+  //         Task.findById(task)
+  //           .then(searchedTask => {
+  //             return searchedTask
+  //           })
+  //         }))
+  //       .then(tasks => {
+  //         tasks.forEach(task => {
+  //           console.log(task)
+  //           projectTasks[task._id] = task
+  //         })
+  //         res.json(projectTasks)
+  //       })
+  //   })
+  //   .catch(err => console.log(err))
+  Task.find({projectId: req.params.id})
+    .then(tasks => res.json(tasks))
+})
+
+// GET PROJECT'S TASK ID
+
+router.post('/:id/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
       const { errors, isValid } = validateTaskInput(req.body);
@@ -122,5 +181,18 @@ router.get('/users/:user_id', (req, res) => {          // Hmmm how do we do find
         });
     }
 );
+
+router.patch("/:projectId/tasks/:id", (req, res) => {
+  Task.findById(req.params.id)
+    .then(task => {
+      task.title = req.body.title;
+      task.description = req.body.description;
+      task.projectId = req.params.projectId;
+      task.status = req.body.status;
+
+      task.save()
+        .then( task => res.json(task))
+    })
+})
 
 module.exports = router;
