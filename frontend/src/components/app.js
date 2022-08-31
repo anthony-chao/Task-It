@@ -4,7 +4,6 @@ import { Switch, Route } from "react-router-dom";
 import NavBarContainer from "./navbar/NavBar";
 import SplashContainer from "./splash/splash";
 import DashboardContainer from "./dashboard/Dashboard";
-import TabContainer from "./tabs/Tabs";
 
 const App = () => (
   <>

@@ -10,9 +10,17 @@
     font-family: $font-family;
     overflow-x: hidden;
     margin: 0;
-    display: block;
+    // display: block;
     color-scheme: dark;
     height: 100%;
     width: 100%;
   }
+}
+
+#root {
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // justify-content: space-between;
 }
