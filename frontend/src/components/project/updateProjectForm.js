@@ -1,21 +1,17 @@
 import { connect } from 'react-redux';
-import { updateProject } from '../../actions/projects';
+import { updateProject, deleteProject } from '../../actions/projects';
 import ProjectForm from './ProjectForm';
+import { closeModal } from '../../actions/modalActions';
 
-const mapStateToProps = ({ session: { currentUser } }) => ({
-  projectProp: {
-    name: "",
-    ownerId: currentUser,
-    members: [],
-    description: "",
-    tasks: []
-  },
-  formType: 'Add project'
+const mapStateToProps = state => ({
+    currentUser: state.session.user.id,
+    formType: 'Update Project'
 });
 
 const mapDispatchToProps = dispatch => ({
-  processForm: project => dispatch(addProject(project))
+  processForm: project => dispatch(updateProject(project)),
+  closeModal: () => dispatch(closeModal()),
+  deleteProject: (projectId) => dispatch(deleteProject(projectId))
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectForm);

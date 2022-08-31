@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const app = express();
 
-const db = require('./config/keys').mongoURI;
+// const db = require('./config/keys').mongoURI;
+const db = process.env.REACT_APP_MONGO_URI;
 
 const users = require("./routes/api/users");
 const projects = require("./routes/api/projects")
