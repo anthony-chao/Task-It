@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Chart from './Chart';
 // import Dnd from './Calendar';
+import Chat from '../chat/chat';
 
 const Dashboard = (props) => {
 
@@ -17,7 +18,7 @@ const Dashboard = (props) => {
     },
     {
       heading: "Group Channel",
-      body: "Group Channel content",
+      body: <Chat />,
     },
   ];
 
@@ -36,8 +37,8 @@ const Dashboard = (props) => {
             <Tab key={i}>
               {heading}
               {i === 0 ? progressChart = <Chart /> : null}
-              {console.log(`${i}`)}
-              {console.log(`${heading}`)}
+              {/* {console.log(`${i}`)}
+              {console.log(`${heading}`)} */}
             </Tab>
           ))}
         </TabList>
@@ -54,7 +55,7 @@ const Dashboard = (props) => {
         
             <div className="chart-container">
               {progressChart}
-              {console.log('Chart will render')}
+              {/* {console.log('Chart will render')} */}
             </div>
           </div>
         
