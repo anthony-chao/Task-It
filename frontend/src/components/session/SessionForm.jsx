@@ -34,7 +34,7 @@ const SessionForm = props => {
 
   const demoLogin = (e) => {
     e.preventDefault();
-    props.processForm({
+    const user = {
       email: 'demouser@branches.com',
       password: 'password',
     }
