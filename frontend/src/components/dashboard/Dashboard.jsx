@@ -4,7 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 import Chart from './Chart';
 // import Dnd from './Calendar';
 import Chat from '../chat/chat';
-import Task from '../task/task'
+import Task from '../task/Task'
 
 const Dashboard = (props) => {
 

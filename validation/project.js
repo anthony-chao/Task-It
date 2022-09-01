@@ -7,9 +7,9 @@ module.exports = function validateProjectInput(data) {
   data.name = validText(data.name) ? data.name : '';
   data.description = validText(data.description) ? data.description : '';
 
-  if (!Validator.isLength(data.name, { min: 5, max: 20 })) {
-    errors.name = 'Project name must be between 5 and 20 characters';
-  }
+  // if (!Validator.isLength(data.name, { min: 5, max: 20 })) {
+  //   errors.name = 'Project name must be between 5 and 20 characters';
+  // }
 
   if (Validator.isEmpty(data.name)) {
     errors.name = 'Name field is required';

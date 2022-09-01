@@ -38,8 +38,8 @@ export const createProject = project => dispatch => {
         .catch(err => console.log(err))
 }
 
-export const updateProject = project => dispatch => {
-    return ProjectAPI.updateProject(project)
+export const updateProject = projectId => dispatch => {
+    return ProjectAPI.updateProject(projectId)
         .then( project => dispatch(receiveProject(project)))
         .catch(err => console.log(err))
 }

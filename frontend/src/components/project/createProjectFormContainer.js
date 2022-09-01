@@ -5,7 +5,8 @@ import { closeModal } from '../../actions/modalActions';
 
 const mapStateToProps = state => ({
   currentUser: state.session.user.id,
-  formType: 'Create a Project'
+  formType: 'Create a Project',
+  errors: state.errors.session,
 });
 
 const mapDispatchToProps = dispatch => ({
