@@ -92,7 +92,7 @@ const { loggedIn, logout, openModal } = props;
         </Link>
 
         <div className="projects-button">
-          <ProjectsDrawer />
+          { loggedIn ? <ProjectsDrawer /> : null }
         </div>
       </div>
 

@@ -6,6 +6,7 @@ class ProjectForm extends React.Component{
         super(props)
 
         this.state = {
+            _id: "",
             name: "",
             ownerId: props.currentUser,
             members: [],
@@ -18,17 +19,19 @@ class ProjectForm extends React.Component{
     }
 
     componentDidMount() {
-        if (this.formType === "Update Project") {
+        if (this.props.formType === "Update Project") {
             this.setState({
-                // do I also need to set the ID to the project's id? 
+                _id: this.props.project._id,
                 name: this.props.project.name,
-                description: this.props.project.description
+                description: this.props.project.description,
+                members: this.props.project.members,
+                ownerId: this.props.project.ownerId,
+                tasks: this.props.project.tasks
             })
         }
     }
 
     handleSubmit(e){
-        debugger
         e.preventDefault();
         this.props.processForm(this.state);
         this.props.closeModal();
