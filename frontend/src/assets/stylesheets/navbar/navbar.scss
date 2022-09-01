@@ -42,6 +42,19 @@
       border-color: $default-gray;
     }
   }
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 10px 0 10px 30px;
+  cursor: pointer;
+
+  #user-icon {
+    cursor: pointer;
+  }
 
   .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
     color: $default-blue;
@@ -63,18 +76,7 @@
   }
 }
 
-.nav-right {
-  display: flex;
-  align-items: flex-end;
-  height: 100%;
-  padding-right: 30px;
-
-  #user-icon {
-    cursor: pointer;
-  }
-}
-
-.logout-button button {
+.logout-button {
   color: $default-blue;
   font-size: $font-size-30;
   font-family: $font-family;
@@ -84,10 +86,10 @@
   border: 1px solid $default-blue;
   padding: 25px 15px 25px 15px;
   border-radius: 20px;
-  margin-right: 20px;
-  margin-top: 20px;
   background-color: transparent;
   border-color: $default-blue;
+  margin: 0 30px 0 20px;
+
   &:hover {
     color: $default-gray;
     background-color: transparent;

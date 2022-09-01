@@ -1,12 +1,12 @@
 @import "../variables.scss";
 
 .dashboard-container {
-  border: 1px solid white;
   width: 100%;
   height: 1000px;
   color: $default-gray;
   font-size: $font-size-20;
   margin-top: 60px;
+  // border: 1px solid white;
 
   h1 {
     color: yellow;
@@ -14,14 +14,14 @@
 }
 
 .tab-component {
-  border: 1px solid red;
   height: 100%;
+  // border: 1px solid red;
 }
 
 .main-content-container {
   display: flex;
-  border: 1px solid purple;
   height: 100%;
+  border: 1px solid purple;
 }
 
 .left-content {
@@ -31,19 +31,19 @@
 }
 
 .task-container {
-  border: 1px solid green;
+  // border: 1px solid green;
 }
 
 .chart-container {
-  border: 1px solid yellow;
   margin: auto;
   display: flex;
   justify-content: flex-start;
   width: 100%;
   height: 100%;
+  border: 1px solid yellow;
 }
 
 .right-content {
-  border: 1px solid orange;
   width: 100%;
+  border: 1px solid orange;
 }
