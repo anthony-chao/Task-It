@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Chart from './Chart';
 // import Dnd from './Calendar';
-import Chat from '../chat/chat';
+import Chat from '../chat/Chat';
 import Task from '../task/task'
 
 const Dashboard = (props) => {
@@ -17,10 +17,10 @@ const Dashboard = (props) => {
       heading: "Calendar",
       body: "Calendar content",
     },
-    {
-      heading: "Group Channel",
-      body: <Chat />,
-    },
+    // {
+    //   heading: "Group Channel",
+    //   body: <Chat />,
+    // },
   ];
 
   const [info, setInfo] = useState({
@@ -69,9 +69,11 @@ const Dashboard = (props) => {
           </div>
 
         </div>
-          
-
       </Tabs>
+
+      <>
+        <Chat />
+      </>
     </div>
   )
 }

@@ -28,6 +28,9 @@ io.on("connection", (socket) => {
   });
 });
 
+// io.on("connection", (socket) => {
+//   console.log(`User connected: ${socket.id}`);
+
 // server.listen(3000, () => {
 //   console.log("I am listening at port: 3000");
 // });
