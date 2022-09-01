@@ -10,9 +10,9 @@ const receiveProjects = projects => ({
     projects: projects.data
 })
 
-const receiveProject = project => ({
+const receiveProject = payload => ({
     type: RECEIVE_PROJECT,
-    project : project.data
+    payload: payload.data
 })
 
 const removeProject = projectId => ({

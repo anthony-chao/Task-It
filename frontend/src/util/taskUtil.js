@@ -1,8 +1,8 @@
 import axios from "axios";
 
-// export const fetchTasks = () => {
-//     return axios.get("/api/projects/:projectId/tasks")
-// }
+export const fetchTasks = projectId => {
+    return axios.get(`/api/tasks/${projectId}`)
+}
 // export const fetchTasks = () => {
 //     return axios.get("/api/tasks")
 // }
