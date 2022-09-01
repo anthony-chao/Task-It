@@ -73,10 +73,8 @@ const { loggedIn, logout, openModal } = props;
 
   const logoutButton = () => {
     return (
-      <div className="logout-button">
-        <button onClick={logout}>
+      <div className="logout-button" onClick={logout}>
           Logout
-        </button>
       </div>
     );
   };
@@ -91,12 +89,13 @@ const { loggedIn, logout, openModal } = props;
           </div>
         </Link>
 
-        <div className="projects-button">
-          { loggedIn ? <ProjectsDrawer /> : null }
-        </div>
       </div>
 
       <div className="nav-right">
+        <div className="projects-button">
+          { loggedIn ? <ProjectsDrawer /> : null }
+        </div>
+
         <Modal />
         {
           loggedIn ? logoutButton() : loginButton()

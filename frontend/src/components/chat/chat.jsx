@@ -1,22 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
 import { connect } from 'react-redux';
-import io from 'socket.io-client';
 import { TbSend } from 'react-icons/tb';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-
-
-const socket = io('http://localhost:3000');
-// const userName = 'User ' + parseInt(Math.random()*10)
+import { socket } from '../../util/socketUtil';
+import { BsFillChatSquareQuoteFill } from 'react-icons/bs';
+// import { FontAwesomeIcon } from '@fortawesome/fontawesome-free';
+// import { faCommentAlt, faMinus } from '@fortawesome/fontawesome-free'
+// import TextField from '@mui/material/TextField';
+// import InputAdornment from '@mui/material/InputAdornment';
+// import AccountCircle from '@mui/icons-material/AccountCircle';
 
 const Chat = ({ currentUserFirstName, currentUserLastName }) => {
-
-  const userName = (currentUserFirstName + " " + currentUserLastName);
-
+  
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
-
+  const [toggledChat, setToggledChat] = useState(false);
+  
   const chatEndRef = useRef(null);
   
   useEffect(() => {
@@ -24,45 +22,67 @@ const Chat = ({ currentUserFirstName, currentUserLastName }) => {
       setChat([...chat, payload])
     })
   })
-
+  
   useEffect(() => {
     scrollToBottom()
   }, [chat]);
-
+  
   const sendMessage = (e) => {
     e.preventDefault();
-    // console.log(message)
     socket.emit('message', {userName, message})
     // Send message on socket
     setMessage('')
   }
-
+  
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView( {behavior: "smooth"} )
   }
-
-  const currentDate = new Date();
-  const timestamp = currentDate.toLocaleTimeString();
-  console.log(`${timestamp}`)
-  // console.log(`${timestamp}`);
   
+  const userName = (currentUserFirstName + " " + currentUserLastName);
+  const currentDate = new Date();
+  const timestamp = currentDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+  const chatBox = () => {
+    return (
+      <main className="chat-container">
+        <div className="close-chat" onClick={() => setToggledChat(!toggledChat)}>&times;</div>
+        <form onSubmit={sendMessage} className="chat-footer">
+            <input className="chat-input"
+              type="text" 
+              name="message" 
+              value={message}
+              placeholder="Chat here"
+              onChange={(e) => {setMessage(e.target.value)}}
+              required
+            />
+            <button type='submit'>
+              <TbSend size={30} />
+            </button>
+        </form>
+
+       <div className="chat-box">
+        {chat.map((payload, index) => {
+          return (
+            <>
+              <p className="chat-message" key={index} ref={chatEndRef}>
+                {payload.userName}: {payload.message}
+                <span className="chat-timestamp">{timestamp}</span>
+              </p>
+            </>
+          )
+        })}
+      </div>
+    </main>
+  )
+};
+   
+
   return (
-
-    <main className="chat-container">
-      <form onSubmit={sendMessage} className="chat-footer">
-          <input className="chat-input"
-            type="text" 
-            name="message" 
-            value={message}
-            placeholder="Chat here"
-            onChange={(e) => {setMessage(e.target.value)}}
-            required
-          />
-          <button type='submit'>
-            <TbSend size={30}/>
-          </button>
-      </form>
-
+    <>
+      {toggledChat ? chatBox : <BsFillChatSquareQuoteFill size={70} onClick={() => setToggledChat(!toggledChat)} />}
+    </>
+  )
+}
     {/* <form onSubmit={sendMessage}>
       <TextField
         id="input-with-icon-textfield"
@@ -83,21 +103,7 @@ const Chat = ({ currentUserFirstName, currentUserLastName }) => {
       </button>
     </form> */}
 
-      <div className="chat-box">
-        {chat.map((payload, index) => {
-          return (
-            <>
-              <p className="chat-message" key={index} ref={chatEndRef}>
-                {payload.userName}: <span>{payload.message}</span>
-                <p className="chat-timestamp">{timestamp}</p>
-              </p>
-            </>
-          )
-        })}
-      </div>
-    </main>
-  )
-};
+     
 
 const mapStateToProps = state => {
   return {
