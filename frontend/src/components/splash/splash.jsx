@@ -10,7 +10,6 @@ const Splash = ({ currentUser, login, history }) => {
 
     return (
       <div className="splashContainer">
-
         <main id="splash">
           <div id="tagline">
             <h1 id="tagline-1">Branches1 is a project management tool that allows logged in users to deconstruct their projects into manageable tasks while also enabling them to visualize the completion status of the project.</h1>
@@ -25,7 +24,6 @@ const Splash = ({ currentUser, login, history }) => {
             <h1 id="tagline-4">Branches4 is a project management tool that allows logged in users to deconstruct their projects into manageable tasks while also enabling them to visualize the completion status of the project.</h1>
           </div>
         </main>
-
         <footer id="splashFooter">
           <div id="memberList">
             <p id="memberTitle">TEAM</p>
@@ -36,7 +34,6 @@ const Splash = ({ currentUser, login, history }) => {
                 <li id="gs" className="splash-link"><a href="https://www.linkedin.com/in/michaelngcen/" target="_blank" rel="noreferrer">Michael Ng Cen</a></li>
             </ul>
           </div>
-
         </footer>
       </div>
     )

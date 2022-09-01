@@ -40,11 +40,6 @@
   }
 }
 
-#login-input {
-color: red;
-}
-
-
 .session-form-footer a {
   color: $default-blue;
   text-decoration: none;
@@ -52,7 +47,7 @@ color: red;
 
 .session-form-footer a:hover {
   color:  #0a1929;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .modal-child h1 {
@@ -82,6 +77,10 @@ color: red;
   margin-bottom: 10px;
 }
 
+.email-with-error, .password-with-error, .fname-with-error, .lname-with-error {
+  outline: 1px solid red !important;
+}
+
 .login-signup-form input:focus{
   border: 1px solid $default-blue;
 }
@@ -102,8 +101,16 @@ color: red;
 }
 
 .session-form-header h1{
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 500;
   margin-bottom: 0.5rem;
   margin-right: 5px;
+}
+
+.exit-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
 }
