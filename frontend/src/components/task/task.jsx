@@ -5,9 +5,15 @@ import { connect } from 'react-redux'
 
 class Task extends Component {
 
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     return (
       <div>
+        {/* <h1>{this.props.project.name}</h1> */}
+        {console.log(this.props)}
         <h1>Task List</h1>
         <CreateTaskForm createTask={this.props.createTask}/>
         <TaskList tasks={this.props.tasks} deleteTask={this.props.deleteTask} updateTask={this.props.updateTask}/>

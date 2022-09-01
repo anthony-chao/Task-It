@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Chart from './Chart';
 // import Dnd from './Calendar';
 import Chat from '../chat/Chat';
 import Task from '../task/Task'
+import { connect } from "react-redux";
+import { fetchUserProjects, fetchProject, fetchProjects } from '../../actions/projectActions'; 
+
 
 const Dashboard = (props) => {
 
+  useEffect(() => {
+    debugger
+    fetchProjects();
+  }, []);
+
+  debugger
   const data = [
     {
       heading: "Dashboard",
-      body: <Task />,
+      body: <Task project={props.project}/>,
     },
     {
       heading: "Calendar",
@@ -78,4 +88,18 @@ const Dashboard = (props) => {
   )
 }
 
-export default Dashboard;
+const mapStateToProps = (state, ownProps) => {
+  debugger
+  return {
+    userProjects: Object.values(state.entities.projects),
+    currentUserId: state.session.user.id,
+    project: state.entities.projects[ownProps.match.params.id]
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  fetchUserProjects: (userId) => dispatch(fetchUserProjects(userId)),
+  fetchProject: (projectId) => dispatch(fetchProject(projectId))
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Dashboard));
