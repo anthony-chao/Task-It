@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom"
+import { useHistory, withRouter } from "react-router-dom"
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -33,9 +33,9 @@ const ProjectsDrawer = ({ openModal, fetchUserProjects, userProjects, currentUse
     setState({ ...state, [projects]: open });
   };
 
-  useEffect(() => {
-    fetchUserProjects(currentUserId);
-  }, []);
+  // useEffect(() => {
+  //   fetchUserProjects(currentUserId);
+  // }, []);
 
   let history = useHistory();
 
@@ -119,4 +119,4 @@ const mapDispatchToProps = dispatch => ({
   fetchProject: (projectId) => dispatch(fetchProject(projectId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectsDrawer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProjectsDrawer))

@@ -1,0 +1,29 @@
+@import "../variables.scss";
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(50, 50, 50, 0.5);
+  z-index: 10;
+  
+  img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    background-color: #f0f2f5;
+    border-radius: 12px;
+    width: 300px;
+    max-width: 568px;
+    min-width: 200px;
+    padding: 18px;
+  }
+}
