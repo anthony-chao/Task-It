@@ -5,7 +5,12 @@ import configureStore from "./store/store";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./util/sessionApiUtil";
 import { login, logout } from "./actions/sessionActions";
-import { fetchProjects, fetchProject, fetchUserProjects, deleteProject } from "./actions/projectActions";
+import {
+  fetchProjects,
+  fetchProject,
+  fetchUserProjects,
+  deleteProject,
+} from "./actions/projectActions";
 
 import "./assets/stylesheets/main.scss";
 
@@ -25,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (decodedUser.exp < currentTime) {
       store.dispatch(logout());
-      window.location.href = "/login";
+      window.location.href = "/";
     }
   } else {
     store = configureStore({});
