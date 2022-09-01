@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modalActions';
 import LoginFormContainer from '../session/loginFormContainer';
 import SignupFormContainer from '../session/signupFormContainer';
+import CreateProjectFormContainer from '../project/createProjectFormContainer';
 import "../../assets/stylesheets/modal/modal.scss";
 
 function Modal({modal, closeModal}) {
@@ -16,6 +17,9 @@ function Modal({modal, closeModal}) {
       break;
     case 'signup':
       component = <SignupFormContainer />;
+      break;
+    case 'createProject':
+      component = <CreateProjectFormContainer/>;
       break;
     default:
       component = <LoginFormContainer />;

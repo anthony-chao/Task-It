@@ -1,8 +1,26 @@
 @import "./navbar/navbar.scss";
 @import "./modal/modal.scss";
+@import "./dashboard/dashboard.scss";
+@import "./splash/splash.scss";
 
-html,
-body {
-  background-color: $background-color;
-  font-family: $font-family;
+@media only screen and (max-width: 2000px) {
+  html,
+  body {
+    background-color: $background-color;
+    font-family: $font-family;
+    overflow-x: hidden;
+    margin: 0;
+    // display: block;
+    color-scheme: dark;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+#root {
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // justify-content: space-between;
 }

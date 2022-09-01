@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -8,11 +8,15 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { TbCircles } from 'react-icons/tb';
+import { MdOutlineCreateNewFolder } from 'react-icons/md';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { openModal } from '../../actions/modalActions';
+import { connect } from 'react-redux';
 
-export default function ProjectsDrawer() {
-  const [state, setState] = React.useState({
+const ProjectsDrawer = ({ openModal }) => {
+  const [state, setState] = useState({
     left: false,
   });
 
@@ -32,11 +36,11 @@ export default function ProjectsDrawer() {
       onKeyDown={toggleDrawer(projects, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['All Projects'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <TbCircles size={'1.5em'} />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -45,11 +49,11 @@ export default function ProjectsDrawer() {
       </List>
       <Divider />
       <List>
-        {['Projects', 'Create a Project'].map((text, index) => (
+        {['Create a Project'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => openModal('createProject')} >
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <MdOutlineCreateNewFolder size={'1.5em'} />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -76,3 +80,13 @@ export default function ProjectsDrawer() {
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+  openModal: (formType) => dispatch(openModal(formType))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectsDrawer)

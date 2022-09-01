@@ -29,12 +29,12 @@ const SessionForm = props => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = Object.assign({}, userInfo);
-    props.processForm(user);
+    props.processForm(user)
   };
 
   const demoLogin = (e) => {
     e.preventDefault();
-    const user = {
+    props.processForm({
       email: 'demouser@branches.com',
       password: 'password',
     }

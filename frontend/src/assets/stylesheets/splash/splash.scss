@@ -8,6 +8,7 @@
     background-size: cover;
     background-position: center;
     padding: 20px;
+    /* overflow-y: hidden; */
 }
 
 .splashNav {
@@ -25,6 +26,12 @@
     z-index: 1;
   }
 
+/*   
+  #splashLogo {
+    height: 50px;
+    width: 100%;
+    margin-top: 10px;
+  } */
   
   #sLink {
     height: 50px;
@@ -47,6 +54,12 @@
     color: #9EA6AF;
   }
   
+  .splashLink a:hover {
+    color:  #FC766A;
+    border-width: 10px;
+    cursor: pointer;  
+  }
+  
   .splashContainer {
     display: flex;
     flex-direction: column;
@@ -62,6 +75,7 @@
     margin-left: 590px;
     background: $default-blue;
     border: 0.1875em solid $background-color;
+
     border-radius: 50%;
     box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
     height: 15em;
@@ -71,6 +85,7 @@
       background: $background-color;
       cursor: default;
     }
+
   }
 
   #tagline h1 {
@@ -95,12 +110,14 @@
     box-shadow: 0.375em 0.375em 0.375em 0.375em rgba(15, 28, 63, 0.125);
     height: 10em;
     width: 10em;
-    &:hover {
+
+  &:hover {
       transform: scale(2);
       background: $background-color;
       cursor: default;
       transition: 0.3ms;
     }
+
   }
 
   #tagline2 h1 {
@@ -131,6 +148,7 @@
       cursor: default;
       transition: 0.3ms;
     }
+
   }
 
   #tagline3 h1 {
@@ -138,7 +156,8 @@
     color: transparent;
     text-align: center;
     margin-top: 10em;
-    &:hover {
+
+&:hover {
       font-family: $font-family;
       font-weight: bold;
       color: #9EA6AF;
@@ -151,11 +170,13 @@
     margin-left: 840px;
     background: $default-blue;
     border: 0.1875em solid $background-color;
+
     border-radius: 50%;
     box-shadow: 0.375em 0.375em 0.375em 0.375em rgba(15, 28, 63, 0.125);
     height: 5em;
     width: 5em;
-    &:hover {
+
+&:hover {
       transform: scale(2);
       background: $background-color;
       cursor: default;
@@ -168,7 +189,8 @@
     color: transparent;
     text-align: center;
     margin-top: 4em;
-    &:hover {
+
+&:hover {
       font-family: $font-family;
       font-weight: bold;
       color: #9EA6AF;
@@ -186,6 +208,7 @@
     padding: 0;
     margin: 0;
     height: 100vh;
+
   }
   
   #memberTitle {
@@ -201,13 +224,14 @@
       cursor: default;
     }
   }
-
+  
   #gs{
     color: #9EA6AF;
     display: flex;
     list-style-type: none;
     cursor: default;
-    &:hover {
+
+&:hover {
       cursor: default;
       color: $background-color;
       transition: 0.3ms;
