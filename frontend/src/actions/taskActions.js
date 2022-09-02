@@ -31,12 +31,12 @@ export const fetchTask = taskId => dispatch => {
 
 export const createTask = task => dispatch => {
     return TaskAPI.createTask(task)
-        .then( tasks => dispatch(receiveTasks(tasks)))
+        .then( task => dispatch(receiveTask(task)))
 }
 
 export const updateTask = task => dispatch => {
     return TaskAPI.updateTask(task)
-        .then( task => dispatch(receiveTasks(task)))
+        .then( task => dispatch(receiveTask(task)))
 }
 
 export const deleteTask = taskId => dispatch => {

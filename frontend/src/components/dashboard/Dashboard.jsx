@@ -4,12 +4,13 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Chart from './Chart';
 // import Dnd from './Calendar';
-import Chat from '../chat/Chat';
+import Chat from '../chat/chat';
 import Task from '../task/Task'
 import { connect } from "react-redux";
 import { fetchUserProjects, fetchProject, fetchProjects } from '../../actions/projectActions';
 import LoadingContainer from "../util/LoadingContainer";
-
+import { openModal } from "../../actions/modalActions";
+import dashboardGif from '../../assets/images/dashboard.gif'
 
 const Dashboard = (props) => {
 
@@ -19,7 +20,13 @@ const Dashboard = (props) => {
     props.fetchUserProjects(props.currentUserId).finally(() => setIsLoading(false));
   }, []);
 
-  debugger;
+  // if (!props.project) {
+  //   openModal('createProject')
+  // }
+  // else {
+  //   return null;
+  // }
+
   const data = [
     {
       heading: "Dashboard",
@@ -72,6 +79,10 @@ const Dashboard = (props) => {
               </div>
             </div>
           
+          {!props.project ? 
+            <div className="right-content-dashboard">   
+              <img id="dashboard-gif" src={dashboardGif} alt="" /> 
+            </div>: 
             <div className="right-content">
               {data.map(({ body }, i) => (
                 <TabPanel key={i}>
@@ -79,6 +90,7 @@ const Dashboard = (props) => {
                 </TabPanel>
               ))}
             </div>
+            }
 
           </div>
         </Tabs>
@@ -94,7 +106,11 @@ const Dashboard = (props) => {
 return isLoading ? <LoadingContainer /> : content() 
 }
 const mapStateToProps = (state, ownProps) => {
-  debugger
+  const project = state.entities.projects[ownProps.location.pathname.split("/")[3]]
+  
+  if (!project) {
+    
+  }
   return {
     userProjects: Object.values(state.entities.projects),
     currentUserId: state.session.user.id,
