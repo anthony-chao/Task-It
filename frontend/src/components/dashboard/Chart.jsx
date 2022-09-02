@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react';
 import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
 
 const data = [
-  { name: 'Task 1', value: 100 },
-  { name: 'Task 2', value: 300 },
-  { name: 'Task 3', value: 300 },
-  { name: 'Task 4', value: 200 },
-  { name: 'Task 5', value: 50 },
+  { name: 'Task 1', value: 20 },
+  { name: 'Task 2', value: 20 },
+  { name: 'Task 3', value: 20 },
+  { name: 'Task 4', value: 20 },
+  { name: 'Task 5', value: 20 },
 ];
 
 const renderActiveShape = (props) => {
@@ -70,7 +70,7 @@ export default class Chart extends PureComponent {
   render() {
     return (
       <ResponsiveContainer width="100%" height="100%" >
-        <PieChart width={400} height={400}>
+        <PieChart width={900} height={200}>
           <Pie
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape}
@@ -79,7 +79,7 @@ export default class Chart extends PureComponent {
             cy="50%"
             innerRadius={60}
             outerRadius={80}
-            fill="#8884d8"
+            fill="rgb(114, 230, 114)"
             dataKey="value"
             onMouseEnter={this.onPieEnter}
           />
