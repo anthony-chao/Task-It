@@ -1,0 +1,44 @@
+@import "../variables.scss";
+    
+
+.create-project-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.create-project-header label{
+    color: black;
+}
+
+.create-project-input{
+    width: 70%;
+    max-width: 568px;
+    min-width: 200px;
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    background-color: white;
+    color: #0a1929;
+}
+
+.create-project-header input{
+    width: 70%;
+    max-width: 568px;
+    min-width: 200px;
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    background-color: white;
+    color: #0a1929;
+    &:hover{
+        border: 2px solid #0a1929;
+    }
+    &:focus{
+        border: 2px solid $default-blue;
+    }
+}

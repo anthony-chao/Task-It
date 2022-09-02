@@ -29,14 +29,18 @@
 }
 
 .demo-login-button, .session-button {
+  background-color: transparent;
+  color: #0a1929;
   border-radius: 12px;
-  width: 100%;
+  width: 83%;
   max-width: 568px;
   min-width: 200px;
   padding: 18px;
+  margin-top: 10px;
   &:hover {
     color: $default-blue;
     border-color: $default-blue;
+    animation: blink 1.5s ease-in-out;
   }
 }
 
@@ -50,10 +54,19 @@
   text-decoration: none;
 }
 
+.session-form-footer p{
+  color: black;
+  font-family: $font-family;
+  text-align: center;
+  margin-top: 10px;
+}
+
 .modal-child h1 {
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+  color : black;
+  font-family: $font-family;
 }
 
 .modalImg{
@@ -63,18 +76,21 @@
 }
 
 .modalImg img{
+  padding-top: 10px;
   width: 25%;
   height: auto;
 }
 
 .login-signup-form input{
-  width: 85%;
+  width: 70%;
   max-width: 568px;
   min-width: 200px;
   padding: 18px;
   border-radius: 10px;
   border: 1px solid #ccc;
   margin-bottom: 10px;
+  background-color: white;
+  color: #0a1929;
 }
 
 .email-with-error, .password-with-error, .fname-with-error, .lname-with-error {
@@ -105,12 +121,32 @@
   font-weight: 500;
   margin-bottom: 0.5rem;
   margin-right: 5px;
+  padding-bottom: 10px;
 }
 
 .exit-modal {
+  color: #0a1929  ;
   position: absolute;
   top: 0;
   right: 0;
   padding: 10px;
   cursor: pointer;
+}
+
+.login-signup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes blink {
+  0% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import "../../assets/stylesheets/project/project.scss";
 
 class ProjectForm extends React.Component{
     constructor(props){

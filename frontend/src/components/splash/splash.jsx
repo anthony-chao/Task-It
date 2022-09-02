@@ -23,6 +23,12 @@ const Splash = ({ currentUser, login, history }) => {
           <div id="tagline4">
             <h1 id="tagline-4">Branches4 is a project management tool that allows logged in users to deconstruct their projects into manageable tasks while also enabling them to visualize the completion status of the project.</h1>
           </div>
+          <div id="uselessBall1"></div>
+          <div id="uselessBall2"></div>
+          <div id="uselessBall3"></div>
+          <div id="uselessBall4"></div>
+          <div id="uselessBall5"></div>
+          <div id="uselessBall6"></div>
         </main>
         <footer id="splashFooter">
           <div id="memberList">

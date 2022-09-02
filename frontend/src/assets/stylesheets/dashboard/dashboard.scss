@@ -33,7 +33,7 @@
 }
 
 .task-container {
-  // border: 1px solid green;
+  border: 1px solid green;
 }
 
 .chart-container {
@@ -48,6 +48,7 @@
 .right-content {
   width: 100%;
   border: 1px solid orange;
+  border-radius: 30px;
 }
 
 .right-content-dashboard {
@@ -73,4 +74,107 @@
   .chat-icon {
     z-index: 99;
   }
+}
+
+.react-tabs__tab--selected {
+  color: $default-blue;
+  font-size: $font-size-30;
+  font-family: $font-family;
+  text-transform: capitalize;
+  line-height: 0;
+  letter-spacing: 0;
+  border: 1px solid $default-blue;
+  padding: 25px 15px 25px 15px;
+  border-radius: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  background-color: transparent;
+  border-color: $default-blue;
+  &:hover {
+    color: $default-gray;
+    background-color: transparent;
+    border-color: $default-gray;
+}
+}
+
+.react-tabs__tab{
+  color: $default-gray;
+  font-size: $font-size-30;
+  font-family: $font-family;
+  text-transform: capitalize;
+  line-height: 0;
+  letter-spacing: 0;
+  border: 1px solid $default-gray;
+  padding: 25px 15px 25px 15px;
+  border-radius: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  background-color: transparent;
+  border-color: $default-gray;
+  &:hover {
+    color: $default-blue;
+    background-color: transparent;
+    border-color: $default-blue;
+}
+}
+
+.task-container li{
+    color: $default-blue;
+    display: flex;
+    list-style-type: none;
+    cursor: pointer;
+    &:hover {
+      color: yellow;
+      transition: 0.3ms;
+    }
+}
+
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+  background-color: $default-gray !important;
+  color: $default-gray;
+  font-size: $font-size-20;
+  font-family: $font-family;
+  text-transform: capitalize;
+  line-height: 0;
+  letter-spacing: 0;
+  border: 1px solid $default-blue;
+  padding: 25px 15px 25px 15px;
+  border-radius: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  background-color: transparent;
+  border-color: $default-blue;
+}
+
+.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root :hover{
+  color: $default-blue;
+  background-color: transparent;
+  border-color: $default-blue;
+}
+
+form input{
+  color: black;
+  border: 1px solid $default-blue;
+  border-radius: 20px;
+  padding: 25px 15px 25px 15px;
+  margin-right: 20px;
+  margin-top: 20px;
+  background-color: white ;
+  border-color: $default-blue;
+}
+
+form button{
+  border-radius: 20px;
+  padding: 20px 10px 20px 10px;
+}
+
+.recharts-surface {
+  border-radius: 30px;
+}
+
+.react-tabs__tab-list{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 30px;
 }
