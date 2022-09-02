@@ -44,7 +44,7 @@ const Chat = ({ currentUserFirstName, currentUserLastName }) => {
 
   const chatBox = () => {
     return (
-      <main className="chat-container">
+      <main className="opened-chat-container">
         <div className="close-chat" onClick={() => setToggledChat(!toggledChat)}>&times;</div>
         <form onSubmit={sendMessage} className="chat-footer">
             <input className="chat-input"
@@ -76,10 +76,17 @@ const Chat = ({ currentUserFirstName, currentUserLastName }) => {
   )
 };
    
+  const noChatBox = () => {
+    return (
+      <div className="closed-chat-container" onClick={() => setToggledChat(!toggledChat)}>
+        <BsFillChatSquareQuoteFill className="chat-icon" size={80} />
+      </div>
+    )
+  }
 
   return (
     <>
-      {toggledChat ? chatBox : <BsFillChatSquareQuoteFill size={70} onClick={() => setToggledChat(!toggledChat)} />}
+      { toggledChat ? chatBox() : noChatBox() }
     </>
   )
 }
