@@ -1,7 +1,7 @@
 import React from "react";
 import { AuthRoute, ProtectedRoute } from "../util/routeUtil";
 import { Switch, Route } from "react-router-dom";
-import NavBarContainer from "./navbar/NavBar";
+import NavBarContainer from "./NavBar/NavBar";
 import SplashContainer from "./splash/splash";
 import DashboardContainer from "./dashboard/Dashboard";
 
