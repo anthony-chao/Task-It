@@ -13,12 +13,11 @@ import { TbCircles } from 'react-icons/tb';
 import { MdOutlineCreateNewFolder } from 'react-icons/md';
 import { MdSubject } from 'react-icons/md';
 import { MdModeEditOutline } from 'react-icons/md';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { openModal } from '../../actions/modalActions';
 import { connect } from 'react-redux';
 import { fetchUserProjects, fetchProject } from '../../actions/projectActions'; 
 import Task from '../task/Task'
+import { FcParallelTasks } from 'react-icons/fc';
 
 const ProjectsDrawer = ({ openModal, fetchUserProjects, userProjects, currentUserId, fetchProject }) => {
   const [state, setState] = useState({
@@ -80,7 +79,7 @@ const ProjectsDrawer = ({ openModal, fetchUserProjects, userProjects, currentUse
           <ListItem key={project._id} disablePadding>
             <ListItemButton onClick={() => handleClick(project._id)}>
               <ListItemIcon>
-                <MdSubject size={'1.5em'} />
+                <FcParallelTasks size={'1.5em'} />
               </ListItemIcon>
               <ListItemText primary={project.name} />
             </ListItemButton>

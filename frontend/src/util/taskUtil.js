@@ -12,7 +12,7 @@ export const fetchTask = taskId => {
 }
 
 export const createTask = task => {
-    return axios.post(`/api/projects/tasks`, task)
+    return axios.post(`/api/projects/:id`, task)
 }
 
 export const updateTask = taskId => {
