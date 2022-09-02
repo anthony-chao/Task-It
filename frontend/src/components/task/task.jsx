@@ -20,16 +20,38 @@ const Task = (props) => {
 
   const taskContent = () => {
     return (
-      <div>
-        {/* <h1>{this.props.project.name}</h1> */}
-        {/* {console.log(this.props)} */}
-        <h1>{props.project.name}</h1>
-        <h2>{props.project.description}</h2>
-        <button onClick={handleDelete}>Delete Project</button>
-        <h1>Task List</h1>
-        <CreateTaskForm createTask={props.createTask}/>
-        <TaskList tasks={props.tasks} deleteTask={props.deleteTask} updateTask={props.updateTask}/>
-      </div>
+      <>
+        <div className='project-info-container'>
+          <div className='project-name'>
+            <span>Project Name:</span> 
+              <h1>{props.project.name}</h1>
+          </div>
+          <div className="project-description">
+            <span>Project Description:</span>
+              <h1>{props.project.description}</h1>
+          </div>
+
+          <div className="project-buttons">
+            <button className="project-delete-button" onClick={handleDelete}>
+              Delete Project
+            </button>
+
+            <button className="project-update-button">
+              Update Project
+            </button>
+            
+          </div>
+        </div>
+
+        <div className="task-info-container">
+          <div className="task-info">
+            <span>Task List:</span>
+          </div>
+
+          <CreateTaskForm createTask={props.createTask}/>
+          <TaskList tasks={props.tasks} deleteTask={props.deleteTask} updateTask={props.updateTask}/>
+        </div>
+      </>
     )
   }
 

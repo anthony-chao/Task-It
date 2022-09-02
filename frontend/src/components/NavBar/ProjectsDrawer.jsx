@@ -16,7 +16,7 @@ import { MdModeEditOutline } from 'react-icons/md';
 import { openModal } from '../../actions/modalActions';
 import { connect } from 'react-redux';
 import { fetchUserProjects, fetchProject } from '../../actions/projectActions'; 
-import Task from '../task/Task'
+import Task from '../task/task';
 import { FcParallelTasks } from 'react-icons/fc';
 
 const ProjectsDrawer = ({ openModal, fetchUserProjects, userProjects, currentUserId, fetchProject }) => {

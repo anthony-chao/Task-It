@@ -5,12 +5,13 @@ import 'react-tabs/style/react-tabs.css';
 import Chart from './Chart';
 // import Dnd from './Calendar';
 import Chat from '../chat/chat';
-import Task from '../task/Task'
+import Task from '../task/task';
 import { connect } from "react-redux";
 import { fetchUserProjects, fetchProject, fetchProjects } from '../../actions/projectActions';
 import LoadingContainer from "../util/LoadingContainer";
 import { openModal } from "../../actions/modalActions";
 import dashboardGif from '../../assets/images/dashboard.gif'
+import { FcTodoList, FcCheckmark  } from 'react-icons/fc';
 
 const Dashboard = (props) => {
 
@@ -26,6 +27,14 @@ const Dashboard = (props) => {
   // else {
   //   return null;
   // }
+
+  // useEffect(() => {
+  //   const intervalId = setTimeout(() => setIsLoading(isLoading), 1000);
+
+  //   return () => {
+  //     clearTimeout(intervalId);
+  //   }
+  // }, []);
 
   const data = [
     {
@@ -67,9 +76,12 @@ const Dashboard = (props) => {
             <div className="left-content">
               <div className="task-container">
                 <ul>
-                  <li>Task</li>
-                  <li>Task</li>
-                  <li>Task</li>
+                  <span><FcTodoList id="todo-icon" size={30} />TO DO:</span>
+                    <ol>Task 1 <FcCheckmark /></ol>
+                    <ol>Task 2  <FcCheckmark /></ol>
+                    <ol>Task 3  <FcCheckmark /></ol>
+                    <ol>Task 4  <FcCheckmark /></ol>
+                    <ol>Task 5  <FcCheckmark /></ol>
                 </ul>
               </div>
           
@@ -80,7 +92,8 @@ const Dashboard = (props) => {
             </div>
           
           {!props.project ? 
-            <div className="right-content-dashboard">   
+            <div className="right-content-dashboard">  
+              <p>Uhh-ohh..Select/Create a Project first!</p> 
               <img id="dashboard-gif" src={dashboardGif} alt="" /> 
             </div>: 
             <div className="right-content">

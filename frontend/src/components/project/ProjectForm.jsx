@@ -45,19 +45,22 @@ class ProjectForm extends React.Component{
     }
 
     render() {
+
         return(
-        <div>
+        <div className='project-form-container'>
             <h1>{this.props.formType}</h1>
             <form className="create-project-header" onSubmit={this.handleSubmit}>
                 <label className="create-project-label">Name:
                     <input className="create-project-input" type="text"
                             value={this.state.name}
+                            placeholder="Name"
                             onChange={this.handleUpdate("name")} />
                 </label>
                 <br />
                 <label className="create-project-label">Description:
                     <input className="create-project-input" type="text" 
                             value={this.state.description}
+                            placeholder="Description"
                             onChange={this.handleUpdate("description")} />
                 </label>
                 <br />
@@ -67,7 +70,8 @@ class ProjectForm extends React.Component{
                         : null } */}
             </form>
         </div>
-    )}
+        )
+    }
 }
 
 export default ProjectForm;
