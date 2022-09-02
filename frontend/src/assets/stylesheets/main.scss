@@ -10,25 +10,25 @@
   body {
     background-color: $background-color;
     font-family: $font-family;
-    overflow-x: hidden;
     margin: 0;
-    // display: block;
     color-scheme: dark;
     height: 100%;
     width: 100%;
+    // display: block;
+    // overflow-x: hidden;
   }
 }
 
 #root {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100vw;
+  // justify-content: center;
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
-  width: 1200px;
+  width: 80%;
 }

@@ -6,6 +6,8 @@
   color: $default-gray;
   font-size: $font-size-20;
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
   // border: 1px solid white;
 
   h1 {
@@ -60,5 +62,15 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+.closed-chat-container {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+
+  .chat-icon {
+    z-index: 99;
   }
 }
