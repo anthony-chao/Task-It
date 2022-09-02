@@ -25,7 +25,7 @@ const Task = (props) => {
     )
   }
 
-  return props.project ? taskContent() : <LoadingContainer />;
+  return props.project ? taskContent() : null //<LoadingContainer />;
 
 }
 
