@@ -6,6 +6,8 @@ import { withRouter, useHistory } from 'react-router-dom';
 import LoadingContainer from '../util/LoadingContainer';
 import { updateProject, deleteProject } from '../../actions/projectActions';
 import { createTask } from '../../actions/taskActions'
+import { FcTreeStructure } from "react-icons/fc";
+
 
 const Task = (props) => {
 
@@ -23,7 +25,7 @@ const Task = (props) => {
       <div>
         {/* <h1>{this.props.project.name}</h1> */}
         {/* {console.log(this.props)} */}
-        <h1>{props.project.name}</h1>
+        <h1 className="show-project-name"><FcTreeStructure size={'1.0em'}/>{props.project.name}</h1>
         <h2>{props.project.description}</h2>
         <button onClick={handleDelete}>Delete Project</button>
         <h1>Task List</h1>

@@ -11,13 +11,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { TbCircles } from 'react-icons/tb';
 import { MdOutlineCreateNewFolder } from 'react-icons/md';
-import { MdSubject } from 'react-icons/md';
-import { MdModeEditOutline } from 'react-icons/md';
 import { openModal } from '../../actions/modalActions';
 import { connect } from 'react-redux';
 import { fetchUserProjects, fetchProject } from '../../actions/projectActions'; 
 import Task from '../task/Task'
-import { FcParallelTasks } from 'react-icons/fc';
+import { FcFlowChart, FcMindMap, FcAddDatabase } from 'react-icons/fc';
 
 const ProjectsDrawer = ({ openModal, fetchUserProjects, userProjects, currentUserId, fetchProject }) => {
   const [state, setState] = useState({
@@ -54,7 +52,7 @@ const ProjectsDrawer = ({ openModal, fetchUserProjects, userProjects, currentUse
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <TbCircles size={'1.5em'} />
+                <FcMindMap size={'1.5em'} />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -67,7 +65,7 @@ const ProjectsDrawer = ({ openModal, fetchUserProjects, userProjects, currentUse
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={() => openModal('createProject')} >
               <ListItemIcon>
-                <MdOutlineCreateNewFolder size={'1.5em'} />
+                <FcAddDatabase size={'1.5em'} />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -79,7 +77,7 @@ const ProjectsDrawer = ({ openModal, fetchUserProjects, userProjects, currentUse
           <ListItem key={project._id} disablePadding>
             <ListItemButton onClick={() => handleClick(project._id)}>
               <ListItemIcon>
-                <FcParallelTasks size={'1.5em'} />
+                <FcFlowChart size={'1.5em'} />
               </ListItemIcon>
               <ListItemText primary={project.name} />
             </ListItemButton>

@@ -11,7 +11,6 @@ class TaskItem extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
 
-
     handleUpdate() {
         this.props.updateTask(this.props.task.id)
     }

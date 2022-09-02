@@ -42,3 +42,13 @@
         border: 2px solid $default-blue;
     }
 }
+
+.show-project-name {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+
+    svg {
+        margin-right: 10px;
+    }
+}
