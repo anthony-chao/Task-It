@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory, withRouter } from "react-router-dom"
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -10,12 +11,15 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { TbCircles } from 'react-icons/tb';
 import { MdOutlineCreateNewFolder } from 'react-icons/md';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { MdSubject } from 'react-icons/md';
+import { MdModeEditOutline } from 'react-icons/md';
 import { openModal } from '../../actions/modalActions';
 import { connect } from 'react-redux';
+import { fetchUserProjects, fetchProject } from '../../actions/projectActions'; 
+import Task from '../task/Task'
+import { FcParallelTasks } from 'react-icons/fc';
 
-const ProjectsDrawer = ({ openModal }) => {
+const ProjectsDrawer = ({ openModal, fetchUserProjects, userProjects, currentUserId, fetchProject }) => {
   const [state, setState] = useState({
     left: false,
   });
@@ -27,6 +31,16 @@ const ProjectsDrawer = ({ openModal }) => {
 
     setState({ ...state, [projects]: open });
   };
+
+  // useEffect(() => {
+  //   fetchUserProjects(currentUserId);
+  // }, []);
+
+  let history = useHistory();
+
+  const handleClick = projectId => {
+    return history.push(`/dashboard/projects/${projectId}`)
+  }
 
   const list = (projects) => (
     <Box
@@ -60,6 +74,18 @@ const ProjectsDrawer = ({ openModal }) => {
           </ListItem>
         ))}
       </List>
+      <List>
+        {userProjects.map((project, index) => (
+          <ListItem key={project._id} disablePadding>
+            <ListItemButton onClick={() => handleClick(project._id)}>
+              <ListItemIcon>
+                <FcParallelTasks size={'1.5em'} />
+              </ListItemIcon>
+              <ListItemText primary={project.name} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
     </Box>
   );
 
@@ -82,11 +108,14 @@ const ProjectsDrawer = ({ openModal }) => {
 }
 
 const mapStateToProps = state => ({
-
+  userProjects: Object.values(state.entities.projects),
+  currentUserId: state.session.user.id
 })
 
 const mapDispatchToProps = dispatch => ({
-  openModal: (formType) => dispatch(openModal(formType))
+  openModal: (formType, project) => dispatch(openModal(formType, project)),
+  fetchUserProjects: (userId) => dispatch(fetchUserProjects(userId)),
+  fetchProject: (projectId) => dispatch(fetchProject(projectId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectsDrawer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProjectsDrawer))

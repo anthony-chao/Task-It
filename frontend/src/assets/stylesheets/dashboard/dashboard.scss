@@ -1,12 +1,14 @@
 @import "../variables.scss";
 
 .dashboard-container {
-  border: 1px solid white;
   width: 100%;
   height: 1000px;
   color: $default-gray;
   font-size: $font-size-20;
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  // border: 1px solid white;
 
   h1 {
     color: yellow;
@@ -15,13 +17,13 @@
 
 .tab-component {
   height: 100%;
-  background-image: linear-gradient(180deg, $background-color, $default-blue);
+  // border: 1px solid red;
 }
 
 .main-content-container {
   display: flex;
-  border: 1px solid purple;
   height: 100%;
+  border: 1px solid purple;
 }
 
 .left-content {
@@ -32,26 +34,46 @@
 
 .task-container {
   border: 1px solid green;
-  border-radius: 30px;
-  // background: radial-gradient(circle at 10% 20%, rgb(182, 244, 146) 0%, rgb(51, 139, 147) 90%);
 }
 
 .chart-container {
-  border: 1px solid yellow;
-  border-radius: 30px;
   margin: auto;
   display: flex;
   justify-content: flex-start;
   width: 100%;
   height: 100%;
-  // background: linear-gradient(109.6deg, rgb(243, 118, 118) 12.6%, rgb(191, 159, 237) 91.1%);
+  border: 1px solid yellow;
 }
 
 .right-content {
-  border: 1px solid orange;
-  // background: radial-gradient(circle at 10% 20%, rgb(255, 200, 124) 0%, rgb(252, 251, 121) 90%);
-  border-radius: 30px;
   width: 100%;
+  border: 1px solid orange;
+  border-radius: 30px;
+}
+
+.right-content-dashboard {
+  width: 100%;
+  border: 1px solid orange;
+  display: flex;
+  align-items: center;
+
+  #dashboard-gif {
+    height: auto;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.closed-chat-container {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+
+  .chat-icon {
+    z-index: 99;
+  }
 }
 
 .react-tabs__tab--selected {

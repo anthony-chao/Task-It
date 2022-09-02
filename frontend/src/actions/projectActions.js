@@ -10,9 +10,9 @@ const receiveProjects = projects => ({
     projects: projects.data
 })
 
-const receiveProject = project => ({
+const receiveProject = payload => ({
     type: RECEIVE_PROJECT,
-    project : project.data
+    payload: payload.data
 })
 
 const removeProject = projectId => ({
@@ -38,8 +38,8 @@ export const createProject = project => dispatch => {
         .catch(err => console.log(err))
 }
 
-export const updateProject = project => dispatch => {
-    return ProjectAPI.updateProject(project)
+export const updateProject = projectId => dispatch => {
+    return ProjectAPI.updateProject(projectId)
         .then( project => dispatch(receiveProject(project)))
         .catch(err => console.log(err))
 }
