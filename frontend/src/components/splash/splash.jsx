@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Dashboard from '../dashboard/Dashboard';
+import Home from '../home/Home';
 
 const Splash = ({ currentUser, login, history }) => {
 
@@ -45,13 +45,13 @@ const Splash = ({ currentUser, login, history }) => {
     )
   }
 
-  const dashboardContent = () => {
+  const homeContent = () => {
     return (
-      <Dashboard />
+      <Home />
     )
   };
 
-  return currentUser ? dashboardContent() : splashContent();
+  return currentUser ? homeContent() : splashContent();
 };
 
 const msp = state => {
