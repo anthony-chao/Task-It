@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
     .then(projects => res.json(projects))
 })
 
-
 // GET PROJECT BY PROJECT ID
 router.get('/:id', (req, res) => {
   // Project.findById(req.params.id)
