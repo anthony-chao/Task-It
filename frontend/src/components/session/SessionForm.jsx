@@ -70,7 +70,7 @@ const SessionForm = props => {
       <div className="session-form-header">
         <div className="exit-modal" onClick={closeModal}>&times;</div>
         <div className='modalImg'><img id='splashLogo' src='https://i.ibb.co/zRxzj9T/logo-For-Andrea.png' alt='splashLogo'></img> </div>
-        <h1>Welcome to Task Nodes!</h1>
+        <h1>Welcome to Branches!</h1>
       </div>
 
       <form onSubmit={handleSubmit} className="login-signup-form">
@@ -107,7 +107,7 @@ const SessionForm = props => {
               value={userInfo.email} 
               onChange={update('email')}
             />
-            {(props.errors.email) ? <p className="session-error">{props.errors.email} </p> : null}
+            {(props.errors.email) ? <p className="session-error">{props.errors.email}</p> : null}
           </label>  
           <label htmlFor="modal-password">
             <input 
@@ -120,7 +120,9 @@ const SessionForm = props => {
             {(props.errors.password) ? <p className="session-error">{props.errors.password}</p> : null}
           </label>
             <button value={formType} className="session-button">{formType}</button>
+            { (props.formType === "Log In") ?
             <button value="Demo Login" className="demo-login-button" onClick={demoLogin}>Demo Login</button>
+            : null }
       </form>
       <footer className="session-form-footer">
         {otherForm}

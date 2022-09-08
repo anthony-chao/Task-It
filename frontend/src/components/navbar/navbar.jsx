@@ -85,7 +85,7 @@ const { loggedIn, logout, openModal } = props;
         <Link to="/">
           <div className="branches-logo-container">
             <img id="branches-logo" src={logo} alt="branches-logo" />
-            <h1>Task Nodes</h1>
+            <h1>Branches</h1>
           </div>
         </Link>
 
