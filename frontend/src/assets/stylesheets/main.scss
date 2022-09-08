@@ -1,12 +1,12 @@
 @import "./navbar/navbar.scss";
 @import "./modal/modal.scss";
-@import "./dashboard/dashboard.scss";
+@import "./home/home.scss";
 @import "./splash/splash.scss";
-@import "./dashboard/chat.scss";
+@import "./home/chat.scss";
 @import "./loading/loading.scss";
 @import "./task/task.scss";
 
-@media only screen and (max-width: 3000px) {
+@media screen and (max-width: 100vw) {
   html,
   body {
     background-color: $background-color;
@@ -14,7 +14,7 @@
     margin: 0;
     color-scheme: dark;
     // height: 100%;
-    width: 100%;
+    width: 100vw;
     // display: block;
     // overflow-x: hidden;
   }
@@ -24,15 +24,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  // justify-content: center;
+  // width: 100vw;
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
-  width: 60%;
-  padding-bottom: 40px;
-  // bottom: 2rem;
-  // position: relative;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  //   padding-bottom: 40px;
+  //   // bottom: 2rem;
+  //   // position: relative;
 }
