@@ -55,3 +55,9 @@ export const fetchUserProjects = userId => dispatch => {
         .then( projects => dispatch(receiveProjects(projects)))
         .catch(err => console.log(err))
 }
+
+export const createTask = task => dispatch => {
+    return ProjectAPI.createTask(task)
+        .then( task => dispatch(receiveProject(task)))
+        .catch( err => console.log(err))
+}

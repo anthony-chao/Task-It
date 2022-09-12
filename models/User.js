@@ -18,6 +18,16 @@ const UserSchema = new Schema({
     type: String,
     require: true
   },
+  tasks: [{
+    type: Schema.Types.ObjectId,
+    ref: "task",
+    default: []
+  }],
+  projects: [{
+    type: Schema.Types.ObjectId,
+    ref: "project",
+    default: []
+  }],
   date: {
     type: Date,
     default: Date.now
