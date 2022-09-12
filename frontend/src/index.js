@@ -12,6 +12,8 @@ import {
   deleteProject,
 } from "./actions/projectActions";
 
+import { fetchUsers } from "./actions/userActions"
+
 import "./assets/stylesheets/main.scss";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -44,5 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.fetchProject = fetchProject;
   window.fetchUserProjects = fetchUserProjects;
   window.deleteProject = deleteProject;
+  window.fetchUsers = fetchUsers;
   window.login = login;
 });
