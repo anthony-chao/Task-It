@@ -1,4 +1,5 @@
 import { RECEIVE_CURRENT_USER } from "../actions/sessionActions";
+
 import { RECEIVE_USERS } from "../actions/userActions";
 
 const usersReducer = (state = {}, action) => {

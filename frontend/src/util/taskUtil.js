@@ -22,3 +22,11 @@ export const updateTask = taskId => {
 export const deleteTask = taskId => {
     return axios.delete(`/api/projects/tasks/${taskId}`)
 }
+
+export const fetchAllTasks = () => {
+    return axios.get('api/tasks')
+}
+
+export const fetchAllUsers = () => {
+    return axios.get("api/users")
+}

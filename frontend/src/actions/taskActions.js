@@ -43,3 +43,22 @@ export const deleteTask = taskId => dispatch => {
     return TaskAPI.deleteTask(taskId)
         .then( () => dispatch(removeTask(taskId)))
 }
+
+// ASSIGNING USERS TO TASKS
+
+export const fetchAllTasks = () => dispatch => {
+    return TaskAPI.fetchAllTasks()
+        .then( (tasks) => dispatch(receiveTasks(tasks)))
+}
+
+export const RECEIVE_USERS = "RECEIVE_USERS";
+
+const receiveUsers = users => ({
+    type: RECEIVE_USERS,
+    users
+})
+
+export const fetchAllUsers = () => dispatch => {
+    return TaskAPI.fetchAllUsers()
+        .then( (users) => dispatch(receiveUsers(users)))
+}

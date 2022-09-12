@@ -84,9 +84,11 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.get("/", (req,res) => {
+// FETCH ALL USERS FOR ASSIGN TASK
+
+router.get("/", (req, res) => {
   User.find({})
-    .then( users => res.json(users))
+    .then(users => res.json(users))
 })
 
 module.exports = router;
