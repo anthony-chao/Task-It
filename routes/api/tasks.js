@@ -9,12 +9,19 @@ const validateTaskInput = require("../../validation/task");
 
 router.get("/test", (req, res) => res.json({ msg: "This is the tasks route" }));
 
+// router.get("/", (req, res) => {
+//     // Task.find({})
+//     Project.findById({id: req.params.id})
+//       .then( tasks => res.json(tasks))
+//       .catch(err => console.log(err))
+//   })
+
+// GET ALL TASKS 
+
 router.get("/", (req, res) => {
-    // Task.find({})
-    Project.findById({id: req.params.id})
-      .then( tasks => res.json(tasks))
-      .catch(err => console.log(err))
-  })
+  Task.find({})
+    .then(tasks => res.json(tasks))
+})
 
 router.get("/:projectId", (req, res) => {
   Project.findById(req.params.projectId)

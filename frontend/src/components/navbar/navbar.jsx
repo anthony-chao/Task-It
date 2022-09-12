@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import logo from '../../assets/images/branches-logo.jpeg';
 import { logout } from '../../actions/sessionActions';
 import { openModal } from '../../actions/modalActions';
-import ProjectsDrawer from './ProjectsDrawer';
+import PermanentDrawer from '../permanentDrawer/PermanentDrawer';
 import { FaUserCircle } from 'react-icons/fa';
 import Modal from '../modal/Modal';
 
@@ -93,7 +93,7 @@ const { loggedIn, logout, openModal } = props;
 
       <div className="nav-right">
         <div className="projects-button">
-          { loggedIn ? <ProjectsDrawer /> : null }
+          { loggedIn ? <PermanentDrawer /> : null }
         </div>
 
         <Modal />
