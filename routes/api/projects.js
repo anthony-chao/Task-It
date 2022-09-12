@@ -14,8 +14,16 @@ router.get("/test", (req, res) => res.json({ msg: "This is the projects route" }
 // GET ALL PROJECTS
 
 router.get('/', (req, res) => {
+  const payload = {};
   Project.find({})
-    .then(projects => res.json(projects))
+    .then(projects => {
+      payload.projects = projects;
+    })
+  Task.find({})
+    .then( tasks => {
+      payload.tasks = tasks;
+      res.json(payload)
+    })
 })
 
 
@@ -162,16 +170,16 @@ router.get("/:id/tasks", (req, res) => {
     .then(tasks => res.json(tasks))
 })
 
-// GET PROJECT'S TASK ID
+// CREATE TASK WITH PROJECT ID
 
 router.post('/:id/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-      const { errors, isValid } = validateTaskInput(req.body);
+      // const { errors, isValid } = validateTaskInput(req.body);
   
-      if (!isValid) {
-        return res.status(400).json(errors);
-      }
+      // if (!isValid) {
+      //   return res.status(400).json(errors);
+      // }
   
       const newTask = new Task({
         title: req.body.title,

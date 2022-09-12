@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { withRouter, useHistory } from 'react-router-dom';
 import LoadingContainer from '../util/LoadingContainer';
 import { updateProject, deleteProject } from '../../actions/projectActions';
-import { createTask } from '../../actions/taskActions'
+// import { createTask } from '../../actions/taskActions'
+import { createTask } from '../../actions/projectActions'
 
 const Task = (props) => {
 
@@ -17,6 +18,9 @@ const Task = (props) => {
   const handleDelete = () => {
     props.deleteProject(props.project._id).then(() => history.push('/dashboard'))
   }
+
+  console.log(props.project);
+  console.log(props.project.tasks);
 
   const taskContent = () => {
     return (
