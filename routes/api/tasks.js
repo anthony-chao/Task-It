@@ -37,7 +37,8 @@ router.post('/',
       const newTask = new Task({
         description: req.body.description,
         projectId: req.body.projectId,
-        status: req.body.status
+        status: req.body.status,
+        assignedUser: req.body.assignedUser
       });
   
       newTask.save().then(task => res.json(task));
