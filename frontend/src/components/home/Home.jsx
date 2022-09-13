@@ -159,13 +159,13 @@ const Home = () => {
             <img src={anthony} alt="anthony-profile" />
           </div>
           <div className="socials">
-            <a href="https://github.com/pa-dg" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/anthony-chao" target="_blank" rel="noopener noreferrer">
               <BsGithub id="social-link" />
             </a>
-            <a href="https://www.linkedin.com/in/patricia-deguzman/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/anthony-chao-cpa-983299133/" target="_blank" rel="noopener noreferrer">
               <BsLinkedin id="social-link" />
             </a>
-            <a href="https://angel.co/" target="_blank" rel="noopener noreferrer">
+            <a href="https://angel.co/u/anthony-chao-1" target="_blank" rel="noopener noreferrer">
               <FaAngellist id="social-link" />
             </a>
           </div>

@@ -29,17 +29,24 @@ export const fetchTask = taskId => dispatch => {
         .then( task => dispatch(receiveTask(task)))
 }
 
-export const createTask = task => dispatch => {
-    return TaskAPI.createTask(task)
+export const createTask = (projectId, task) => dispatch => {
+    return TaskAPI.createTask(projectId, task)
         .then( task => dispatch(receiveTask(task)))
 }
 
-export const updateTask = task => dispatch => {
-    return TaskAPI.updateTask(task)
+export const updateTask = (projectId, task) => dispatch => {
+    return TaskAPI.updateTask(projectId, task)
         .then( task => dispatch(receiveTask(task)))
 }
 
 export const deleteTask = taskId => dispatch => {
     return TaskAPI.deleteTask(taskId)
         .then( () => dispatch(removeTask(taskId)))
+}
+
+// ASSIGNING USERS TO TASKS
+
+export const fetchAllTasks = () => dispatch => {
+    return TaskAPI.fetchAllTasks()
+        .then( (tasks) => dispatch(receiveTasks(tasks)))
 }

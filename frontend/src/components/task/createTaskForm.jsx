@@ -1,39 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { createTask } from '../../actions/taskActions';
 
-class CreateTaskForm extends React.Component {
+const CreateTaskForm = (props) => {
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
+    const [state, setState] = useState({
       description: '',
-      status: 'Incomplete'
+      status: 'Incomplete',
+      projectId: props.projectId,
+      assignedUser: []
+    })
+
+    const handleUpdate = (field) => {
+      return (e) => setState({...state, [field]: e.currentTarget.value})
     }
 
-    this.handleUpdate = this.handleUpdate.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+    const handleSubmit = (e) => {
+      debugger
+      e.preventDefault()
+      props.createTask(props.projectId, state)
+    }
 
-  handleUpdate(field) {
-      return (e) => this.setState({[field]: e.currentTarget.value})
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-    this.props.createTask(this.state)
-  }
-
-  render() {
     return (
       <div className='task-form-container'>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <label>
             <input
               className='task-form-desc'
               type="text" 
               placeholder="Describe your task"
-              value={this.state.description}
-              onChange={this.handleUpdate('description')}
+              value={state.description}
+              onChange={handleUpdate('description')}
             />
           </label>
           <input 
@@ -43,8 +40,16 @@ class CreateTaskForm extends React.Component {
         </form>
       </div>
     )
-  }
-
 }
 
-export default CreateTaskForm;
+const mapStateToProps = (state, ownProps) => {
+    return {
+      // projectId: ownProps.match.params.projectId
+    }
+}
+
+const mapDispatchToProps = dispatch => ({
+  createTask: (projectId, task) => dispatch(createTask(projectId, task))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateTaskForm);

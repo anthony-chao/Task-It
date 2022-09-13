@@ -31,3 +31,7 @@ export const fetchTasks = projectId => {
 export const fetchTask = (projectId, taskId) => {
     return axios.get(`/api/projects/${projectId}/${taskId}`)
 }
+
+export const createTask = (projectId, task) => {
+    return axios.post(`/api/projects/${projectId}`, task)
+}

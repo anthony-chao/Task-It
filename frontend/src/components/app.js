@@ -4,6 +4,8 @@ import { Switch, Route } from "react-router-dom";
 import NavBarContainer from "./navbar/navbar";
 import SplashContainer from "./splash/splash";
 import HomeContainer from "./home/Home";
+import AssignTaskContainer from './assignTask/assignTask';
+import TaskListContainer from "./task/taskList";
 import Chat from "./chat/chat";
 import PermanentDrawer from "./permanentDrawer/PermanentDrawer";
 import ProjectsIndexContainer from "./project/ProjectsIndex";
