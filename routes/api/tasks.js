@@ -5,6 +5,7 @@ const passport = require("passport");
 const Project = require("../../models/Project");
 
 const Task = require("../../models/Task");
+const User = require("../../models/User");
 const validateTaskInput = require("../../validation/task");
 
 router.get("/test", (req, res) => res.json({ msg: "This is the tasks route" }));
@@ -14,6 +15,12 @@ router.get("/", (req, res) => {
   Task.find({})
     .then( tasks => res.json(tasks))
   })
+
+// GET TASKS BY ID
+router.get("/:id", (req, res) => {
+  Task.findById(req.params.id)
+    .then( tasks => res.json(tasks))
+})
 
 // GET TASKS BY PROJECT ID
 router.get("/:projectId", (req, res) => {
@@ -37,6 +44,7 @@ router.post('/',
       const newTask = new Task({
         description: req.body.description,
         projectId: req.body.projectId,
+        assignedUser: req.body.assignedUser,
         status: req.body.status
       });
   
@@ -46,7 +54,31 @@ router.post('/',
 // EDIT A TASK
 router.patch("/:id", (req,res) => {
   Task.findById(req.params.id)
-    .then( task => res.json(task))
+    .then( task => {
+      task.description = req.body.description;
+      task.status = req.body.status;
+
+      task.save()
+        .then(task => res.json(task))
+    })
+})
+
+// ASSIGN USER TO TASK
+router.patch("/:id", (req, res) => {
+  Task.findById(req.params.id)
+    .then( task => {
+      task.assignedUser.push(req.body.assignedUser)
+      //assigned user in the body should be user id?
+      task.save()
+        .then( 
+          User.findById(req.body.assignedUser)
+          .then( user => {
+            user.tasks.push(task.id)
+            user.save()
+              .then(res.json(task))
+          })
+        )
+    })
 })
 
 // DELETE A TASK
@@ -55,6 +87,11 @@ router.delete("/:id", (req,res) => {
     .then(task => res.json(task.id))
 })
 
+// GET ALL TASKS FOR USER
 
+router.get("/user/:userId", (req,res) => {
+  Task.find({assignedUser: req.params.id})
+    .then(tasks => res.json(tasks))
+})
 
 module.exports = router;
