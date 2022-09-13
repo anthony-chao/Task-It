@@ -141,3 +141,20 @@
     }
   }
 }
+
+#assign-task-button {
+  font-size: 20px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 20px;
+  border-color: transparent;
+  background-color: $default-blue;
+  border-style: none;
+  padding: 5px 0px;
+
+  &:hover {
+    color: $default-green;
+    background-color: white;
+    border-color: $default-green;
+  }
+}

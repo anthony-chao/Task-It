@@ -7,9 +7,9 @@ const tasksReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_TASKS:
-            return action.tasks
+            return action.tasks.data
         case RECEIVE_TASK:
-            return Object.assign({}, state, { [action.task._id]: action.task})  
+            return Object.assign({}, state, { [action.task._id]: action.task.data})
         case REMOVE_TASK:
             delete nextState[action.taskId]
             return nextState;

@@ -1,18 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TaskItem from './taskItem';
+import { fetchTasks } from '../../actions/taskActions';
+import { connect } from 'react-redux';
+import CreateTaskForm from './createTaskForm';
 
-class TaskList extends React.Component {
+const TaskList = (props) => {
 
-    render() {
-        return (
-            <ul>
-                {/* { this.props.tasks.map((task) => {
-                    <TaskItem key={task.id} task={task} deleteTask={this.props.deleteTask} updateTask={this.props.updateTask}/>
-                })} */}
-            </ul>
-        )
-    }
+    useEffect(() => {
+        props.fetchTasks(props.projectUrl);
+    }, []);
+
+    return (
+        <div>
+            < CreateTaskForm projectId={props.projectUrl}/>
+            {Object.values(props.tasks).map(task => (
+                <TaskItem
+                    task={task}
+                    key={task.id}
+                />
+            ))}
+        </div>
+    )
 
 }
 
-export default TaskList;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        tasks: (Object.keys(state.entities.tasks).length !== 0) ? Object.values(state.entities.tasks) : [],
+        projectUrl: ownProps.match.params.projectId
+    }
+}
+
+const mapDispatchToProps = dispatch => ({
+    fetchTasks: (projectId) => dispatch(fetchTasks(projectId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

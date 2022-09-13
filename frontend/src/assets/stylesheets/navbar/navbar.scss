@@ -22,23 +22,24 @@
     display: flex;
     align-items: center;
     padding-right: 50px;
+
+    &:hover {
+      -o-transform: scale(1.075);
+      -webkit-transform: scale(1.075);
+      -ms-transform: scale(1.075);
+      transform: scale(1.075);
+    }
   }
 
   #branches-logo {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
 
   h1 {
     font-size: $font-size-30;
     color: $default-blue;
     padding-left: 10px;
-
-    &:hover {
-      color: $default-green;
-      // background-color: white;
-      // border-color: $default-gray;
-    }
   }
 }
 

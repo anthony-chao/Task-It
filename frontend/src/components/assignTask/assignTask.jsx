@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { fetchAllTasks, fetchAllUsers } from '../../actions/taskActions';
+import { fetchAllTasks } from '../../actions/taskActions';
+import { fetchUsers } from '../../actions/userActions'
 import Autocomplete from '@mui/lab/Autocomplete';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 
 const AssignTask = (props) => {
-
-    const [state, setState] = useState({        // do we need this? if i setstate, it doesn't work
-        allUsers: props.allUsers,
-        allTasks: props.allTasks
-    })
 
     const [input, setInput] = useState({
         email: "",
@@ -18,18 +14,23 @@ const AssignTask = (props) => {
     })
 
     useEffect(() => {
-        props.fetchAllUsers();
+        props.fetchUsers();
         props.fetchAllTasks();
     }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        let selectedUser = props.allUsers.map((object) => [object._id, object.email]).filter((arr) => arr[1] === input.email);
+        let userId = selectedUser[0][0];
+        let selectedTask = props.allTasks.map((object) => [object._id, object.description]).filter((arr) => arr[1] === input.task);
+        let taskId = selectedTask[0][0];
+        console.log(userId, taskId)
         // props.assignTask(input);           // WE NEED AN ACTION FOR ASSIGNING TASK
     }
 
     const handleUpdate = (field) => {
         return (e) => {
-            setInput({...input, [field]: e.currentTarget.value})
+            setInput({...input, [field]: e.currentTarget.textContent})
         }
     }
 
@@ -49,11 +50,11 @@ const AssignTask = (props) => {
                     id="free-solo-demo-2"
                     freeSolo
                     options={props.allTasks.map((option) => option.description)}
-                    onChange={handleUpdate('description')}
+                    onChange={handleUpdate('task')}
                     renderInput={(params) => <TextField {...params} label="Enter a task name" />}
                 />
                 </Stack>
-                <input type="submit" value="Assign Task"/>
+                <input type="submit" value="Assign Task" id="assign-task-button"/>
             </form>
             : null}
         </div>
@@ -61,13 +62,16 @@ const AssignTask = (props) => {
 
 }
 
-const mapStateToProps = state => ({
-    allUsers: Object.values(state.entities.users)[0],
-    allTasks: Object.values(state.entities.tasks)[0]
-})
+const mapStateToProps = state => {
+    debugger
+    return {
+    allUsers: (state.entities.users.allUsers) ? Object.values(state.entities.users.allUsers) : null,
+    allTasks: Object.values(state.entities.tasks)
+    }
+}
 
 const mapDispatchToProps = dispatch => ({
-    fetchAllUsers: () => dispatch(fetchAllUsers()),
+    fetchUsers: () => dispatch(fetchUsers()),
     fetchAllTasks: () => dispatch(fetchAllTasks()),
 })
 
