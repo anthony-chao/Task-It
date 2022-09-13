@@ -114,25 +114,78 @@ import Drawer from '@mui/material/Drawer';
 // import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-// import Typography from '@mui/material/Typography';
+import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import navbar from '../navbar/navbar';
+// import InboxIcon from '@mui/icons-material/MoveToInbox';
+// import MailIcon from '@mui/icons-material/Mail';
+import { connect } from 'react-redux';
+import { useHistory, useLocation } from 'react-router';
+import { makeStyles } from '@mui/styles';
+import Home from '../home/Home';
 
 const drawerWidth = 240;
 
-const ListIcons = () => {
-  return
-}
+const useStyles = makeStyles({
+  page: {
+    background: '#add8e6',
+    width: '100%',
+  },
+  drawer: {
+    width: drawerWidth,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  root: {
+    display: 'flex'
+  }
+})
 
-const PermanentDrawer = () => {
+const PermanentDrawer = ({currentUserId}) => {
 
-  return (
+  const classes = useStyles();
+  
+  const ListIcons = () => {
+    return
+  }
+  
+  const history = useHistory();
+  const location = useLocation();
+  
+  const handleClick = (text) => {
+    if (text === "Projects" && location.pathname !== `/projects/${currentUserId}`) {
+      return history.push(`/projects/${currentUserId}`);
+    }
+    return;
+  }
+  
+  return (  
+    // <div className={classes.root}>
+    //   {/* AppBar
+    //   side drawer */}
+    //   <Drawer 
+    //     className={classes.drawer} 
+    //     variant='permanent' 
+    //     anchor='left'
+    //     classes={{ paper: classes.drawerPaper }}
+    //   >
+    //     <div>
+    //       <Typography variant="h5">
+    //         User name and Avatar
+    //       </Typography>
+    //     </div>
+    //   </Drawer>
+
+    //   <div className={classes.page}>
+    //     <div className='home-container'>
+    //     </div>
+    //   </div>
+    // </div>
+
     <Box sx={{ display: 'flex' }}>
       <Drawer
         sx={{
@@ -149,8 +202,8 @@ const PermanentDrawer = () => {
         <Toolbar />
         <Divider style={{ height: '40px'}}/>
         <List>
-          {['Projects', 'Tasks', 'Assign Tasks', 'Chat', 'Logout'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+          {['Projects', 'Tasks', 'Assign Task', 'Calendar', 'Logout'].map((text, index) => (
+            <ListItem key={`${text}-${index}`} disablePadding onClick={() => handleClick(text)}>
               <ListItemButton>
                 <ListItemIcon>
                   {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
@@ -162,24 +215,17 @@ const PermanentDrawer = () => {
           ))}
         </List>
       </Drawer>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-      >
-      </Box>
     </Box>
   )
 }
 
-// const mapStateToProps = state => ({
-//   userProjects: Object.values(state.entities.projects),
-//   currentUserId: state.session.user.id
-// })
+const mapStateToProps = state => ({
+  // userProjects: Object.values(state.entities.projects),
+  currentUserId: state.session.user.id
+})
 
-// const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   // openModal: (formType, project) => dispatch(openModal(formType, project)),
-  // fetchUserProjects: (userId) => dispatch(fetchUserProjects(userId)),
-  // fetchProject: (projectId) => dispatch(fetchProject(projectId))
-// })
+})
 
-export default PermanentDrawer
+export default connect(mapStateToProps, mapDispatchToProps)(PermanentDrawer);

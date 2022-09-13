@@ -92,9 +92,9 @@ const { loggedIn, logout, openModal } = props;
       </div>
 
       <div className="nav-right">
-        <div className="projects-button">
+        {/* <div className="projects-button">
           { loggedIn ? <PermanentDrawer /> : null }
-        </div>
+        </div> */}
 
         <Modal />
         {
