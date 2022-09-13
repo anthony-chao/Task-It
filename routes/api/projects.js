@@ -202,10 +202,11 @@ router.post('/:id/',
 router.patch("/:projectId/tasks/:id", (req, res) => {
   Task.findById(req.params.id)
     .then(task => {
-      task.title = req.body.title;
+      // task.title = req.body.title;
       task.description = req.body.description;
       task.projectId = req.params.projectId;
-      task.status = req.body.status;
+      task.status = req.body.status; 
+      task.assignedUser = req.body.assignedUser;
 
       task.save()
         .then( task => res.json(task))
