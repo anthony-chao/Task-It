@@ -17,13 +17,13 @@ router.get('/', (req, res) => {
   const payload = {};
   Project.find({})
     .then(projects => {
-      payload.projects = projects;
+      res.json(projects);
     })
-  Task.find({})
-    .then( tasks => {
-      payload.tasks = tasks;
-      res.json(payload)
-    })
+  // Task.find({})
+  //   .then( tasks => {
+  //     payload.tasks = tasks;
+  //     res.json(payload)
+  //   })
 })
 
 // GET PROJECT BY PROJECT ID
@@ -61,7 +61,15 @@ router.post('/',
         description: req.body.description
       });
   
-      newProject.save().then(project => res.json(project));
+      newProject.save()
+        .then(
+          User.findById(user.id)
+            .then( user => {
+              user.projects.push(newProject.id)
+              user.save()
+                .then(res.json(newProject))
+            })
+        );
     }
   );
 

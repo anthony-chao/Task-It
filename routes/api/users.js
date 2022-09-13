@@ -91,4 +91,9 @@ router.get("/", (req, res) => {
     .then(users => res.json(users))
 })
 
+router.get("/:id", (req,res) => {
+  User.findById(req.params.id)
+    .then(user => res.json(user))
+})
+
 module.exports = router;

@@ -6,10 +6,10 @@ const TaskSchema = new Schema({
         type: String,
         required: true
     },
-    assignedUser: {
+    assignedUser: [{
         type: Schema.Types.ObjectId,
         ref: 'user'
-    },
+    }],
     projectId : {
         type: Schema.Types.ObjectId,
         ref: 'project',
