@@ -7,16 +7,20 @@ import HomeContainer from "./home/Home";
 import AssignTaskContainer from './assignTask/assignTask';
 import TaskListContainer from "./task/taskList";
 import Chat from "./chat/chat";
+import PermanentDrawer from "./permanentDrawer/PermanentDrawer";
+import ProjectsIndexContainer from "./project/ProjectsIndex";
 
 const App = () => (
   <div className="main-container">
     <NavBarContainer />
-    <ProtectedRoute path="/home" component={HomeContainer} />
-    <ProtectedRoute path="/projects/:projectId" component={TaskListContainer} />
-    <ProtectedRoute path="/assigntask" component={AssignTaskContainer} />
-
+    <ProtectedRoute exact path="/home" component={HomeContainer} />
+    <ProtectedRoute path="/" component={PermanentDrawer} />
     <Chat />
     <Switch>
+      <ProtectedRoute
+        path="/projects/:currentUserId"
+        component={ProjectsIndexContainer}
+      />
       <AuthRoute exact path="/" component={SplashContainer} />
     </Switch>
   </div>

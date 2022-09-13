@@ -1,44 +1,44 @@
 @import "../variables.scss";
 
-.project-form-container {
-  //   border: 1px solid red;
-  padding: 0 20px 0 20px;
-  color: $default-blue;
+// .project-form-container {
+//   //   border: 1px solid red;
+//   padding: 0 20px 0 20px;
+//   color: $default-blue;
 
-  h1 {
-    text-align: center;
-  }
-}
+//   h1 {
+//     text-align: center;
+//   }
+// }
 
-.create-project-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  margin-top: 20px;
+// .create-project-header {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 100%;
+//   height: 100%;
+//   margin-top: 20px;
 
-  input {
-    width: 75%;
-    // max-width: 568px;
-    // min-width: 200px;
-    padding: 18px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    margin: 0 20px 10px 0;
-    color: black;
-    background-color: $default-gray;
-    cursor: pointer;
+//   input {
+//     width: 75%;
+//     // max-width: 568px;
+//     // min-width: 200px;
+//     padding: 18px;
+//     border-radius: 10px;
+//     border: 1px solid #ccc;
+//     margin: 0 20px 10px 0;
+//     color: black;
+//     background-color: $default-gray;
+//     cursor: pointer;
 
-    &:hover {
-      border: 2px solid #0a1929;
-    }
-    &:focus {
-      border: 2px solid $default-blue;
-    }
-  }
-}
-
+//     &:hover {
+//       border: 2px solid #0a1929;
+//     }
+//     &:focus {
+//       border: 2px solid $default-blue;
+//     }
+//   }
+// }
+// ------
 // .create-project-input {
 //   width: 70%;
 //   max-width: 100%;
@@ -63,3 +63,22 @@
 //     border: 2px solid $default-blue;
 //   }
 // }
+
+.projects-index-container {
+  border: 1px solid black;
+  margin: 20px 20px 20px 50px;
+  width: 1600px;
+  height: 100%;
+  color: $default-blue;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.project-index-item {
+  border: 1px solid red;
+
+  .project-desc {
+    text-decoration: none;
+  }
+}
