@@ -1,37 +1,31 @@
 import axios from "axios";
 
+// GET ALL PROJECTS
 export const fetchProjects = () => {
     return axios.get("/api/projects")
 };
 
-export const fetchProject = projectId => {
-    return axios.get(`/api/projects/${projectId}`)
-}
-
-export const createProject = project => {
-    return axios.post('/api/projects/', project)
-}
-
-export const updateProject = projectId => {
-    return axios.patch(`/api/projects/${projectId}`)
-}
-
-export const deleteProject = projectId => {
-    return axios.delete(`/api/projects/${projectId}`)
-}
-
+// GET USER'S PROJECTS
 export const fetchUserProjects = userId => {
     return axios.get(`/api/projects/users/${userId}`)
 }
 
-export const fetchTasks = projectId => {
-    return axios.get(`/api/projects/${projectId}/tasks`)
+// GET PROJECT BY PROJECT ID
+export const fetchProject = projectId => {
+    return axios.get(`/api/projects/${projectId}`)
 }
 
-export const fetchTask = (projectId, taskId) => {
-    return axios.get(`/api/projects/${projectId}/${taskId}`)
+// CREATE PROJECT
+export const createProject = project => {
+    return axios.post('/api/projects/', project)
 }
 
-export const createTask = (projectId, task) => {
-    return axios.post(`/api/projects/${projectId}`, task)
+// UPDATE PROJECT
+export const updateProject = project => {
+    return axios.patch(`/api/projects/${project._id}`)
+}
+
+// DELETE PROJECT
+export const deleteProject = projectId => {
+    return axios.delete(`/api/projects/${projectId}`)
 }

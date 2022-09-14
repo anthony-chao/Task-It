@@ -7,15 +7,15 @@ const ProjectSchema = new Schema({
         type: String,
         required: true
     },
-    ownerId: {
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-    },
-    members: [{
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-        default: []
-    }],
+    // ownerId: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'users'
+    // },
+    // members: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'users',
+    //     default: []
+    // }],
     description: {
         type: String,
         required: true

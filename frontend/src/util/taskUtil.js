@@ -1,32 +1,41 @@
 import axios from "axios";
 
-export const fetchTasks = (projectId) => {
-  return axios.get(`/api/projects/${projectId}`);
-};
-// export const fetchTasks = () => {
-//     return axios.get("/api/tasks")
-// }
-
-export const fetchTask = (taskId) => {
-  return axios.get(`/api/projects/tasks/${taskId}`);
-};
-
-export const createTask = (projectId, task) => {
-  return axios.post(`/api/projects/${projectId}`, task);
-};
-
-export const updateTask = (projectId, task) => {
-  return axios.patch(`/api/projects/${projectId}/tasks/${task._id}`, task);
-};
-
-export const deleteTask = (taskId) => {
-  return axios.delete(`/api/tasks/${taskId}`);
-};
-
+// GET ALL TASKS
 export const fetchAllTasks = () => {
     return axios.get('/api/tasks')
 }
 
+// GET TASKS FOR A PROJECT
+export const fetchProjectTasks = projectId => {
+    return axios.get(`/api/tasks/projects/${projectId}`)
+}
+
+// GET ALL USER'S TASKS
 export const fetchUserTasks = (userId) => {
     return axios.get(`/api/tasks/user/${userId}`)
+}
+
+// GET SPECIFIC TASK BY TASK ID
+export const fetchTask = taskId => {
+    return axios.get(`/api/tasks/${taskId}`)
+}
+
+// CREATE TASK
+export const createTask = task => {
+    return axios.post(`/api/tasks`, task)
+}
+
+// UPDATE TASK DESCRIPTION AND STATUS
+export const updateTask = task => {
+    return axios.patch(`/api/tasks/${task._id}`, task)
+}
+
+// UPDATE TASK ASSIGNED USER
+export const updateAssignedTask = task => {
+    return axios.patch(`/api/tasks/assignTask${task._id}`, task)
+}
+
+// DELETE A TASK
+export const deleteTask = taskId => {
+    return axios.delete(`/api/tasks/${taskId}`)
 }

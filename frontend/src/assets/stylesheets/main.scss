@@ -1,3 +1,4 @@
+@import "./variables.scss";
 @import "./navbar/navbar.scss";
 @import "./modal/modal.scss";
 @import "./home/home.scss";
@@ -55,15 +56,16 @@
   position: fixed;
   left: 0;
   top: 0;
-  background-color: lightblue;
+  background-color: $default-darkgray;
   padding-top: 90px;
-  color: black;
-  border: 1px solid green;
+  color: white;
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  ul,
+  li {
     list-style: none;
+
+    &:hover {
+      background-color: $default-gray;
+    }
   }
 }

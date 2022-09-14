@@ -1,39 +1,44 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { closeModal } from '../../actions/modalActions';
-import LoginFormContainer from '../session/loginFormContainer';
-import SignupFormContainer from '../session/signupFormContainer';
-import CreateProjectFormContainer from '../project/createProjectFormContainer';
-import ProjectFormContainer from '../project/ProjectForm';
-import DeleteTaskContainer from '../task/deleteTaskContainer';
-import UpdateTaskContainer from '../task/updateTaskContainer';
-import CreateTaskForm from '../task/createTaskForm';
+import React from "react";
+import { connect } from "react-redux";
+import { closeModal } from "../../actions/modalActions";
+import LoginFormContainer from "../session/loginFormContainer";
+import SignupFormContainer from "../session/signupFormContainer";
+import CreateProjectFormContainer from "../project/createProjectFormContainer";
+import UpdateProjectFormContainer from "../project/updateProjectFormContainer";
+import DeleteProjectContainer from "../project/deleteProject";
+import DeleteTaskContainer from "../task/deleteTaskContainer";
+import UpdateTaskContainer from "../task/updateTaskContainer";
+import CreateTaskForm from "../task/createTaskForm";
 
-function Modal({modal, closeModal}) {
+function Modal({ modal, closeModal }) {
   if (!modal) {
     return null;
   }
   let component;
   switch (modal.type) {
-    case 'login':
+    case "login":
       component = <LoginFormContainer />;
       break;
-    case 'signup':
+    case "signup":
       component = <SignupFormContainer />;
       break;
-    case 'createProject':
-      component = <CreateProjectFormContainer/>;
+    case "createProject":
+      component = <CreateProjectFormContainer />;
       break;
-    case 'updateProject':
-      component = <ProjectFormContainer/>;
-    case 'deleteTask':
-      component = <DeleteTaskContainer taskId={modal.task._id}/>;
+    case "updateProject":
+      component = <UpdateProjectFormContainer project={modal.project} />;
       break;
-    case 'updateTask':
-      component = <UpdateTaskContainer task={modal.task}/>;
+    case "deleteProject":
+      component = <DeleteProjectContainer projectId={modal.projectId} />;
       break;
-    case 'createTask':
-      component = <CreateTaskForm projectId={modal.projectId}/>;
+    case "deleteTask":
+      component = <DeleteTaskContainer taskId={modal.task._id} />;
+      break;
+    case "updateTask":
+      component = <UpdateTaskContainer task={modal.task} />;
+      break;
+    case "createTask":
+      component = <CreateTaskForm projectId={modal.projectId} />;
       break;
     default:
       component = <LoginFormContainer />;
@@ -41,22 +46,22 @@ function Modal({modal, closeModal}) {
   }
   return (
     <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
-        { component }
+      <div className="modal-child" onClick={(e) => e.stopPropagation()}>
+        {component}
       </div>
     </div>
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
   };
 };
 
