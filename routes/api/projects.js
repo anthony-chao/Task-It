@@ -17,7 +17,8 @@ router.get('/', (req, res) => {
   const payload = {};
   Project.find({})
     .then(projects => {
-      res.json(projects);
+      payload.projects = projects;
+      res.json(projects)
     })
   // Task.find({})
   //   .then( tasks => {
@@ -61,15 +62,7 @@ router.post('/',
         description: req.body.description
       });
   
-      newProject.save()
-        .then(
-          User.findById(user.id)
-            .then( user => {
-              user.projects.push(newProject.id)
-              user.save()
-                .then(res.json(newProject))
-            })
-        );
+      newProject.save().then(project => res.json(project));
     }
   );
 
@@ -210,11 +203,10 @@ router.post('/:id/',
 router.patch("/:projectId/tasks/:id", (req, res) => {
   Task.findById(req.params.id)
     .then(task => {
-      // task.title = req.body.title;
+      task.title = req.body.title;
       task.description = req.body.description;
       task.projectId = req.params.projectId;
-      task.status = req.body.status; 
-      task.assignedUser = req.body.assignedUser;
+      task.status = req.body.status;
 
       task.save()
         .then( task => res.json(task))

@@ -14,23 +14,31 @@ router.get("/test", (req, res) => res.json({ msg: "This is the tasks route" }));
 router.get("/", (req, res) => {
   Task.find({})
     .then( tasks => res.json(tasks))
-  })
-
-// GET TASKS BY ID
-router.get("/:id", (req, res) => {
-  Task.findById(req.params.id)
-    .then( tasks => res.json(tasks))
 })
 
 // GET TASKS BY PROJECT ID
-router.get("/:projectId", (req, res) => {
-  Project.findById(req.params.projectId)
+router.get("/projects/:id", (req, res) => {
+  Project.findById(req.params.id)
     .then( project => {
       console.log(project)
       Task.find({projectId: project.id})
         .then( tasks => res.json(tasks))
     })
 })
+
+// GET ALL TASKS FOR USER
+router.get("/user/:userId", (req,res) => {
+  Task.find({assignedUser: req.params.userId})
+    .then(tasks => res.json(tasks))
+})
+
+// GET TASK BY ID
+router.get("/:id", (req, res) => {
+  Task.findById(req.params.id)
+    .then( tasks => res.json(tasks))
+})
+
+
 // CREATE A TASK
 router.post('/',
     passport.authenticate('jwt', { session: false }),
@@ -48,7 +56,14 @@ router.post('/',
         status: req.body.status
       });
   
-      newTask.save().then(task => res.json(task));
+      newTask.save().then(task => {
+        Project.findById(req.body.projectId)
+          .then(project => {
+            project.tasks.push(task.id)
+            project.save()
+              .then(res.json(task))
+          })
+      });
     }
 );
 // EDIT A TASK
@@ -64,7 +79,7 @@ router.patch("/:id", (req,res) => {
 })
 
 // ASSIGN USER TO TASK
-router.patch("/:id", (req, res) => {
+router.patch("/assignTask/:id", (req, res) => {
   Task.findById(req.params.id)
     .then( task => {
       task.assignedUser.push(req.body.assignedUser)
@@ -85,13 +100,6 @@ router.patch("/:id", (req, res) => {
 router.delete("/:id", (req,res) => {
   Task.findByIdAndDelete(req.params.id)
     .then(task => res.json(task.id))
-})
-
-// GET ALL TASKS FOR USER
-
-router.get("/user/:userId", (req,res) => {
-  Task.find({assignedUser: req.params.id})
-    .then(tasks => res.json(tasks))
 })
 
 module.exports = router;

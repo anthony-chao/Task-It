@@ -26,6 +26,12 @@ export const fetchProjects = () => dispatch => {
         .catch(err => console.log(err))
 }
 
+export const fetchUserProjects = userId => dispatch => {
+    return ProjectAPI.fetchUserProjects(userId)
+        .then( projects => dispatch(receiveProjects(projects)))
+        .catch(err => console.log(err))
+}
+
 export const fetchProject = projectId => dispatch => {
     return ProjectAPI.fetchProject(projectId)
         .then(project => dispatch(receiveProject(project)))
@@ -38,8 +44,8 @@ export const createProject = project => dispatch => {
         .catch(err => console.log(err))
 }
 
-export const updateProject = projectId => dispatch => {
-    return ProjectAPI.updateProject(projectId)
+export const updateProject = project => dispatch => {
+    return ProjectAPI.updateProject(project)
         .then( project => dispatch(receiveProject(project)))
         .catch(err => console.log(err))
 }
@@ -48,16 +54,4 @@ export const deleteProject = projectId => dispatch => {
     return ProjectAPI.deleteProject(projectId)
         .then( () => dispatch(removeProject(projectId)))
         .catch(err => console.log(err))
-}
-
-export const fetchUserProjects = userId => dispatch => {
-    return ProjectAPI.fetchUserProjects(userId)
-        .then( projects => dispatch(receiveProjects(projects)))
-        .catch(err => console.log(err))
-}
-
-export const createTask = task => dispatch => {
-    return ProjectAPI.createTask(task)
-        .then( task => dispatch(receiveProject(task)))
-        .catch( err => console.log(err))
 }

@@ -6,7 +6,7 @@ export const REMOVE_TASK = "REMOVE_TASK";
 
 const receiveTasks = tasks => ({
     type: RECEIVE_TASKS,
-    tasks
+    tasks: tasks.data
 })
 
 const receiveTask = task => ({
@@ -19,23 +19,38 @@ const removeTask = taskId => ({
     taskId
 })
 
-export const fetchTasks = projectId => dispatch => {
-    return TaskAPI.fetchTasks(projectId)
+export const fetchAllTasks = () => dispatch => {
+    return TaskAPI.fetchAllTasks()
+        .then( tasks => dispatch(receiveTasks(tasks)))
+}
+
+export const fetchProjectTasks = projectId => dispatch => {
+    return TaskAPI.fetchProjectTasks(projectId)
+        .then( tasks => dispatch(receiveTasks(tasks)))
+}
+
+export const fetchUserTasks = userId => dispatch => {
+    return TaskAPI.fetchUserTasks(userId)
         .then( tasks => dispatch(receiveTasks(tasks)))
 }
 
 export const fetchTask = taskId => dispatch => {
-    return TaskAPI.fetchTasks(taskId)
+    return TaskAPI.fetchTask(taskId)
         .then( task => dispatch(receiveTask(task)))
 }
 
-export const createTask = (projectId, task) => dispatch => {
-    return TaskAPI.createTask(projectId, task)
+export const createTask = task => dispatch => {
+    return TaskAPI.createTask(task)
         .then( task => dispatch(receiveTask(task)))
 }
 
-export const updateTask = (projectId, task) => dispatch => {
-    return TaskAPI.updateTask(projectId, task)
+export const updateTask = task => dispatch => {
+    return TaskAPI.updateTask(task)
+        .then( task => dispatch(receiveTask(task)))
+}
+
+export const updateAssignedTask = task => dispatch => {
+    return TaskAPI.updateAssignedTask(task)
         .then( task => dispatch(receiveTask(task)))
 }
 
@@ -44,9 +59,3 @@ export const deleteTask = taskId => dispatch => {
         .then( () => dispatch(removeTask(taskId)))
 }
 
-// ASSIGNING USERS TO TASKS
-
-export const fetchAllTasks = () => dispatch => {
-    return TaskAPI.fetchAllTasks()
-        .then( (tasks) => dispatch(receiveTasks(tasks)))
-}
