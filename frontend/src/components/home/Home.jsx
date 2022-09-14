@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import 'react-tabs/style/react-tabs.css';
 // import Dnd from './Calendar';
 import Chat from '../chat/chat';
-import Task from '../task/task';
 import { connect } from "react-redux";
 // import { fetchUserProjects, fetchProject, fetchProjects } from '../../actions/projectActions';
 import LoadingContainer from "../util/LoadingContainer";
