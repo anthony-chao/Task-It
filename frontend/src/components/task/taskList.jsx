@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import TaskItem from './taskItem';
-import { fetchTasks, fetchUserTasks } from '../../actions/taskActions';
+import { fetchProjectTasks, fetchUserTasks } from '../../actions/taskActions';
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modalActions';
 import Chart from '../dashboard/Chart';
@@ -8,7 +8,7 @@ import Chart from '../dashboard/Chart';
 const TaskList = (props) => {
 
     useEffect(() => {
-        (props.projectUrl) ? props.fetchTasks(props.projectUrl) : props.fetchUserTasks(props.currentUserId);
+        (props.projectUrl) ? props.fetchProjectTasks(props.projectUrl) : props.fetchUserTasks(props.currentUserId);
     }, []);
 
     const handleCreate = () => {
@@ -58,7 +58,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchTasks: (projectId) => dispatch(fetchTasks(projectId)),
+    fetchProjectTasks: (projectId) => dispatch(fetchProjectTasks(projectId)),
     openModal: (type) => dispatch(openModal(type)),
     fetchUserTasks: (userId) => dispatch(fetchUserTasks(userId))
 })
