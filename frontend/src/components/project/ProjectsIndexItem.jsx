@@ -1,16 +1,32 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { BiEditAlt, BiTrashAlt } from 'react-icons/bi';
-import { openModal } from "../../actions/modalActions";
+import { BiEditAlt, BiTrashAlt } from "react-icons/bi";
 
 const ProjectsIndexItem = ({ project, openModal }) => {
-  const { name, description } = project
+  const { name, description } = project;
 
   const handleUpdateClick = () => {
-    
-  }
-  
-  
+    openModal({
+      type: "updateProject",
+      project: project,
+    });
+  };
+
+  const handleDeleteClick = () => {
+    openModal({
+      type: "deleteProject",
+      projectId: project._id,
+    });
+  };
+
+  const styles = {
+    actionButton: {
+      paddingRight: 10,
+      paddingBottom: 10,
+      color: "green",
+    },
+    size: 16,
+  };
+
   return (
     <div className="project-index-item">
       <div className="project-info">
@@ -21,21 +37,21 @@ const ProjectsIndexItem = ({ project, openModal }) => {
       </div>
 
       <div className="update-delete-buttons">
-        <BiEditAlt size={20} style={{ paddingRight: 10, paddingBottom: 10, color: 'black' }} onClick={() => openModal('updateProject')} />
-        <BiTrashAlt size={20} style={{ paddingRight: 20, color: 'black' }} />
+        <BiEditAlt
+          id="proj-icon"
+          size={styles.size}
+          style={styles.actionButton}
+          onClick={handleUpdateClick}
+        />
+        <BiTrashAlt
+          id="proj-icon"
+          size={styles.size}
+          style={styles.actionButton}
+          onClick={handleDeleteClick}
+        />
       </div>
     </div>
   );
-}
+};
 
-const mSTP = state => {
-  
-}
-
-const mDTP = dispatch => {
-  return {
-    openModal: formType => dispatch(openModal(formType))
-  }
-}
-
-export default connect(null, mDTP)(ProjectsIndexItem);
+export default ProjectsIndexItem;

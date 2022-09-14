@@ -1,63 +1,66 @@
 import React, { useState, useEffect } from "react";
 
-// class ProjectForm extends React.Component{
-//     constructor(props){
-
-//         super(props)
-
-//         this.state = {
-//             _id: "",
-//             name: "",
-//             ownerId: props.currentUser,
-//             members: [],
-//             description: "",
-//             tasks: []
-//         }
-
-//         this.handleUpdate = this.handleUpdate.bind(this);
-//         this.handleSubmit = this.handleSubmit.bind(this);
-//     }
-
-// componentDidMount() {
-//     if (this.props.formType === "Update Project") {
-//         this.setState({
-//             _id: this.props.project._id,
-//             name: this.props.project.name,
-//             description: this.props.project.description,
-//             members: this.props.project.members,
-//             ownerId: this.props.project.ownerId,
-//             tasks: this.props.project.tasks
-//         })
-//     }
-// }
-
-// handleSubmit(e){
-//     e.preventDefault();
-//     this.props.processForm(this.state);
-//     this.props.closeModal();
-// }
-
-// handleUpdate(field){
-//     return (e) => {
-//         this.setState({[field]: e.currentTarget.value})
-//     }
-// }
-
 const ProjectForm = (props) => {
-  const handleClick = () => {};
+  const {
+    currentUser,
+    formType,
+    errors,
+    createProject,
+    updateProject,
+    project,
+    closeModal,
+  } = props;
+
+  const [projectInfo, setProjectInfo] = useState({
+    _id: "",
+    name: "",
+    description: "",
+    ownerId: "",
+    tasks: [],
+    members: [],
+  });
+
+  useEffect(() => {
+    if (project !== undefined) {
+      setProjectInfo({
+        _id: project._id,
+        name: project.name,
+        description: project.description,
+        ownerId: project.ownerId,
+        tasks: project.tasks,
+        members: project.members,
+      });
+    }
+  }, []);
+
+  const handleUpdate = (field) => {
+    return (e) =>
+      setProjectInfo({
+        ...projectInfo,
+        [field]: e.currentTarget.value,
+      });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    formType === "Create a Project"
+      ? createProject(projectInfo)
+      : updateProject(projectInfo._id);
+    closeModal();
+  };
 
   return (
     <div className="project-form-container">
-      <h1>{this.props.formType}</h1>
-      <form className="create-project-header" onSubmit={this.handleSubmit}>
+      <h1>{console.log("###", `${formType}`)}</h1>
+      <form className="create-project-header" onSubmit={handleSubmit}>
         <label className="create-project-label">
           Name:
           <input
             className="create-project-input"
             type="text"
-            value={this.state.name}
+            value={projectInfo.name}
             placeholder="Name"
-            onChange={this.handleUpdate("name")}
+            onChange={handleUpdate("name")}
           />
         </label>
         <br />
@@ -66,23 +69,20 @@ const ProjectForm = (props) => {
           <input
             className="create-project-input"
             type="text"
-            value={this.state.description}
+            value={projectInfo.description}
             placeholder="Description"
-            onChange={this.handleUpdate("description")}
+            onChange={handleUpdate("description")}
           />
         </label>
         <br />
         <input
           type="submit"
           value={
-            this.props.formType === "Create a Project"
+            formType === "Create a Project"
               ? "Create Project"
               : "Update Project"
           }
         />
-        {/* {(this.props.formType === "Update Project") ? 
-                        <button onClick={() => { this.props.deleteProject(this.state.id), this.props.closeModal()}}>Delete project</button>
-                        : null } */}
       </form>
     </div>
   );
