@@ -17,15 +17,9 @@ const App = () => (
       <ProtectedRoute exact path="/home" component={HomeContainer} />
       <Chat />
       <Switch>
+        <ProtectedRoute path="/projects/:projectId" component={TaskListContainer} />
+        <ProtectedRoute path="/tasks" component={TaskListContainer} />
         <ProtectedRoute path="/projects" component={ProjectsIndexContainer} />
-        <ProtectedRoute
-        path="/projects/:projectId"
-        component={TaskListContainer}
-        />
-        <ProtectedRoute
-          path="/tasks"
-          component={TaskListContainer}
-        />
         <AuthRoute exact path="/" component={SplashContainer} />
       </Switch>
     </div>

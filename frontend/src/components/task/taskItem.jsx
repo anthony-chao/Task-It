@@ -53,8 +53,11 @@ const TaskItem = (props) => {
             <input type="checkbox" 
                 checked={(state.status === "Incomplete") ? false : true}
                 onChange= {handleToggle}
+                id="checkbox"
             />
+            <label for="checkbox" data-content={props.task.description}>
                 {props.task.description}
+            </label>
                 {props.task.assignedUser}
             </div>
             <button onClick={handleUpdate}>Edit</button>

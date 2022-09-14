@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
 
-const data = [
-  { name: 'Task 1', value: 20 },
-  { name: 'Task 2', value: 20 },
-  { name: 'Task 3', value: 20 },
-  { name: 'Task 4', value: 20 },
-  { name: 'Task 5', value: 20 },
-];
+// const data = [
+//   { name: 'Task 1', value: 20 },
+//   { name: 'Task 2', value: 20 },
+//   { name: 'Task 3', value: 20 },
+//   { name: 'Task 4', value: 20 },
+//   { name: 'Task 5', value: 20 },
+// ];
 
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
@@ -56,6 +56,10 @@ const renderActiveShape = (props) => {
 };
 
 export default class Chart extends PureComponent {
+  
+  constructor(props) {
+    super(props)
+  }
 
   state = {
     activeIndex: 0,
@@ -68,13 +72,13 @@ export default class Chart extends PureComponent {
   };
 
   render() {
-    return (
+    return ( 
       <ResponsiveContainer width="100%" height="100%" >
         <PieChart width={900} height={200}>
           <Pie
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape}
-            data={data}
+            data={this.props.data}
             cx="50%"
             cy="50%"
             innerRadius={60}

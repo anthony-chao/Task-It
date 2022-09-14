@@ -18,7 +18,7 @@ const CreateTaskForm = (props) => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      props.createTask(props.projectId, state);
+      props.createTask(state);
       props.closeModal();
     }
 
@@ -52,7 +52,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createTask: (projectId, task) => dispatch(createTask(projectId, task)),
+  createTask: (task) => dispatch(createTask(task)),
   closeModal: () => dispatch(closeModal())
 })
 
