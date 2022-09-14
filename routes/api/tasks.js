@@ -90,7 +90,7 @@ router.delete("/:id", (req,res) => {
 // GET ALL TASKS FOR USER
 
 router.get("/user/:userId", (req,res) => {
-  Task.find({assignedUser: req.params.id})
+  Task.find({assignedUser: req.params.userId})
     .then(tasks => res.json(tasks))
 })
 

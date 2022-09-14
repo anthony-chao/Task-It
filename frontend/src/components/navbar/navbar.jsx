@@ -55,7 +55,7 @@ const { loggedIn, logout, openModal } = props;
  const openLoginModal = () => {
     return e => {
       e.preventDefault();
-      openModal('login');
+      openModal({type: 'login'});
     }
   };
 
