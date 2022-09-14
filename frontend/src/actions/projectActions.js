@@ -4,7 +4,6 @@ export const RECEIVE_PROJECTS = "RECEIVE_PROJECTS";
 export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
 export const REMOVE_PROJECT = "REMOVE_PROJECT";
 
-
 const receiveProjects = projects => ({
     type: RECEIVE_PROJECTS,
     projects: projects.data
