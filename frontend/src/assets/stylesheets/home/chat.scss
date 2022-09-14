@@ -4,9 +4,12 @@
   display: flex;
   flex-direction: column-reverse;
   justify-content: flex-end;
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
+  // position: absolute;
+  // bottom: 2rem;
+  // right: 2rem;
+  position: fixed;
+  bottom: 0.5rem;
+  right: 2.5rem;
   width: 18rem;
   height: 25rem;
   background: $default-green;
@@ -15,8 +18,8 @@
   font-family: "Roboto", sans-serif;
 
   .close-chat {
-    // top: 20rem;
-    // right: 0.5rem;
+    // top: 0;
+    // right: 0;
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
     background: #588cbc3a;

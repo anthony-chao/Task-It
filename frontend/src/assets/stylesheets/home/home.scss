@@ -88,9 +88,9 @@
 // }
 
 .closed-chat-container {
-  position: absolute;
-  bottom: 2rem;
-  right: 5rem;
+  position: fixed;
+  bottom: 0.5rem;
+  right: 2.5rem;
   color: $default-orange;
 
   .chat-icon {

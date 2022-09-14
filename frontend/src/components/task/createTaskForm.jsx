@@ -16,7 +16,6 @@ const CreateTaskForm = (props) => {
     }
 
     const handleSubmit = (e) => {
-      debugger
       e.preventDefault()
       props.createTask(props.projectId, state)
     }

@@ -4,7 +4,7 @@ import { closeModal } from '../../actions/modalActions';
 import LoginFormContainer from '../session/loginFormContainer';
 import SignupFormContainer from '../session/signupFormContainer';
 import CreateProjectFormContainer from '../project/createProjectFormContainer';
-import "../../assets/stylesheets/modal/modal.scss";
+import ProjectFormContainer from '../project/ProjectForm';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -20,6 +20,9 @@ function Modal({modal, closeModal}) {
       break;
     case 'createProject':
       component = <CreateProjectFormContainer/>;
+      break;
+    case 'updateProject':
+      component = <ProjectFormContainer/>;
       break;
     default:
       component = <LoginFormContainer />;
