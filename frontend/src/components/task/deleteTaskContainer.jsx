@@ -6,7 +6,8 @@ import { closeModal } from '../../actions/modalActions';
 const DeleteTaskContainer = (props) => {
 
     const handleDelete = () => {
-        props.deleteTask(props.taskId)
+        props.deleteTask(props.taskId);
+        props.closeModal();
     }
 
     return (

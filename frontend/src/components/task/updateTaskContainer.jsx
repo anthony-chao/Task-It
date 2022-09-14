@@ -19,7 +19,7 @@ const UpdateTaskForm = (props) => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      props.updateTask(state.projectId, state);
+      props.updateTask(state);
       props.closeModal();
     }
 
@@ -53,7 +53,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateTask: (projectId, task) => dispatch(updateTask(projectId, task)),
+  updateTask: (task) => dispatch(updateTask(task)),
   closeModal: () => dispatch(closeModal())
 })
 
