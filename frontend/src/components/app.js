@@ -1,7 +1,7 @@
 import React from "react";
 import { AuthRoute, ProtectedRoute } from "../util/routeUtil";
 import { Switch, Route } from "react-router-dom";
-import NavBarContainer from "./navbar/navbar";
+import NavBarContainer from "./nav/nav";
 import SplashContainer from "./splash/splash";
 import HomeContainer from "./home/Home";
 import AssignTaskContainer from "./assignTask/assignTask";
@@ -18,6 +18,14 @@ const App = () => (
       <Chat />
       <Switch>
         <ProtectedRoute path="/projects" component={ProjectsIndexContainer} />
+        <ProtectedRoute
+        path="/projects/:projectId"
+        component={TaskListContainer}
+        />
+        <ProtectedRoute
+          path="/tasks"
+          component={TaskListContainer}
+        />
         <AuthRoute exact path="/" component={SplashContainer} />
       </Switch>
     </div>

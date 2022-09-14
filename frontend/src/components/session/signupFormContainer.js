@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
     otherForm: (
       <p>
         Already have an account? &nbsp;&nbsp;
-        <a onClick={() => dispatch(openModal("login"))}>Log In</a>
+        <a onClick={() => dispatch(openModal({type: "login"}))}>Log In</a>
       </p>
     ),
     closeModal: () => dispatch(closeModal()),

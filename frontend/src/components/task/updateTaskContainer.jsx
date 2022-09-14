@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { createTask } from '../../actions/taskActions';
+import { updateTask } from '../../actions/taskActions';
 import { closeModal } from '../../actions/modalActions';
 
-const CreateTaskForm = (props) => {
+const UpdateTaskForm = (props) => {
 
     const [state, setState] = useState({
-      description: '',
-      status: 'Incomplete',
-      projectId: props.projectId,
-      assignedUser: []
+      _id: props.task._id,
+      description: props.task.description,
+      status: props.task.status,
+      projectId: props.task.projectId,
+      assignedUser: props.task.assignedUser
     })
 
     const handleUpdate = (field) => {
-      return (e) => setState({...state, [field]: e.currentTarget.value})
+      return (e) => setState({...state, [field]: e.currentTarget.value});
     }
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      props.createTask(props.projectId, state);
+      props.updateTask(state.projectId, state);
       props.closeModal();
     }
 
@@ -38,8 +39,8 @@ const CreateTaskForm = (props) => {
             className='task-form-submit'
             disabled={ (state.description.length === 0) ? true : false}
             type="submit" 
-            text="Submit"/>
-          <button onClick={props.closeModal}>Cancel</button>
+            value="Update"/>
+            <button onClick={props.closeModal}>Cancel</button>
         </form>
       </div>
     )
@@ -52,8 +53,8 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createTask: (projectId, task) => dispatch(createTask(projectId, task)),
+  updateTask: (projectId, task) => dispatch(updateTask(projectId, task)),
   closeModal: () => dispatch(closeModal())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateTaskForm);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateTaskForm);

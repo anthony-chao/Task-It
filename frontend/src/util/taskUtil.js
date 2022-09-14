@@ -1,8 +1,14 @@
 import axios from "axios";
 
+<<<<<<< HEAD
 export const fetchTasks = (projectId) => {
   return axios.get(`/api/tasks/${projectId}`);
 };
+=======
+export const fetchTasks = projectId => {
+    return axios.get(`/api/projects/${projectId}`)
+}
+>>>>>>> main
 // export const fetchTasks = () => {
 //     return axios.get("/api/tasks")
 // }
@@ -24,5 +30,14 @@ export const deleteTask = (taskId) => {
 };
 
 export const fetchAllTasks = () => {
+<<<<<<< HEAD
   return axios.get("api/tasks");
 };
+=======
+    return axios.get('api/tasks')
+}
+
+export const fetchUserTasks = (userId) => {
+    return axios.get(`api/tasks/user/${userId}`)
+}
+>>>>>>> main

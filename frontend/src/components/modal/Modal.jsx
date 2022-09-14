@@ -5,13 +5,16 @@ import LoginFormContainer from '../session/loginFormContainer';
 import SignupFormContainer from '../session/signupFormContainer';
 import CreateProjectFormContainer from '../project/createProjectFormContainer';
 import ProjectFormContainer from '../project/ProjectForm';
+import DeleteTaskContainer from '../task/deleteTaskContainer';
+import UpdateTaskContainer from '../task/updateTaskContainer';
+import CreateTaskForm from '../task/createTaskForm';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
     return null;
   }
   let component;
-  switch (modal) {
+  switch (modal.type) {
     case 'login':
       component = <LoginFormContainer />;
       break;
@@ -23,6 +26,14 @@ function Modal({modal, closeModal}) {
       break;
     case 'updateProject':
       component = <ProjectFormContainer/>;
+    case 'deleteTask':
+      component = <DeleteTaskContainer taskId={modal.task._id}/>;
+      break;
+    case 'updateTask':
+      component = <UpdateTaskContainer task={modal.task}/>;
+      break;
+    case 'createTask':
+      component = <CreateTaskForm projectId={modal.projectId}/>;
       break;
     default:
       component = <LoginFormContainer />;

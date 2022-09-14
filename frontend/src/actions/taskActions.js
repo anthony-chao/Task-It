@@ -50,3 +50,10 @@ export const fetchAllTasks = () => dispatch => {
     return TaskAPI.fetchAllTasks()
         .then( (tasks) => dispatch(receiveTasks(tasks)))
 }
+
+// FETCHING ALL USER'S TASKS
+
+export const fetchUserTasks = userId => dispatch => {
+    return TaskAPI.fetchUserTasks(userId)
+        .then( tasks => dispatch(receiveTasks(tasks)))
+}
