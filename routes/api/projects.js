@@ -17,9 +17,11 @@ router.get("/test", (req, res) =>
 
 router.get("/", (req, res) => {
   const payload = {};
-  Project.find({}).then((projects) => {
-    res.json(projects);
-  });
+  Project.find({})
+    .then(projects => {
+      payload.projects = projects;
+      res.json(projects)
+    })
   // Task.find({})
   //   .then( tasks => {
   //     payload.tasks = tasks;
@@ -45,15 +47,14 @@ router.get("/:id", (req, res) => {
 });
 
 // CREATE PROJECT
-router.post(
-  "/",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    const { errors, isValid } = validateProjectInput(req.body);
-
-    if (!isValid) {
-      return res.status(400).json(errors);
-    }
+router.post('/',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+      const { errors, isValid } = validateProjectInput(req.body);
+  
+      if (!isValid) {
+        return res.status(400).json(errors);
+      }
 
     const newProject = new Project({
       name: req.body.name,

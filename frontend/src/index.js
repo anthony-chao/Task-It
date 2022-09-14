@@ -11,6 +11,16 @@ import {
   fetchUserProjects,
   deleteProject,
 } from "./actions/projectActions";
+import { 
+  fetchAllTasks,
+  fetchProjectTasks,
+  fetchUserTasks,
+  fetchTask,
+  createTask,
+  updateTask,
+  updateAssignedTask,
+  deleteTask
+} from "./actions/taskActions";
 
 import { fetchUsers } from "./actions/userActions"
 
@@ -47,5 +57,16 @@ document.addEventListener("DOMContentLoaded", () => {
   window.fetchUserProjects = fetchUserProjects;
   window.deleteProject = deleteProject;
   window.fetchUsers = fetchUsers;
+
+// TASK ACTION/ROUTE TESTING
+  window.fetchAllTasks = fetchAllTasks;
+  window.fetchProjectTasks = fetchProjectTasks;
+  window.fetchUserTasks = fetchUserTasks;
+  window.fetchTask = fetchTask;
+  window.createTask = createTask;
+  window.updateTask = updateTask;
+  window.updateAssignedTask = updateAssignedTask;
+  window.deleteTask = deleteTask;
+
   window.login = login;
 });
