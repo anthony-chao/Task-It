@@ -63,7 +63,6 @@ const AssignTask = (props) => {
 }
 
 const mapStateToProps = state => {
-    debugger
     return {
     allUsers: (state.entities.users.allUsers) ? Object.values(state.entities.users.allUsers) : null,
     allTasks: Object.values(state.entities.tasks)

@@ -1,18 +1,32 @@
 import React, { useEffect } from 'react';
 import TaskItem from './taskItem';
-import { fetchTasks } from '../../actions/taskActions';
+import { fetchTasks, fetchUserTasks } from '../../actions/taskActions';
 import { connect } from 'react-redux';
 import CreateTaskForm from './createTaskForm';
+import { openModal } from '../../actions/modalActions';
 
 const TaskList = (props) => {
 
     useEffect(() => {
-        props.fetchTasks(props.projectUrl);
+        (props.projectUrl) ? props.fetchTasks(props.projectUrl) : props.fetchUserTasks(props.currentUserId);
     }, []);
+
+    const handleCreate = () => {
+        props.openModal({
+            type: 'createTask',
+            projectId: props.projectUrl
+        })
+    }
 
     return (
         <div>
-            < CreateTaskForm projectId={props.projectUrl}/>
+            <h1> {props.project.name} </h1>
+            <h3> {props.project.description} </h3>
+            {props.projectUrl ? 
+            <button onClick={handleCreate}>Add Task</button>
+            : null
+            }
+            {/* < CreateTaskForm projectId={props.projectUrl}/> */}
             {Object.values(props.tasks).map(task => (
                 <TaskItem
                     task={task}
@@ -26,13 +40,17 @@ const TaskList = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        tasks: (Object.keys(state.entities.tasks).length !== 0) ? Object.values(state.entities.tasks) : [],
-        projectUrl: ownProps.match.params.projectId
+        tasks: (state.entities.tasks.tasks) ? Object.values(state.entities.tasks.tasks) : Object.values(state.entities.tasks),
+        project: (state.entities.tasks.projects) ? state.entities.tasks.projects : "",
+        projectUrl: (ownProps.match.params.projectId) ? ownProps.match.params.projectId : null,
+        currentUserId: state.session.user.id
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchTasks: (projectId) => dispatch(fetchTasks(projectId))
+    fetchTasks: (projectId) => dispatch(fetchTasks(projectId)),
+    openModal: (type) => dispatch(openModal(type)),
+    fetchUserTasks: (userId) => dispatch(fetchUserTasks(userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

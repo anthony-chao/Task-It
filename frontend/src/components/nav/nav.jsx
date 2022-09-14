@@ -48,14 +48,14 @@ import Modal from '../modal/Modal';
 // }
 
 
-const NavBar = (props) => {
+const Nav = (props) => {
 
 const { loggedIn, logout, openModal } = props;
   
  const openLoginModal = () => {
     return e => {
       e.preventDefault();
-      openModal('login');
+      openModal({type: 'login'});
     }
   };
 
@@ -118,5 +118,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
 
