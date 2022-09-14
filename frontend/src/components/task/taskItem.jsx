@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { updateTask, deleteTask } from '../../actions/taskActions';
+import { openModal, closeModal } from '../../actions/modalActions';
 
 const TaskItem = (props) => {
 
@@ -13,56 +14,59 @@ const TaskItem = (props) => {
         editing: false
     })
 
-    const handleUpdate = (field) => {
-        return (e) => {
-            setState({...state, [field]: e.currentTarget.value})
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (loading) {
+            props.updateTask(state.projectId, state);
+        }
+    }, [loading]);
+
+    const handleToggle = () => {
+        if (state.status === "Incomplete") {
+            setState({...state, status: "Completed"});
+            setLoading(true)
+        }
+        else {
+            setState({...state, status: "Incomplete"});
+            setLoading(true)
         }
     }
 
-    const updateStatus = () => {
-        props.updateStatus(state._id)       // we need an action for this
-    }
-
     const handleDelete = () => {
-        props.deleteTask(state._id)
+        props.openModal({
+            type: 'deleteTask',
+            task: state
+        })
     }
 
-    const handleOpenEdit = () => {
-        setState({...state, editing: true})
-    }
-
-    const handleSubmit = e => {
-        e.preventDefault();
-        props.updateTask(state.projectId, state);
-        setState({...state, editing: false})
+    const handleUpdate = () => {
+        props.openModal({
+            type: 'updateTask',
+            task: state
+        })
     }
 
     return (
         <li>
-            { (state.editing === true) ?
-                <form onSubmit={handleSubmit}>
-                    <input type="text"
-                           value={state.description}
-                           placeholder="Description cannot be blank!"
-                           onChange={handleUpdate('description')}
-                    />
-                    <button type="submit">Update</button>
-                </form>
-                : <div>{props.task.description}</div>
-            }
+            <div>
             <input type="checkbox" 
                 checked={(state.status === "Incomplete") ? false : true}
-                onChange= {() => updateStatus()}
+                onChange= {handleToggle}
             />
+                {props.task.description}
+                {props.task.assignedUser}
+            </div>
+            <button onClick={handleUpdate}>Edit</button>
             <button onClick={handleDelete}>Delete</button>
-            <button onClick={handleOpenEdit}>Edit</button>
         </li>
     )
 }
 
 const mapDispatchToProps = dispatch => ({
     deleteTask: (taskId) => dispatch(deleteTask(taskId)),
-    updateTask: (projectId, task) => dispatch(updateTask(projectId, task))
+    updateTask: (projectId, task) => dispatch(updateTask(projectId, task)),
+    openModal: (type) => dispatch(openModal(type))
 })
 
 export default connect(null, mapDispatchToProps)(TaskItem);

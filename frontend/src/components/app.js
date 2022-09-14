@@ -18,7 +18,15 @@ const App = () => (
     <Chat />
     <Switch>
       <ProtectedRoute
-        path="/projects/:currentUserId"
+        path="/projects/:projectId"
+        component={TaskListContainer}
+      />
+      <ProtectedRoute
+        path="/tasks"
+        component={TaskListContainer}
+      />
+      <ProtectedRoute
+        exact path="/projects"
         component={ProjectsIndexContainer}
       />
       <AuthRoute exact path="/" component={SplashContainer} />

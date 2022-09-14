@@ -157,8 +157,8 @@ const PermanentDrawer = ({currentUserId}) => {
   const location = useLocation();
   
   const handleClick = (text) => {
-    if (text === "Projects" && location.pathname !== `/projects/${currentUserId}`) {
-      return history.push(`/projects/${currentUserId}`);
+    if (text === "Projects" && location.pathname !== `/projects`) {
+      return history.push(`/projects`);
     }
     return;
   }
