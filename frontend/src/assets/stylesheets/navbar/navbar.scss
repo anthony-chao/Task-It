@@ -2,10 +2,9 @@
 
 .nav-header-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin: 10px 0 10px 0;
   border-bottom: 1px solid $default-darkgray;
 
   a {
@@ -15,13 +14,12 @@
 
 .nav-left {
   display: flex;
-  align-items: center;
-  padding: 10px 0px 10px 30px;
+  // align-items: center;
+  padding: 10px 0px 10px 20px;
 
   .branches-logo-container {
     display: flex;
     align-items: center;
-    padding-right: 50px;
 
     &:hover {
       -o-transform: scale(1.075);
@@ -56,24 +54,24 @@
     color: $default-darkgray;
   }
 
-  .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
-    color: $default-blue;
-    font-size: $font-size-30;
-    font-family: $font-family;
-    text-transform: capitalize;
-    line-height: 0;
-    letter-spacing: 0;
-    border: 1px solid $default-blue;
-    padding: 25px 15px 25px 15px;
-    border-radius: 20px;
-    font-size: $font-size-30;
+  // .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  //   color: $default-blue;
+  //   font-size: $font-size-30;
+  //   font-family: $font-family;
+  //   text-transform: capitalize;
+  //   line-height: 0;
+  //   letter-spacing: 0;
+  //   border: 1px solid $default-blue;
+  //   padding: 25px 15px 25px 15px;
+  //   border-radius: 20px;
+  //   font-size: $font-size-30;
 
-    &:hover {
-      color: $default-green;
-      background-color: white;
-      border-color: $default-green;
-    }
-  }
+  //   &:hover {
+  //     color: $default-green;
+  //     background-color: white;
+  //     border-color: $default-green;
+  //   }
+  // }
 }
 
 .logout-button {

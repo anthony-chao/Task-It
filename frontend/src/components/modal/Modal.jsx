@@ -4,7 +4,7 @@ import { closeModal } from '../../actions/modalActions';
 import LoginFormContainer from '../session/loginFormContainer';
 import SignupFormContainer from '../session/signupFormContainer';
 import CreateProjectFormContainer from '../project/createProjectFormContainer';
-import "../../assets/stylesheets/modal/modal.scss";
+import ProjectFormContainer from '../project/ProjectForm';
 import DeleteTaskContainer from '../task/deleteTaskContainer';
 import UpdateTaskContainer from '../task/updateTaskContainer';
 import CreateTaskForm from '../task/createTaskForm';
@@ -24,6 +24,8 @@ function Modal({modal, closeModal}) {
     case 'createProject':
       component = <CreateProjectFormContainer/>;
       break;
+    case 'updateProject':
+      component = <ProjectFormContainer/>;
     case 'deleteTask':
       component = <DeleteTaskContainer taskId={modal.task._id}/>;
       break;

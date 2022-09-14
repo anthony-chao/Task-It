@@ -129,25 +129,25 @@ import Home from '../home/Home';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles({
-  page: {
-    background: '#add8e6',
-    width: '100%',
-  },
-  drawer: {
-    width: drawerWidth,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  root: {
-    display: 'flex'
-  }
-})
+// const useStyles = makeStyles({
+//   page: {
+//     background: '#add8e6',
+//     width: '100%',
+//   },
+//   drawer: {
+//     width: drawerWidth,
+//   },
+//   drawerPaper: {
+//     width: drawerWidth,
+//   },
+//   root: {
+//     display: 'flex'
+//   }
+// })
 
 const PermanentDrawer = ({currentUserId}) => {
 
-  const classes = useStyles();
+  // const classes = useStyles();
   
   const ListIcons = () => {
     return
@@ -186,36 +186,47 @@ const PermanentDrawer = ({currentUserId}) => {
     //   </div>
     // </div>
 
-    <Box sx={{ display: 'flex' }}>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="permanent"
-        anchor="left"
-      >
-        <Toolbar />
-        <Divider style={{ height: '40px'}}/>
-        <List>
-          {['Projects', 'Tasks', 'Assign Task', 'Calendar', 'Logout'].map((text, index) => (
-            <ListItem key={`${text}-${index}`} disablePadding onClick={() => handleClick(text)}>
-              <ListItemButton>
-                <ListItemIcon>
-                  {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+    // <Box sx={{ display: 'flex' }}>
+    //   <Drawer
+    //     sx={{
+    //       width: drawerWidth,
+    //       flexShrink: 0,
+    //       '& .MuiDrawer-paper': {
+    //         width: drawerWidth,
+    //         boxSizing: 'border-box',
+    //       },
+    //     }}
+    //     variant="permanent"
+    //     anchor="left"
+    //   >
+    //     <Toolbar />
+    //     <Divider style={{ height: '40px'}}/>
+    //     <List>
+    //       {['Projects', 'Tasks', 'Assign Task', 'Calendar', 'Logout'].map((text, index) => (
+    //         <ListItem key={`${text}-${index}`} disablePadding onClick={() => handleClick(text)}>
+    //           <ListItemButton>
+    //             <ListItemIcon>
+    //               {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
 
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </Box>
+    //             </ListItemIcon>
+    //             <ListItemText primary={text} />
+    //           </ListItemButton>
+    //         </ListItem>
+    //       ))}
+    //     </List>
+    //   </Drawer>
+    // </Box>
+
+    <>
+      {['Projects', 'Tasks', 'Assign Task', 'Calendar'].map((text, index) => (
+        <ul key={`${text}-${index}`} className="side-drawer-items">
+          <li onClick={() => handleClick(text)}>
+            {text}
+          </li>
+        </ul>
+      ))}
+    </>
+    
   )
 }
 
