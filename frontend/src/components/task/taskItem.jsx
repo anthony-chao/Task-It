@@ -5,12 +5,20 @@ import { openModal, closeModal } from '../../actions/modalActions';
 
 const TaskItem = (props) => {
 
+    const {
+        task,
+        users,
+        deleteTask,
+        updateTask,
+        openModal
+      } = props;
+
     const [state, setState] = useState({
-        _id: props.task._id,
-        projectId: props.task.projectId,
-        description: props.task.description,
-        assignedUser: props.task.assignedUser,
-        status: props.task.status,
+        _id: task._id,
+        projectId: task.projectId,
+        description: task.description,
+        assignedUser: task.assignedUser,
+        status: task.status,
         editing: false
     })
 
@@ -18,7 +26,7 @@ const TaskItem = (props) => {
 
     useEffect(() => {
         if (loading) {
-            props.updateTask(state);
+            updateTask(state);
             setLoading(false);
         }
     }, [loading]);
@@ -35,14 +43,14 @@ const TaskItem = (props) => {
     }
 
     const handleDelete = () => {
-        props.openModal({
+        openModal({
             type: 'deleteTask',
             task: state
         })
     }
 
     const handleUpdate = () => {
-        props.openModal({
+        openModal({
             type: 'updateTask',
             task: state
         })
@@ -50,8 +58,8 @@ const TaskItem = (props) => {
 
     const allUsers = () => {
         let array = [];
-        for (let i = 0; i < props.task.assignedUser.length; i++) {
-            array.push(props.users[props.task.assignedUser[i]].firstName.concat(" ", props.users[props.task.assignedUser[i]].lastName))
+        for (let i = 0; i < task.assignedUser.length; i++) {
+            array.push(users[task.assignedUser[i]].firstName.concat(" ", users[task.assignedUser[i]].lastName))
         }
         {return ([... new Set(array)].map(user => (
             <p>{user}</p>
@@ -59,18 +67,16 @@ const TaskItem = (props) => {
     }
     
     return (
-        <li>
-            {console.log(state)}
-            <div>
+        <li key={Math.random() * 10000}>
+            <div >
             <input type="checkbox" 
                 checked={(state.status === "Incomplete") ? false : true}
                 onChange= {handleToggle}
                 id="checkbox"
             />
-                {props.task.description}
+                {task.description}
                 <br />
-                {/* {((Object.values(props.users).length !== 0) && (props.task.assignedUser[0])) ? props.users[props.task.assignedUser[0]].firstName.concat(" ", props.users[props.task.assignedUser[0]].lastName) : null} */}
-                {((Object.values(props.users).length !== 0) && (props.task.assignedUser[0])) ? allUsers() : null}
+                {((Object.values(users).length !== 0) && (task.assignedUser[0])) ? allUsers() : null}
             </div>
             <button onClick={handleUpdate}>Edit</button>
             <button onClick={handleDelete}>Delete</button>

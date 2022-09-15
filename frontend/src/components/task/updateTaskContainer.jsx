@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { updateTask } from '../../actions/taskActions';
 import { closeModal } from '../../actions/modalActions';
+import { clearReceiveErrors } from '../../actions/taskActions';
 
 const UpdateTaskForm = (props) => {
 
@@ -13,14 +14,20 @@ const UpdateTaskForm = (props) => {
       assignedUser: props.task.assignedUser
     })
 
+    useEffect(() => {
+      return () => {
+        props.clearReceiveErrors();
+      };
+    }, []);
+
     const handleUpdate = (field) => {
       return (e) => setState({...state, [field]: e.currentTarget.value});
     }
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      props.updateTask(state);
-      props.closeModal();
+      props.updateTask(state)
+      props.closeModal()
     }
 
     return (
@@ -37,10 +44,10 @@ const UpdateTaskForm = (props) => {
           </label>
           <input 
             className='task-form-submit'
-            disabled={ (state.description.length === 0) ? true : false}
             type="submit" 
             value="Update"/>
             <button onClick={props.closeModal}>Cancel</button>
+            {(props.errors.description) ? <p className="session-error">{props.errors.description} </p> : null}
         </form>
       </div>
     )
@@ -49,12 +56,14 @@ const UpdateTaskForm = (props) => {
 const mapStateToProps = (state, ownProps) => {
     return {
       // projectId: ownProps.match.params.projectId
+      errors: state.errors.task
     }
 }
 
 const mapDispatchToProps = dispatch => ({
   updateTask: (task) => dispatch(updateTask(task)),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  clearReceiveErrors: () => dispatch(clearReceiveErrors())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateTaskForm);
