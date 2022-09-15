@@ -10,16 +10,17 @@
   position: fixed;
   bottom: 0.5rem;
   right: 2.5rem;
-  width: 18rem;
-  height: 25rem;
+  width: 15rem;
+  height: 20rem;
   background: $default-green;
   border-radius: 12px;
   border: 1px solid black;
   font-family: "Roboto", sans-serif;
 
   .close-chat {
-    // top: 0;
-    // right: 0;
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
     background: #588cbc3a;
@@ -30,7 +31,7 @@
   }
 
   input {
-    padding: 12px;
+    padding: 8px;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box; /* Opera/IE 8+ */
@@ -41,12 +42,13 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  height: 21rem;
+  height: 16rem;
+  padding: 10px 5px 20px 5px;
 
   .chat-message {
-    font-size: $font-size-16;
+    font-size: $font-size-12;
     color: black;
-    padding: 10px 12px 5px 12px;
+    padding: 0 10px 0 10px;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -58,7 +60,7 @@
   }
 
   .chat-timestamp {
-    font-size: 10px;
+    font-size: $font-size-9;
     margin: 5px 0 5px 0;
   }
 }
@@ -87,7 +89,7 @@
 }
 
 .chat-input {
-  height: 3rem;
+  height: 2.25rem;
   border-radius: 10px;
   background: $default-gray;
   width: 100%;

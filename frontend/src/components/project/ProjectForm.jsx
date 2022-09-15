@@ -45,7 +45,7 @@ const ProjectForm = (props) => {
     e.preventDefault();
     formType === "Create a Project"
       ? createProject(projectInfo)
-      : updateProject(projectInfo._id);
+      : updateProject(projectInfo);
     closeModal();
   };
 

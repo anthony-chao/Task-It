@@ -199,26 +199,34 @@
 .home-container {
   display: flex;
   flex-direction: column;
+  position: relative;
+  // align-items: center;
 }
 
 .instructions-container {
   width: 900px;
   height: 100px;
   border: 1px solid purple;
+  // align-self: center;
 }
 
 .about-us-container {
   display: flex;
   flex-wrap: wrap;
-  width: 900px;
-  align-items: center;
+  width: 500px;
+  // align-content: center;
   justify-content: center;
   border: 1px solid red;
+  // align-self: center;
+  position: absolute;
+  // top: 50%;
+  // right: 70%;
+  transform: translate(50%, 25%);
 
   #social-link {
-    width: 40px;
-    height: 40px;
-    padding: 15px;
+    width: 25px;
+    height: 25px;
+    padding: 10px;
     color: $default-orange;
 
     &:hover {
@@ -242,8 +250,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 400px;
+    width: 200px;
     border: 1px solid blue;
-    margin: 20px 20px 20px 20px;
+    margin: 10px;
   }
 }
