@@ -15,7 +15,7 @@
 // import { MdModeEditOutline } from 'react-icons/md';
 // import { openModal } from '../../actions/modalActions';
 // import { connect } from 'react-redux';
-// import { fetchUserProjects, fetchProject } from '../../actions/projectActions'; 
+// import { fetchUserProjects, fetchProject } from '../../actions/projectActions';
 // import Task from '../task/task';
 // import { FcParallelTasks } from 'react-icons/fc';
 
@@ -107,25 +107,25 @@
 //   );
 // }
 
-import React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
+import React from "react";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
 // import CssBaseline from '@mui/material/CssBaseline';
 // import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import Toolbar from "@mui/material/Toolbar";
+import List from "@mui/material/List";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 // import InboxIcon from '@mui/icons-material/MoveToInbox';
 // import MailIcon from '@mui/icons-material/Mail';
-import { connect } from 'react-redux';
-import { useHistory, useLocation } from 'react-router';
-import { makeStyles } from '@mui/styles';
-import Home from '../home/Home';
+import { connect } from "react-redux";
+import { useHistory, useLocation } from "react-router";
+import { makeStyles } from "@mui/styles";
+import Home from "../home/Home";
 
 const drawerWidth = 240;
 
@@ -145,31 +145,34 @@ const drawerWidth = 240;
 //   }
 // })
 
-const PermanentDrawer = ({currentUserId}) => {
-
+const PermanentDrawer = ({ currentUserId }) => {
   // const classes = useStyles();
-  
+
   const ListIcons = () => {
-    return
-  }
-  
+    return;
+  };
+
   const history = useHistory();
   const location = useLocation();
-  
+
   const handleClick = (text) => {
     if (text === "Projects" && location.pathname !== `/projects`) {
       return history.push(`/projects`);
+    } else if (text == "Tasks" && location.pathname !== `/tasks`) {
+      return history.push(`/tasks`);
+    } else if (text == "Assign Task" && location.pathname !== `/assigntask`) {
+      return history.push(`/assigntask`);
     }
     return;
-  }
-  
-  return (  
+  };
+
+  return (
     // <div className={classes.root}>
     //   {/* AppBar
     //   side drawer */}
-    //   <Drawer 
-    //     className={classes.drawer} 
-    //     variant='permanent' 
+    //   <Drawer
+    //     className={classes.drawer}
+    //     variant='permanent'
     //     anchor='left'
     //     classes={{ paper: classes.drawerPaper }}
     //   >
@@ -218,25 +221,22 @@ const PermanentDrawer = ({currentUserId}) => {
     // </Box>
 
     <>
-      {['Projects', 'Tasks', 'Assign Task', 'Calendar'].map((text, index) => (
+      {["Projects", "Tasks", "Assign Task", "Calendar"].map((text, index) => (
         <ul key={`${text}-${index}`} className="side-drawer-items">
-          <li onClick={() => handleClick(text)}>
-            {text}
-          </li>
+          <li onClick={() => handleClick(text)}>{text}</li>
         </ul>
       ))}
     </>
-    
-  )
-}
+  );
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   // userProjects: Object.values(state.entities.projects),
-  currentUserId: state.session.user.id
-})
+  currentUserId: state.session.user.id,
+});
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   // openModal: (formType, project) => dispatch(openModal(formType, project)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(PermanentDrawer);
