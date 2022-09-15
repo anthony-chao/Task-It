@@ -18,7 +18,8 @@ const TaskItem = (props) => {
 
     useEffect(() => {
         if (loading) {
-            props.updateTask(state.projectId, state);
+            props.updateTask(state);
+            setLoading(false);
         }
     }, [loading]);
 
@@ -47,18 +48,29 @@ const TaskItem = (props) => {
         })
     }
 
+    const allUsers = () => {
+        let array = [];
+        for (let i = 0; i < props.task.assignedUser.length; i++) {
+            array.push(props.users[props.task.assignedUser[i]].firstName.concat(" ", props.users[props.task.assignedUser[i]].lastName))
+        }
+        {return ([... new Set(array)].map(user => (
+            <p>{user}</p>
+        )))}
+    }
+    
     return (
         <li>
+            {console.log(state)}
             <div>
             <input type="checkbox" 
                 checked={(state.status === "Incomplete") ? false : true}
                 onChange= {handleToggle}
                 id="checkbox"
             />
-            <label for="checkbox" data-content={props.task.description}>
                 {props.task.description}
-            </label>
-                {props.task.assignedUser}
+                <br />
+                {/* {((Object.values(props.users).length !== 0) && (props.task.assignedUser[0])) ? props.users[props.task.assignedUser[0]].firstName.concat(" ", props.users[props.task.assignedUser[0]].lastName) : null} */}
+                {((Object.values(props.users).length !== 0) && (props.task.assignedUser[0])) ? allUsers() : null}
             </div>
             <button onClick={handleUpdate}>Edit</button>
             <button onClick={handleDelete}>Delete</button>
@@ -68,7 +80,7 @@ const TaskItem = (props) => {
 
 const mapDispatchToProps = dispatch => ({
     deleteTask: (taskId) => dispatch(deleteTask(taskId)),
-    updateTask: (projectId, task) => dispatch(updateTask(projectId, task)),
+    updateTask: (task) => dispatch(updateTask(task)),
     openModal: (type) => dispatch(openModal(type))
 })
 

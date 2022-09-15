@@ -49,8 +49,13 @@ export const updateTask = task => dispatch => {
         .then( task => dispatch(receiveTask(task)))
 }
 
-export const updateAssignedTask = task => dispatch => {
-    return TaskAPI.updateAssignedTask(task)
+// export const updateAssignedTask = task => dispatch => {
+//     return TaskAPI.updateAssignedTask(task)
+//         .then( task => dispatch(receiveTask(task)))
+// }
+
+export const updateAssignedTask = (taskId, userId) => dispatch => {
+    return TaskAPI.updateAssignedTask(taskId, userId)
         .then( task => dispatch(receiveTask(task)))
 }
 

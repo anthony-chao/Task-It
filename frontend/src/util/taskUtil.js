@@ -31,8 +31,11 @@ export const updateTask = task => {
 }
 
 // UPDATE TASK ASSIGNED USER
-export const updateAssignedTask = task => {
-    return axios.patch(`/api/tasks/assignTask${task._id}`, task)
+// export const updateAssignedTask = task => {
+//     return axios.patch(`/api/tasks/assignTask/${task._id}`, task)
+// }
+export const updateAssignedTask = (taskId, assignedUser) => {
+  return axios.patch(`/api/tasks/assignTask/${taskId}`, {assignedUser: assignedUser})
 }
 
 // DELETE A TASK
