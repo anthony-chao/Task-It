@@ -17,7 +17,7 @@ const Chat = ({ currentUserFirstName, currentUserLastName }) => {
   const chatEndRef = useRef(null);
 
   useEffect(() => {
-    socket.on("message", (payload) => {
+    socket.on("chatMessage", (payload) => {
       setChat([...chat, payload]);
     });
   });
@@ -28,7 +28,7 @@ const Chat = ({ currentUserFirstName, currentUserLastName }) => {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    socket.emit("message", { userName, message });
+    socket.emit("chatMessage", { userName, message });
     // Send message on socket
     setMessage("");
   };
@@ -73,16 +73,14 @@ const Chat = ({ currentUserFirstName, currentUserLastName }) => {
         <div className="chat-box">
           {chat.map((payload, index) => {
             return (
-              <>
-                <p
-                  className="chat-message"
-                  key={"chat" - `${Math.floor(Math.random() * 10)}`}
-                  ref={chatEndRef}
-                >
-                  {payload.userName}: {payload.message}
-                  <span className="chat-timestamp">{timestamp}</span>
-                </p>
-              </>
+              <p
+                className="chat-message"
+                ref={chatEndRef}
+                key={`${Math.floor(Math.random() * 10)}`}
+              >
+                {payload.userName}: {payload.message}
+                <span className="chat-timestamp">{timestamp}</span>
+              </p>
             );
           })}
         </div>

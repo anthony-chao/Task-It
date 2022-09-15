@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateProject: (projectId) => dispatch(updateProject(projectId)),
+  updateProject: (project) => dispatch(updateProject(project)),
   closeModal: () => dispatch(closeModal()),
 });
 
