@@ -9,6 +9,8 @@ import {
   fetchProjects,
   fetchProject,
   fetchUserProjects,
+  createProject,
+  updateProject,
   deleteProject,
 } from "./actions/projectActions";
 import { 
@@ -68,5 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.updateAssignedTask = updateAssignedTask;
   window.deleteTask = deleteTask;
 
+// PROJECT ACTION/ROUTE TESTING
+  window.updateProject = updateProject;
+  window.createProject = createProject;
   window.login = login;
 });

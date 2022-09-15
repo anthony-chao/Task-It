@@ -38,6 +38,7 @@ router.get("/:id", (req, res) => {
   //     );
   Project.findById(req.params.id).then((project) => {
     const payload = {};
+    console.log(project)
     payload.projects = project;
     Task.find({ projectId: req.params.id }).then((tasks) => {
       payload.tasks = tasks;
@@ -90,8 +91,18 @@ router.get("/users/:user_id", (req, res) => {
 
 // UPDATE PROJECT
 
-router.patch("/:id", (req, res) => {
+router.patch("/:id",
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+
+    const { errors, isValid } = validateProjectInput(req.body);
+  
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+    
   Project.findById(req.params.id).then((project) => {
+    console.log(project);
     project.name = req.body.name;
     project.description = req.body.description;
     // project.members = req.body.members;
@@ -99,7 +110,9 @@ router.patch("/:id", (req, res) => {
 
     project
       .save()
-      .then((project) => res.json(project))
+      .then((project) => {
+        console.log(project)
+        res.json(project)})
       .catch((err) => console.log(err));
   });
 });

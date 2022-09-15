@@ -9,63 +9,74 @@ import { fetchUsers } from '../../actions/userActions';
 
 const TaskList = (props) => {
 
+    const {
+        tasks,
+        projectUrl,
+        currentUser,
+        users,
+        fetchProjectTasks,
+        openModal,
+        fetchUserTasks,
+        fetchUsers
+      } = props;
+
     useEffect(() => {
-        (props.projectUrl) ? props.fetchProjectTasks(props.projectUrl) : props.fetchUserTasks(props.currentUser.id);
+        (projectUrl) ? fetchProjectTasks(projectUrl) : fetchUserTasks(currentUser.id);
     }, [props.location.pathname]);
 
 
     useEffect(() => {
-        props.fetchUsers();
+        fetchUsers();
     }, [])
 
     const handleCreate = () => {
-        props.openModal({
+        openModal({
             type: 'createTask',
-            projectId: props.projectUrl
+            projectId: projectUrl
         })
     }
 
-    const countCompleted = (Object.values(props.tasks).reduce((count, task) => task.status === "Completed" ? count + 1 : count, 0))
-    const countIncomplete = (Object.values(props.tasks).reduce((count, task) => task.status !== "Completed" ? count + 1 : count, 0))
+    const countCompleted = ((tasks).reduce((count, task) => task.status === "Completed" ? count + 1 : count, 0))
+    const countIncomplete = ((tasks).reduce((count, task) => task.status !== "Completed" ? count + 1 : count, 0))
     const history = useHistory();
 
     return (
         <div>
-            {Object.values(props.tasks).length === 0 && props.projectUrl ? 
+            {(tasks).length === 0 && projectUrl ? 
                 <div>
                     <h1>There are no tasks in this project!</h1>
                     <button onClick={handleCreate}>Add Task</button>
                 </div>
              : null}
 
-            {Object.values(props.tasks).length === 0 && !props.projectUrl ? 
+            {(tasks).length === 0 && !projectUrl ? 
                 <div>
-                    <h1>Hi {props.currentUser.firstName}! You currently have no assigned tasks!</h1> 
+                    <h1>Hi {currentUser.firstName}! You currently have no assigned tasks!</h1> 
                     <p>Click here to assign yourself some tasks: <button onClick={() => history.push('/assigntask')}>Assign Tasks</button></p>
                 </div>
             : null}
 
-            {Object.values(props.tasks).length !== 0 && props.projectUrl ? 
+            {(tasks).length !== 0 && projectUrl ? 
                 <div>
-                    <h1> {props.project.name} </h1>
-                    <h3> {props.project.description} </h3>
+                    {/* <h1> {props.project.name} </h1>
+                    <h3> {props.project.description} </h3> */}
                     <button onClick={handleCreate}>Add Task</button>
                 </div>
             : null}
 
-            {Object.values(props.tasks).length !== 0 && !props.projectUrl ? 
+            {Object.values(tasks).length !== 0 && !projectUrl ? 
                 <div>
-                    <h1>Hi {props.currentUser.firstName}! Listed are all your assigned tasks:</h1> 
+                    <h1>Hi {currentUser.firstName}! Listed are all your assigned tasks:</h1> 
                 </div>
             : null}
 
-            {Object.values(props.tasks).length !== 0 ? 
+            {(tasks).length !== 0 ? 
                 <div>
-                    {Object.values(props.tasks).map(task => (
+                    {(tasks).map(task => (
                         <TaskItem
                             task={task}
-                            key={task.id}
-                            users={props.users}
+                            key={task._id}
+                            users={users}
                         />
                     ))}
                     <div className="rechart-container">
@@ -73,30 +84,6 @@ const TaskList = (props) => {
                     </div>
                 </div>
             : null}
-            
-            {/* <h1> {props.project.name} </h1>
-            <h3> {props.project.description} </h3>
-            {props.projectUrl ? 
-            <button onClick={handleCreate}>Add Task</button>
-            : null
-            }
-            {Object.values(props.tasks).length === 0 && props.projectUrl ? <h1>There are no tasks in this project!</h1> : null}
-            {Object.values(props.tasks).length === 0 && !props.projectUrl ? 
-                <div>
-                    <h1>You currently have no assigned tasks!</h1> 
-                    <p>Click here to assign yourself some tasks: <button onClick={() => history.push('/assigntask')}>Assign Tasks</button></p>
-                </div>
-            : null}
-            {Object.values(props.tasks).map(task => (
-                <TaskItem
-                    task={task}
-                    key={task.id}
-                />
-            ))}
-            <div className="rechart-container">
-            < Chart data={[{name: "Completed", value: countCompleted}, {name: "Incomplete", value: countIncomplete, fill:"#FF0000"}]}/>
-            </div> */}
-
         </div>
     )
 
@@ -104,8 +91,7 @@ const TaskList = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        tasks: (state.entities.tasks.tasks) ? Object.values(state.entities.tasks.tasks) : Object.values(state.entities.tasks),
-        project: (state.entities.tasks.projects) ? state.entities.tasks.projects : "",
+        tasks: Object.values(state.entities.tasks),
         projectUrl: (ownProps.match.params.projectId) ? ownProps.match.params.projectId : null,
         currentUser: state.session.user,
         users: state.entities.users

@@ -21,10 +21,9 @@ export const createProject = (project) => {
 };
 
 // UPDATE PROJECT
-export const updateProject = (project) => {
-  debugger;
-  return axios.patch(`/api/projects/${project._id}`, project);
-};
+export const updateProject = project => {
+    return axios.patch(`/api/projects/${project._id}`, project)
+}
 
 // DELETE PROJECT
 export const deleteProject = (projectId) => {

@@ -42,11 +42,13 @@ export const fetchTask = taskId => dispatch => {
 export const createTask = task => dispatch => {
     return TaskAPI.createTask(task)
         .then( task => dispatch(receiveTask(task)))
-}
+        .catch((err) => dispatch(receiveErrors(err.response.data)));
+    }
 
 export const updateTask = task => dispatch => {
     return TaskAPI.updateTask(task)
         .then( task => dispatch(receiveTask(task)))
+        .catch((err) => dispatch(receiveErrors(err.response.data)));
 }
 
 // export const updateAssignedTask = task => dispatch => {
@@ -64,3 +66,17 @@ export const deleteTask = taskId => dispatch => {
         .then( () => dispatch(removeTask(taskId)))
 }
 
+// task error handling
+export const RECEIVE_TASK_ERRORS = "RECEIVE_TASK_ERRORS";
+export const CLEAR_RECEIVE_ERRORS = "CLEAR_RECEIVE_ERRORS";
+
+export const receiveErrors = (errors) => ({
+    type: RECEIVE_TASK_ERRORS,
+    errors,
+  });
+  
+  export const clearReceiveErrors = () => {
+    return {
+      type: CLEAR_RECEIVE_ERRORS,
+    };
+  };
