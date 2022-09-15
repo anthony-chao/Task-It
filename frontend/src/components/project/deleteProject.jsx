@@ -12,7 +12,9 @@ const DeleteProject = ({ projectId, deleteProject, closeModal }) => {
 
   return (
     <div>
-      <div>Are you sure you want to delete this task?</div>
+      <div>
+        Are you sure you want to delete this project? This cannot be undone.
+      </div>
       <button onClick={handleDelete}>Delete</button>
       <button onClick={closeModal}>Cancel</button>
     </div>

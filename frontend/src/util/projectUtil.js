@@ -23,7 +23,7 @@ export const createProject = (project) => {
 // UPDATE PROJECT
 export const updateProject = (project) => {
   debugger;
-  return axios.patch(`/api/projects/${project._id}`);
+  return axios.patch(`/api/projects/${project._id}`, project);
 };
 
 // DELETE PROJECT
