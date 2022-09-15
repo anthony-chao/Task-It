@@ -9,6 +9,7 @@ const db = require("./config/keys").mongoURI;
 const users = require("./routes/api/users");
 const projects = require("./routes/api/projects");
 const tasks = require("./routes/api/tasks");
+const messages = require("./routes/api/messages")
 
 const path = require("path");
 
@@ -58,6 +59,7 @@ if (process.env.NODE_ENV === "production") {
 app.use("/api/users", users);
 app.use("/api/projects", projects);
 app.use("/api/tasks", tasks);
+app.use("/api/messages", messages);
 
 const port = process.env.PORT || 4000;
 server.listen(port, () => console.log(`Server is running on port ${port}`));
