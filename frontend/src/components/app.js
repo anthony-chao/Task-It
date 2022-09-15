@@ -20,6 +20,7 @@ const App = () => (
         <ProtectedRoute path="/projects/:projectId" component={TaskListContainer} />
         <ProtectedRoute path="/tasks" component={TaskListContainer} />
         <ProtectedRoute path="/projects" component={ProjectsIndexContainer} />
+        <ProtectedRoute path="/assigntask" component={AssignTaskContainer} />
         <AuthRoute exact path="/" component={SplashContainer} />
       </Switch>
     </div>

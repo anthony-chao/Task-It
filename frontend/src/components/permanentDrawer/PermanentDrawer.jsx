@@ -160,6 +160,12 @@ const PermanentDrawer = ({currentUserId}) => {
     if (text === "Projects" && location.pathname !== `/projects`) {
       return history.push(`/projects`);
     }
+    else if (text == "Tasks" && location.pathname !== `/tasks`) {
+      return history.push(`/tasks`);
+    }
+    else if (text == "Assign Task" && location.pathname !== `/assigntask`) {
+      return history.push(`/assigntask`);
+    }
     return;
   }
   
