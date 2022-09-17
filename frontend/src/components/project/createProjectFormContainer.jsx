@@ -1,16 +1,21 @@
 import { connect } from "react-redux";
-import { createProject } from "../../actions/projectActions";
+import {
+  createProject,
+  clearReceiveErrors,
+} from "../../actions/projectActions";
 import ProjectForm from "./ProjectForm";
 import { closeModal } from "../../actions/modalActions";
 
+// debugger;
 const mapStateToProps = (state) => ({
   currentUser: state.session.user.id,
   formType: "Create a Project",
-  errors: state.errors.session,
+  errors: state.errors.project,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   createProject: (project) => dispatch(createProject(project)),
+  clearErrors: () => dispatch(clearReceiveErrors()),
   closeModal: () => dispatch(closeModal()),
 });
 

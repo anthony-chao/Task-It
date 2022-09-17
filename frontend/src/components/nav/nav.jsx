@@ -45,7 +45,7 @@ const Nav = (props) => {
         <Link to="/">
           <div className="branches-logo-container">
             <img id="branches-logo" src={logo} alt="branches-logo" />
-            <h1>Branches</h1>
+            <p>Branches</p>
           </div>
         </Link>
       </div>

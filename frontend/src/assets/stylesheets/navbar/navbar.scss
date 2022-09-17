@@ -26,18 +26,20 @@
       -webkit-transform: scale(1.075);
       -ms-transform: scale(1.075);
       transform: scale(1.075);
+      transition: 0.25s ease-out;
     }
   }
 
   #branches-logo {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
 
-  h1 {
-    font-size: $font-size-30;
+  p {
+    font-size: $font-size-25;
+    font-weight: 500;
     color: $default-blue;
-    padding-left: 10px;
+    padding-left: 5px;
   }
 }
 
@@ -76,8 +78,7 @@
 
 .logout-button {
   color: $default-blue;
-  font-size: $font-size-30;
-  font-family: $font-family;
+  font-size: $font-size-25;
   text-transform: capitalize;
   line-height: 0;
   letter-spacing: 0;
