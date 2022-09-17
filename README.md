@@ -1,14 +1,14 @@
 # Branches
 
-![alt text](https://i.postimg.cc/15qdpQgN/image-removebg-preview-1.png)
+![alt text](https://i.postimg.cc/9MBxgVG3/image-removebg-preview-2.png)
 
 ## Background and Overview
 
-Branches is a project management application where users can create projects and tasks for themselves or team members, as well as visualize the completion status of said project. Additionally, users will be able to utilize a project specific live chat where they can communicate with other team members working on the same project. This app provides you the opportunity to get and stay organized with others!
+Branches is a project management application where users can create projects and tasks for themselves or team members, as well as visualize the completion status of said project. Additionally, users will be able to utilize a live chat where they can communicate with other team members. This app provides you the opportunity to get and stay organized with others!
 
 ## Technologies Used
 * Branches was built using a MongoDB NoSQL database, Express web application framework, React-Redux frontend, and Node.js backend.
-* Additionally, we utilized Websocket for the live-chat functionality.
+* Additionally, we utilized Socket.io for the live-chat functionality.
 
 ## Functionality and MVP
 
@@ -18,15 +18,16 @@ Branches is a project management application where users can create projects and
 ### PLACEHOLDER FOR GIF OF CREATING A NEW USER OR SIGN IN
 
 ### Projects
-* Users are able to view all their projects in a project drawer. Upon clicking on a project, the user will be redirected to a project show page that details the project's tasks.
+* Users are able to view all projects in the project drawer. Upon clicking on a project, the user will be redirected to a project show page that details all the project's tasks.
 * Users are able to add, edit and delete existing projects.
 
 ### PLACEHOLDER FOR GIF OF ADDING PROJECT
 
 ### Tasks
 * Users can view all of the tasks related to a project, as well as add, edit and delete projects.
+* Users will also have the ability to mark a task as complete or incomplete, which will update the project's completeness status.
 
-### PLACEHOLDER FOR GIF OF ADDING PROJECT
+### PLACEHOLDER FOR GIF OF ADDING TASK
 
 
 ### Live Chat
@@ -34,6 +35,9 @@ Branches is a project management application where users can create projects and
 * Users will be able to see who sent the message and a timestamp showing exactly when the message was sent.
 
 ### PLACEHOLDER FOR GIF OF LIVE CHAT
+
+### Assign Tasks
+* Users will have the ability to assign tasks that are not completed to anyone in the app. Upon assigning a task, the user who the task is assigned to will be able to see the task in their tasks show page.
 
 
 ## Code Snippets 

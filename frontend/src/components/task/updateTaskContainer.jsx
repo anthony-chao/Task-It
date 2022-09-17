@@ -24,10 +24,28 @@ const UpdateTaskForm = (props) => {
       return (e) => setState({...state, [field]: e.currentTarget.value});
     }
 
+    const [error, setError] = useState(false);
+
+    const handleError = () => {
+      if (state.description.length === 0) {
+        setError(true);
+        return true;
+      }
+      else {
+        setError(false);
+        return false;
+      }
+    }
+
     const handleSubmit = (e) => {
       e.preventDefault();
-      props.updateTask(state)
-      props.closeModal()
+
+      const taskError = handleError();
+      
+      if (!taskError) {
+        props.updateTask(state);
+        props.closeModal();
+      }
     }
 
     return (
@@ -47,7 +65,7 @@ const UpdateTaskForm = (props) => {
             type="submit" 
             value="Update"/>
             <button onClick={props.closeModal}>Cancel</button>
-            {(props.errors.description) ? <p className="session-error">{props.errors.description} </p> : null}
+            {(error) ? <p className="session-error">Task field cannot be empty!</p> : null}
         </form>
       </div>
     )
