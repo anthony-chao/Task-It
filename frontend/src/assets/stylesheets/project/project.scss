@@ -66,6 +66,7 @@
 
 .projects-index-container {
   margin: 20px 0 50px 0;
+  // font-family: $font-family-Rubik;
 }
 
 .create-button {
@@ -80,54 +81,83 @@
     margin: 0;
     font-size: $font-size-20;
     cursor: pointer;
-
-    &:hover {
-      color: $default-green;
-    }
   }
 }
 
 .projects-index-grid {
   margin: 10px;
-  // width: 100%;
-  height: 100%;
-  color: $default-blue;
   display: grid;
-  grid-template-columns: repeat(4, 200px);
+  grid-template-columns: repeat(4, 260px);
+  // grid-template-rows: repeat(3, 250px);
   column-gap: 30px;
-  row-gap: 30px;
-  // border: 1px solid black;
+  row-gap: 10px;
+}
+
+.img-container {
+  position: relative;
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.75;
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+    z-index: 5;
+    transition: 0.25s ease-out;
+
+    &:hover,
+    img {
+      opacity: 1;
+    }
+  }
 }
 
 .project-index-item {
-  background-color: $default-yellow;
+  position: absolute;
+  top: 55px;
+  left: 0px;
+  width: 100%;
+  height: 190px;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   overflow-wrap: break-word;
-  // flex-grow: 4;
+  justify-content: space-between;
+  color: $default-red;
   // border: 1px solid black;
-  transition: transform 0.3s;
 
   .project-info {
-    height: 100%;
-
     ul {
       list-style: none;
-      margin: 10px;
+      margin: 15px;
       padding: 0;
 
       .project-text {
         font-size: $font-size-12;
+        font-weight: 300;
         color: $default-darkgray;
         margin: 0;
         padding: 0;
       }
 
-      li:last-child {
-        font-size: $font-size-12;
-        // margin: 0;
-        // padding: 0;
-      }
+      // li:last-child {
+      // margin: 0;
+      // padding: 0;
+      // }
+
+      // .project-input {
+      // -webkit-text-stroke-width: 0.5px;
+      // -webkit-text-stroke-color: black;
+      // font-size: $font-size-20;
+
+      // p:last-child {
+      //   font-size: $font-size-12;
+      // }
+      // }
     }
   }
 
@@ -141,23 +171,22 @@
     p {
       cursor: pointer;
       font-size: $font-size-12;
-      margin: 0 0 0 10px;
-      border: 1px solid $default-lightblue;
+      margin: 0 0 0 30px;
+      // border: 0 solid $default-lightblue;
       border-radius: 6px;
-      padding: 1px 3px 1px 3px;
-      background-color: $default-lightblue;
-      color: $default-blue;
+      padding: 0 7px 0 7px;
+      background-color: $default-gray;
+      color: $default-darkgray;
+
+      &:hover {
+        border: 1px solid black;
+        color: black;
+      }
     }
 
     #proj-icon {
       cursor: pointer;
       vertical-align: middle;
     }
-  }
-
-  &:hover {
-    transform: scale(1.15);
-    z-index: 5;
-    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.3);
   }
 }

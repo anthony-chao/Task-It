@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router";
 import { BiEditAlt, BiTrashAlt } from "react-icons/bi";
+import folder from "../../assets/images/folder.png";
 
 const ProjectsIndexItem = ({ project, openModal }) => {
   const { name, description } = project;
@@ -26,60 +27,79 @@ const ProjectsIndexItem = ({ project, openModal }) => {
   };
 
   const styles = {
-    actionButton: {
-      paddingRight: 10,
-      color: "green",
+    deleteButton: {
+      paddingRight: 30,
+      color: "black",
+      opacity: 0.75,
     },
-    size: 16,
+    updateButton: {
+      paddingRight: 15,
+      color: "black",
+      opacity: 0.75,
+    },
+    size: 18,
     input: {
-      fontSize: "14",
-      paddingLeft: 10,
-      // textIndent: 10,
-      // fontWeight: "bold",
-      // color: "black",
+      name: {
+        paddingLeft: 10,
+        margin: 5,
+        textTransform: "capitalize",
+        fontWeight: 500,
+        fontSize: 20,
+      },
+      description: {
+        paddingLeft: 10,
+        margin: 5,
+        fontSize: 12,
+      },
     },
   };
 
   return (
-    <div className="project-index-item">
-      <div className="project-info">
-        <ul>
-          <li>
-            <p className="project-text">Project Name:</p>
-            <p className="project-input" style={styles.input}>
-              {name}
-            </p>
-          </li>
-          <li>
-            <p className="project-text">Description:</p>
-            <p className="project-input" style={styles.input}>
-              {description}
-            </p>
-          </li>
-        </ul>
-      </div>
+    <>
+      <div className="img-container">
+        <img src={folder} alt="folder" />
+        <div className="project-index-item">
+          {/* <p>Testing testing testing</p> */}
+          <div className="project-info">
+            <ul>
+              <li>
+                <p className="project-text">Project Name:</p>
+                <p className="project-input" style={styles.input.name}>
+                  {name}
+                </p>
+              </li>
+              <li>
+                <p className="project-text">Description:</p>
+                <p className="project-input" style={styles.input.description}>
+                  {description}
+                </p>
+              </li>
+            </ul>
+          </div>
 
-      <div className="project-action-buttons">
-        <div className="project-tasks-button" onClick={handleClickProject}>
-          <p>see tasks</p>
-        </div>
+          <div className="project-action-buttons">
+            <div className="project-tasks-button" onClick={handleClickProject}>
+              <p>see tasks</p>
+            </div>
 
-        <div>
-          <BiEditAlt
-            id="proj-icon"
-            size={styles.size}
-            style={styles.actionButton}
-            onClick={handleUpdateClick}
-          />
-          <BiTrashAlt
-            id="proj-icon"
-            size={styles.size}
-            style={styles.actionButton}
-            onClick={handleDeleteClick}
-          />
+            <div>
+              <BiEditAlt
+                id="proj-icon"
+                size={styles.size}
+                style={styles.updateButton}
+                onClick={handleUpdateClick}
+              />
+              <BiTrashAlt
+                id="proj-icon"
+                size={styles.size}
+                style={styles.deleteButton}
+                onClick={handleDeleteClick}
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
