@@ -23,11 +23,31 @@ const CreateTaskForm = (props) => {
       return (e) => setState({...state, [field]: e.currentTarget.value})
     }
 
+    const [error, setError] = useState(false);
+
+    const handleError = () => {
+      if (state.description.length === 0) {
+        setError(true);
+        return true;
+      }
+      else {
+        setError(false);
+        return false;
+      }
+    }
+
     const handleSubmit = (e) => {
       e.preventDefault();
-      // props.createTask(state).then(console.log(state))
-      // .catch(() => console.log("fail"));
-      props.createTask(state).then((props.errors.description) ? () => props.closeModal() : null)
+      
+      let taskError = handleError();
+
+      if (!taskError) {
+        props.createTask(state);
+        props.closeModal();
+      }
+      else {
+        props.createTask(state);
+      }
     } 
 
     return (
@@ -47,7 +67,7 @@ const CreateTaskForm = (props) => {
             type="submit" 
             text="Submit"/>
           <button onClick={props.closeModal}>Cancel</button>
-          {(props.errors.description) ? <p className="session-error">{props.errors.description} </p> : null}
+          {(error) ? <p className="session-error">{props.errors}</p> : null}
         </form>
       </div>
     )

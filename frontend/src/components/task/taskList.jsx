@@ -19,15 +19,15 @@ const TaskList = (props) => {
         fetchUserTasks,
         fetchUsers
       } = props;
-
-    useEffect(() => {
-        (projectUrl) ? fetchProjectTasks(projectUrl) : fetchUserTasks(currentUser.id);
-    }, [props.location.pathname]);
-
-
-    useEffect(() => {
-        fetchUsers();
-    }, [])
+      
+      
+      useEffect(() => {
+          (projectUrl) ? fetchProjectTasks(projectUrl) : fetchUserTasks(currentUser.id);
+        }, [props.location.pathname]);
+        
+        useEffect(() => {
+            fetchUsers();
+        }, [props.location.pathname]);
 
     const handleCreate = () => {
         openModal({
@@ -41,45 +41,54 @@ const TaskList = (props) => {
     const history = useHistory();
 
     return (
-        <div>
-            {(tasks).length === 0 && projectUrl ? 
-                <div>
+        <div className="projects-index-container">
+            {tasks.length === 0 && projectUrl ? 
+                <div className="no-tasks-showpage">
                     <h1>There are no tasks in this project!</h1>
-                    <button onClick={handleCreate}>Add Task</button>
+                    <p onClick={handleCreate}>Add Task</p>
                 </div>
              : null}
 
-            {(tasks).length === 0 && !projectUrl ? 
-                <div>
-                    <h1>Hi {currentUser.firstName}! You currently have no assigned tasks!</h1> 
-                    <p>Click here to assign yourself some tasks: <button onClick={() => history.push('/assigntask')}>Assign Tasks</button></p>
+            {tasks.length === 0 && !projectUrl ? 
+                <div className="no-tasks-showpage">
+                    <h1>Hi {currentUser.firstName}! </h1> 
+                    <h2>You currently have no assigned tasks!</h2>
+                    <h3>Click here to assign yourself some tasks: <p onClick={() => history.push('/assigntask')}>Assign Tasks</p></h3>
                 </div>
             : null}
 
-            {(tasks).length !== 0 && projectUrl ? 
-                <div>
-                    {/* <h1> {props.project.name} </h1>
-                    <h3> {props.project.description} </h3> */}
-                    <button onClick={handleCreate}>Add Task</button>
+            {tasks.length !== 0 && projectUrl ? 
+                <div className="create-button">
+                    <p onClick={handleCreate}>Add Task</p>
                 </div>
             : null}
 
-            {Object.values(tasks).length !== 0 && !projectUrl ? 
-                <div>
-                    <h1>Hi {currentUser.firstName}! Listed are all your assigned tasks:</h1> 
+            {tasks.length !== 0 && !projectUrl ? 
+                <div className="no-tasks-showpage">
+                    <h1>Hi {currentUser.firstName}!</h1> 
+                    <h2>Listed are all your assigned tasks:</h2>
                 </div>
             : null}
 
-            {(tasks).length !== 0 ? 
-                <div>
-                    {(tasks).map(task => (
-                        <TaskItem
-                            task={task}
-                            key={task._id}
-                            users={users}
-                        />
-                    ))}
+            {(tasks.length !== 0 && Object.values(users).length !== 0)? 
+                <div className="task-show-page">
+                    <ul className="tasks-index-grid">
+                        <p id="redirect-project-index" onClick={() => history.push('/projects')}>Back to Projects</p>
+                        {(tasks).map((task, index) => (
+                            <TaskItem
+                                task={task}
+                                key={task._id}
+                                users={users}
+                                index={index}
+                            />
+                        ))}
+                    </ul>
                     <div className="rechart-container">
+                        <div clasName="pin">
+                            <div class="shadow"></div>
+                            <div class="metal"></div>
+                            <div class="bottom-circle"></div>
+                        </div>
                         < Chart data={[{name: "Completed", value: countCompleted}, {name: "Incomplete", value: countIncomplete, fill:"#FF0000"}]}/>
                     </div>
                 </div>

@@ -58,29 +58,41 @@ const TaskItem = (props) => {
 
     const allUsers = () => {
         let array = [];
-        for (let i = 0; i < task.assignedUser.length; i++) {
-            array.push(users[task.assignedUser[i]].firstName.concat(" ", users[task.assignedUser[i]].lastName))
+
+        if (task.assignedUser.length !== 0 && Object.values(users).length > 1) {
+            for (let i = 0; i < task.assignedUser.length; i++) {
+                array.push(users[task.assignedUser[i]].firstName.concat(" ", users[task.assignedUser[i]].lastName))
+            }
+            {return ([... new Set(array)].map(user => (
+                <p className="task-assigned-user">{user}</p>
+            )))}
         }
-        {return ([... new Set(array)].map(user => (
-            <p>{user}</p>
-        )))}
     }
     
     return (
-        <li key={Math.random() * 10000}>
-            <div >
-            <input type="checkbox" 
-                checked={(state.status === "Incomplete") ? false : true}
-                onChange= {handleToggle}
-                id="checkbox"
-            />
-                {task.description}
-                <br />
-                {((Object.values(users).length !== 0) && (task.assignedUser[0])) ? allUsers() : null}
-            </div>
-            <button onClick={handleUpdate}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
-        </li>
+            <li className="task-index-item" key={Math.random() * 10000}>
+                <div className="task-item-no-buttons" id="task-item-no-buttons">
+                    <div className="task-item-name">
+                        <div className="task-item-counter">
+                            <input type="checkbox" 
+                                checked={(state.status === "Incomplete") ? false : true}
+                                onChange= {handleToggle}
+                                id="checkbox"
+                            />
+                            <p>Task #{props.index + 1}</p>
+                        </div>
+                            <div>{task.description}</div>
+                    <div className="task-assigned-users">
+                        <p className="task-text">Assigned Users:</p>
+                        {((Object.values(users).length !== 0) && (task.assignedUser[0])) ? allUsers() : <p className="task-assigned-user">None</p>}
+                    </div>
+                    </div>
+                <div className="project-action-buttons">
+                    <button onClick={handleUpdate}>Edit</button>
+                    <button onClick={handleDelete}>Delete</button>
+                </div>
+                </div>
+            </li>
     )
 }
 
