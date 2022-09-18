@@ -10,7 +10,7 @@ const Splash = ({ currentUser, login, history }) => {
 
     return (
       <div className="splashContainer">
-        <main id="splash">
+        {/* <main id="splash">
           <div id="tagline">
             <h1 id="tagline-1">Branches1 is a project management tool that allows logged in users to deconstruct their projects into manageable tasks while also enabling them to visualize the completion status of the project.</h1>
           </div>
@@ -40,7 +40,30 @@ const Splash = ({ currentUser, login, history }) => {
                 <li id="gs" className="splash-link"><a href="https://www.linkedin.com/in/michaelngcen/" target="_blank" rel="noreferrer">Michael Ng Cen</a></li>
             </ul>
           </div>
-        </footer>
+        </footer> */}
+        <div className="splash-frame"></div>
+        <div className="splash-stage">
+          <div className="splash-box">
+            <div className="splash-in splash-one">
+              <p>Hello</p>
+            </div>
+          </div>
+          <div className="splash-box">
+            <div className="splash-in splash-two">
+            <p>Andrea</p>
+            </div>
+          </div>
+          <div className="splash-box">
+            <div className="splash-in splash-three">
+            <p>and</p>
+            </div>
+          </div>
+          <div className="splash-box">
+            <div className="splash-in splash-four">
+            <p>Andy!</p>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

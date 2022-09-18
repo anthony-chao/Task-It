@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { updateTask, deleteTask } from '../../actions/taskActions';
+import { updateTask, deleteTask, fetchTask } from '../../actions/taskActions';
 import { openModal, closeModal } from '../../actions/modalActions';
+import { BiEditAlt, BiTrashAlt } from "react-icons/bi";
 
 const TaskItem = (props) => {
 
@@ -13,14 +14,11 @@ const TaskItem = (props) => {
         openModal
       } = props;
 
-    const [state, setState] = useState({
-        _id: task._id,
-        projectId: task.projectId,
-        description: task.description,
-        assignedUser: task.assignedUser,
-        status: task.status,
-        editing: false
-    })
+    const [state, setState] = useState(task)
+
+    useEffect(() => {
+        setState(task);
+    }, [task]);
 
     const [loading, setLoading] = useState(false);
 
@@ -45,14 +43,14 @@ const TaskItem = (props) => {
     const handleDelete = () => {
         openModal({
             type: 'deleteTask',
-            task: state
+            task: task
         })
     }
 
     const handleUpdate = () => {
         openModal({
             type: 'updateTask',
-            task: state
+            task: task
         })
     }
 
@@ -87,9 +85,9 @@ const TaskItem = (props) => {
                         {((Object.values(users).length !== 0) && (task.assignedUser[0])) ? allUsers() : <p className="task-assigned-user">None</p>}
                     </div>
                     </div>
-                <div className="project-action-buttons">
-                    <button onClick={handleUpdate}>Edit</button>
-                    <button onClick={handleDelete}>Delete</button>
+                <div className="task-action-buttons">
+                    <BiEditAlt id="task-button-icons" onClick={handleUpdate}/>
+                    <BiTrashAlt id="task-button-icons" onClick={handleDelete}/>
                 </div>
                 </div>
             </li>
