@@ -3,18 +3,30 @@ import { connect } from "react-redux";
 import { TbSend } from "react-icons/tb";
 import { socket } from "../../util/socketUtil";
 import { BsFillChatSquareQuoteFill } from "react-icons/bs";
-// import { FontAwesomeIcon } from '@fortawesome/fontawesome-free';
-// import { faCommentAlt, faMinus } from '@fortawesome/fontawesome-free'
-// import TextField from '@mui/material/TextField';
-// import InputAdornment from '@mui/material/InputAdornment';
-// import AccountCircle from '@mui/icons-material/AccountCircle';
+import { fetchMessages, createMessage } from "../../util/messageUtil";
 
-const Chat = ({ currentUserFirstName, currentUserLastName }) => {
+
+const Chat = ({ currentUserFirstName, currentUserLastName, fetchMessages, createMessage }) => {
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
   const [toggledChat, setToggledChat] = useState(false);
 
   const chatEndRef = useRef(null);
+
+  useEffect(() => {
+    const messageArray = [];
+    fetchMessages()
+      .then(chatMessages => {
+        chatMessages.data.forEach(chatMessage => {
+          let allMessages = {};
+          allMessages.message = chatMessage.message;
+          allMessages.userName = chatMessage.userName;
+          allMessages.date = chatMessage.date
+          messageArray.push(allMessages)
+        })
+        setChat(chat.concat(messageArray));
+      })
+  }, [])
 
   useEffect(() => {
     socket.on("chatMessage", (payload) => {
@@ -28,7 +40,8 @@ const Chat = ({ currentUserFirstName, currentUserLastName }) => {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    socket.emit("chatMessage", { userName, message });
+    createMessage({message, userName, date: timestamp})
+    socket.emit("chatMessage", { userName, message, date: timestamp });
     // Send message on socket
     setMessage("");
   };
@@ -61,7 +74,7 @@ const Chat = ({ currentUserFirstName, currentUserLastName }) => {
             value={message}
             placeholder="Chat here"
             onChange={(e) => {
-              setMessage(e.target.value);
+              setMessage(e.currentTarget.value);
             }}
             required
           />
@@ -76,10 +89,10 @@ const Chat = ({ currentUserFirstName, currentUserLastName }) => {
               <p
                 className="chat-message"
                 ref={chatEndRef}
-                key={`${Math.floor(Math.random() * 10)}`}
+                key={index}
               >
                 {payload.userName}: {payload.message}
-                <span className="chat-timestamp">{timestamp}</span>
+                <span className="chat-timestamp">{payload.date}</span>
               </p>
             );
           })}
@@ -107,9 +120,9 @@ const mapStateToProps = (state) => {
     loggedIn: state.session.isAuthenticated,
     currentUserFirstName: state.session.user.firstName,
     currentUserLastName: state.session.user.lastName,
+    fetchMessages: () => fetchMessages(),
+    createMessage: message => createMessage(message)
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Chat);
+export default connect(mapStateToProps, null)(Chat);
