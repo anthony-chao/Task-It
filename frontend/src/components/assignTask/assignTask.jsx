@@ -67,12 +67,12 @@ const AssignTask = (props) => {
             <div className="assign-task-inner-div">
                 { (error.error) ? 
                     <Stack sx={{ width: '100%' }} spacing={2}>
-                        <Alert id="assign-task-alert" variant="outlined" severity="error" onClose={() => {setError({open: false})}}>You must enter a valid user and task!</Alert>
+                        <Alert id="assign-task-alert" severity="error" onClose={() => {setError({open: false})}}>You must enter a valid user and task!</Alert>
                     </Stack>
                 : null }
                 { (error.success) ? 
                     <Stack sx={{ width: '100%' }} spacing={2}>
-                        <Alert id="assign-task-alert" variant="outlined" severity="success" onClose={() => {setError({open: false})}}>You have successfully assigned {input.email.split(" ")[0]} a task!</Alert>
+                        <Alert id="assign-task-alert" severity="success" onClose={() => {setError({open: false})}}>You have successfully assigned {input.email.split(" ")[0]} a task!</Alert>
                     </Stack>
                 : null }
                 <form onSubmit={handleSubmit}>

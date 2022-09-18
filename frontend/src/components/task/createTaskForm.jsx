@@ -45,9 +45,6 @@ const CreateTaskForm = (props) => {
         props.createTask(state);
         props.closeModal();
       }
-      else {
-        props.createTask(state);
-      }
     } 
 
     return (
@@ -67,7 +64,7 @@ const CreateTaskForm = (props) => {
             type="submit" 
             text="Submit"/>
           <button onClick={props.closeModal}>Cancel</button>
-          {(error) ? <p className="session-error">{props.errors}</p> : null}
+          {(error) ? <p className="session-error">Task description cannot be empty!</p> : null}
         </form>
       </div>
     )
