@@ -5,13 +5,11 @@ const MessageSchema = new Schema({
   message: {
     type: String
   },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'users'
+  userName: {
+    type: String
   },
   date: {
-    type: Date,
-    default: Date.now
+    type: String
   }
 });
 

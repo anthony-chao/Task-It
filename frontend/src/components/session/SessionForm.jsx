@@ -15,7 +15,8 @@ const SessionForm = props => {
     };
   }, []);
 
-  const update = field => { 
+  const update = field => {
+    // console.log(userInfo);
   return e => setUserInfo({
     ...userInfo, [field]: e.currentTarget.value 
     });
@@ -29,38 +30,56 @@ const SessionForm = props => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = Object.assign({}, userInfo);
-    props.processForm(user)
+    props.processForm(user).then(response => {
+      if (!response.errors) {
+        props.login(user)
+      }
+    })
   };
 
   const demoLogin = (e) => {
     e.preventDefault();
+    let email = 'demouser@branches.com';
+    let password = 'password'
     const user = {
-      email: 'demouser@branches.com',
-      password: 'password',
+      email,
+      password
     }
-    const speed = 2;
 
-    const interval = setInterval(() => {
-      if (user.email !== '') {
-        const temp = user.email.slice(0, user.email.length + 1);
-        setUserInfo({ ...userInfo, email: temp });
-      }
-      else {
-        clearInterval(interval);
-        setUserInfo({ ...userInfo, email: 'demouser@branches.com' });
-      }
-    } , speed);
-    const interval2 = setInterval(() => {
-      if (user.password !== '') {
-        user.password = user.password.slice(0, -1);
-        setUserInfo({ ...userInfo, password: user.password });
-      }
-      else {
-        clearInterval(interval2);
-        setUserInfo({ ...userInfo, password: 'password' });
-      }
-    } , speed);
-    props.processForm(user);
+    const emailcb = () => {
+      setTimeout(() => {
+        if (email.length > 0) {
+          setUserInfo({...userInfo, email: userInfo.email + email[0]})
+          // console.log(email[0])
+          // console.log(email.slice(1))
+          // console.log(temp)
+          console.log(userInfo)
+          // console.log(userInfo.email.concat(email[0]))
+          email = email.slice(1);
+          emailcb();
+        } else {
+          console.log("--------")
+          passwordcb();
+        }
+      }, 100);
+    }
+    const passwordcb = () => {
+      setTimeout(() => {
+        if (password.length > 0) {
+          setUserInfo({...userInfo, password: userInfo.password.concat(password[0])})
+          console.log(password[0])
+          console.log(userInfo.password)
+          password = password.slice(1);
+          passwordcb();
+        } else {
+          setTimeout(() => {
+            props.processForm(user).then(closeModal());
+          }, 500);
+        }
+      }, 100)
+    }
+    props.clearReceiveErrors();
+    emailcb();
   }
 
   const { formType, otherForm } = props;

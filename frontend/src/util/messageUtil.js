@@ -5,5 +5,5 @@ export const fetchMessages = () => {
 }
 
 export const createMessage = message => {
-  return axios.post(`/api/messages/${message._id}`, message)
+  return axios.post(`/api/messages/`, message)
 }

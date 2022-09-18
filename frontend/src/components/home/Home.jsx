@@ -16,6 +16,7 @@ import anthony from "../../assets/images/profile-photos/anthony.jpg";
 import andrea from "../../assets/images/profile-photos/andrea.jpg";
 import andy from "../../assets/images/profile-photos/andy.jpg";
 import michael from "../../assets/images/profile-photos/michael.jpg";
+import Slider from "./slider"
 
 // const Dashboard = (props) => {
 
