@@ -44,7 +44,7 @@ const ProjectsIndexItem = ({ project, openModal }) => {
         margin: 5,
         textTransform: "capitalize",
         fontWeight: 500,
-        fontSize: 20,
+        fontSize: 18,
       },
       description: {
         paddingLeft: 10,
@@ -59,7 +59,6 @@ const ProjectsIndexItem = ({ project, openModal }) => {
       <div className="img-container">
         <img src={folder} alt="folder" />
         <div className="project-index-item">
-          {/* <p>Testing testing testing</p> */}
           <div className="project-info">
             <ul>
               <li>
@@ -79,7 +78,7 @@ const ProjectsIndexItem = ({ project, openModal }) => {
 
           <div className="project-action-buttons">
             <div className="project-tasks-button" onClick={handleClickProject}>
-              <p>see tasks</p>
+              <p>show tasks</p>
             </div>
 
             <div>

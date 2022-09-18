@@ -1,86 +1,86 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { createTask } from '../../actions/taskActions';
-import { closeModal } from '../../actions/modalActions';
-import { clearReceiveErrors } from '../../actions/taskActions';
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { createTask } from "../../actions/taskActions";
+import { closeModal } from "../../actions/modalActions";
+import { clearReceiveErrors } from "../../actions/taskActions";
 
 const CreateTaskForm = (props) => {
+  const [state, setState] = useState({
+    description: "",
+    status: "Incomplete",
+    projectId: props.projectId,
+    assignedUser: [],
+  });
 
-    const [state, setState] = useState({
-      description: '',
-      status: 'Incomplete',
-      projectId: props.projectId,
-      assignedUser: []
-    })
+  useEffect(() => {
+    return () => {
+      props.clearReceiveErrors();
+    };
+  }, []);
 
-    useEffect(() => {
-      return () => {
-        props.clearReceiveErrors();
-      };
-    }, []);
+  const handleUpdate = (field) => {
+    return (e) => setState({ ...state, [field]: e.currentTarget.value });
+  };
 
-    const handleUpdate = (field) => {
-      return (e) => setState({...state, [field]: e.currentTarget.value})
+  const [error, setError] = useState(false);
+
+  const handleError = () => {
+    if (state.description.length === 0) {
+      setError(true);
+      return true;
+    } else {
+      setError(false);
+      return false;
     }
+  };
 
-    const [error, setError] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    const handleError = () => {
-      if (state.description.length === 0) {
-        setError(true);
-        return true;
-      }
-      else {
-        setError(false);
-        return false;
-      }
+    let taskError = handleError();
+
+    if (!taskError) {
+      props.createTask(state);
+      props.closeModal();
     }
+  };
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      
-      let taskError = handleError();
+  return (
+    <div className="task-form-container">
+      <h1>Add Task</h1>
+      <form className="form-content" onSubmit={handleSubmit}>
+        <label className="form-label">
+          Task:
+          <input
+            type="text"
+            placeholder="Describe your task"
+            value={state.description}
+            onChange={handleUpdate("description")}
+          />
+          {error ? (
+            <p className="task-error">Task description cannot be empty!</p>
+          ) : null}
+        </label>
 
-      if (!taskError) {
-        props.createTask(state);
-        props.closeModal();
-      }
-    } 
-
-    return (
-      <div className='task-form-container'>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <input
-              className='task-form-desc'
-              type="text" 
-              placeholder="Describe your task"
-              value={state.description}
-              onChange={handleUpdate('description')}
-            />
-          </label>
-          <input 
-            className='task-form-submit'
-            type="submit" 
-            text="Submit"/>
+        <div className="button-container">
+          <button type="submit">Submit</button>
           <button onClick={props.closeModal}>Cancel</button>
-          {(error) ? <p className="session-error">Task description cannot be empty!</p> : null}
-        </form>
-      </div>
-    )
-}
+        </div>
+      </form>
+    </div>
+  );
+};
 
 const mapStateToProps = (state, ownProps) => {
-    return {
-      // projectId: ownProps.match.params.projectId
-      errors: state.errors.task
-    }
-}
+  return {
+    errors: state.errors.task,
+  };
+};
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   createTask: (task) => dispatch(createTask(task)),
   closeModal: () => dispatch(closeModal()),
-  clearReceiveErrors: () => dispatch(clearReceiveErrors())
-})
+  clearReceiveErrors: () => dispatch(clearReceiveErrors()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateTaskForm);

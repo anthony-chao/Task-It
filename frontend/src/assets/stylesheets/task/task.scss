@@ -1,58 +1,89 @@
 @import "../variables.scss";
 
-.task-info-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.task-info {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  text-transform: capitalize;
-
-  span {
-    margin: 20px 0 20px 40px;
-    font-size: $font-size-30;
-    padding-right: 20px;
-    color: black;
-  }
-}
+//Modal styling
 
 .task-form-container {
-  display: flex;
   width: 100%;
-  justify-content: center;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 
-  .task-form-desc {
-    padding: 20px;
-    border-radius: 10px;
-    font-size: $font-size-16;
-    color: $default-blue;
-    background-color: $default-lightblue;
-    border: none;
-    margin-right: 20px;
-
-    &:focus {
-      color: $default-red;
-      background-color: $default-gray;
-    }
+  h1 {
+    font-size: $font-size-20;
+    align-self: center;
+    color: $default-indigo;
+    margin: 5px 0 20px 0;
   }
 
-  .task-form-submit {
-    padding: 20px;
-    border-radius: 10px;
-    font-size: $font-size-16;
-    color: $default-blue;
-    background-color: $default-lightblue;
-    border: none;
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $default-darkgray;
+    margin: 10px;
 
-    &:hover {
-      color: $default-green;
-      background-color: white;
-      border: 1px solid $default-green;
+    .form-label {
+      font-size: $font-size-14;
+      width: 100%;
+    }
+
+    input {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 258px;
+      padding: 10px;
+      margin: 10px 0 10px 0;
+      border: 1px solid $default-darkgray;
+      border-radius: 6px;
+      color: $default-darkgray;
+      font-size: $font-size-14;
+      // background-color: $default-lighterblue;
+
+      &:focus {
+        outline: none;
+        border: 2px solid $default-indigo;
+        color: $default-indigo;
+      }
+    }
+
+    .task-error {
+      color: $default-red;
+      display: flex;
+      align-self: flex-start;
+      // flex-direction: flex-start;
+      align-items: flex-start;
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    .button-container {
+      margin-top: 20px;
+
+      button {
+        cursor: pointer;
+        padding: 10px;
+        margin: 10px;
+        border: 2px solid $default-indigo;
+        border-radius: 10px;
+        font-size: $font-size-16;
+        color: $default-indigo;
+
+        &:hover {
+          background-color: $default-indigo;
+          color: white;
+        }
+      }
+
+      #delete-button {
+        &:hover {
+          background-color: $default-red;
+          border: 2px solid $default-red;
+          color: white;
+        }
+      }
     }
   }
 }
@@ -86,8 +117,8 @@
   width: 15em;
   padding: 1em;
   transform: rotate(-6deg);
-  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-  transition: transform .15s linear;
+  box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+  transition: transform 0.15s linear;
 }
 
 .task-text {
@@ -107,26 +138,27 @@
   padding: 0;
 }
 
-.task-index-item:nth-child(even) .task-item-no-buttons{
+.task-index-item:nth-child(even) .task-item-no-buttons {
   transform: rotate(4deg);
   position: relative;
   top: 5px;
   background: #cfc;
 }
-.task-index-item:nth-child(3n) .task-item-no-buttons{
+.task-index-item:nth-child(3n) .task-item-no-buttons {
   transform: rotate(-3deg);
   position: relative;
   top: -5px;
   background: #ccf;
 }
-.task-index-item:nth-child(5n) .task-item-no-buttons{
+.task-index-item:nth-child(5n) .task-item-no-buttons {
   transform: rotate(5deg);
   position: relative;
   top: -10px;
 }
 
-#task-item-no-buttons:hover, #task-item-no-buttons:focus{
-  box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+#task-item-no-buttons:hover,
+#task-item-no-buttons:focus {
+  box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
   transform: scale(1.25);
   position: relative;
   z-index: 5;
@@ -158,7 +190,7 @@ input[type="checkbox"] {
 .rechart-container {
   --paper-dark: #fdfd9a;
   --paper-color: #fdfd9a;
-  --paper-shadow: #FDFD97;
+  --paper-shadow: #fdfd97;
   margin-top: 20px;
   position: sticky;
   top: 50px;
@@ -316,7 +348,7 @@ input[type="checkbox"] {
     padding: 1px 3px 1px 3px;
     background-color: $default-lightblue;
     color: $default-blue;
-    
+
     &:hover {
       transform: scale(1.15);
       z-index: 5;
@@ -334,7 +366,6 @@ input[type="checkbox"] {
   --shadow-size: 1px;
   --transparent: rgba(236, 178, 186, 0);
 }
-
 
 // assign tasks styling
 
@@ -355,7 +386,7 @@ input[type="checkbox"] {
   --transparent: rgba(255, 255, 255, 0);
 
   --paper-color: #e0f9d5;
-  --paper-dark: #B3C7AA;
+  --paper-dark: #b3c7aa;
   --shadow-size: 3px;
   --transparent: rgba(213, 224, 249, 0);
 }
@@ -478,13 +509,11 @@ input[type="checkbox"] {
   justify-content: center;
   border: 10px solid #d8d1c5;
   background-color: #cde2ca;
-
 }
 
 .assign-task-inner-div > div {
   width: 0;
 }
-
 
 #assign-task-button {
   cursor: pointer;
@@ -513,52 +542,4 @@ input[type="checkbox"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.task-action-buttons {
-  display: flex;
-  justify-content: right;
-}
-
-#task-button-icons {
-  height: 20px;
-  width: auto;
-  margin-left: 10px;
-
-  &:hover {
-    transform: scale(1.15);
-    z-index: 5;
-  }
-}
-
-.task-showpage-top-buttons {
-  display: flex;
-  flex-direction: column;
-}
-
-#redirect-project-index > svg {
-  height: 50px;
-  width: 50px;
-
-  &:hover {
-    transform: scale(1.15);
-    z-index: 5;
-  }
-}
-
-#redirect-project-index {
-  margin: 0;
-}
-
-#add-task-icon {
-  height: 25px;
-  width: auto;
-}
-
-.task-showpage-project-name {
-  color: $default-red;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 0;
 }

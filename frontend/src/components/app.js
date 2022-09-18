@@ -17,7 +17,10 @@ const App = () => (
       <ProtectedRoute exact path="/home" component={HomeContainer} />
       <Chat />
       <Switch>
-        <ProtectedRoute path="/projects/:projectId" component={TaskListContainer} />
+        <ProtectedRoute
+          path="/projects/:projectId"
+          component={TaskListContainer}
+        />
         <ProtectedRoute path="/tasks" component={TaskListContainer} />
         <ProtectedRoute path="/projects" component={ProjectsIndexContainer} />
         <ProtectedRoute path="/assigntask" component={AssignTaskContainer} />
@@ -25,9 +28,9 @@ const App = () => (
       </Switch>
     </div>
 
-    <div className="side-drawer-container">
+    <>
       <ProtectedRoute path="/" component={PermanentDrawer} />
-    </div>
+    </>
   </div>
 );
 
