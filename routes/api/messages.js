@@ -15,7 +15,8 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const newMessage = new Message ({
     message: req.body.message,
-    user: req.body.user,
+    userName: req.body.userName,
+    date: req.body.date
   })
 
   newMessage.save().then(res.json(newMessage));

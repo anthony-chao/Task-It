@@ -31,20 +31,20 @@ router.get("/", (req, res) => {
 
 // GET PROJECT BY PROJECT ID
 router.get("/:id", (req, res) => {
-  // Project.findById(req.params.id)
-  //     .then(project => res.json(project))
-  //     .catch(err =>
-  //         res.status(404).json({ noprojectfound: 'No project found with that ID' })
-  //     );
-  Project.findById(req.params.id).then((project) => {
-    const payload = {};
-    console.log(project)
-    payload.projects = project;
-    Task.find({ projectId: req.params.id }).then((tasks) => {
-      payload.tasks = tasks;
-      res.json(payload);
-    });
-  });
+  Project.findById(req.params.id)
+      .then(project => res.json(project))
+      .catch(err =>
+          res.status(404).json({ noprojectfound: 'No project found with that ID' })
+      );
+  // Project.findById(req.params.id).then((project) => {
+  //   const payload = {};
+  //   console.log(project)
+  //   payload.projects = project;
+  //   Task.find({ projectId: req.params.id }).then((tasks) => {
+  //     payload.tasks = tasks;
+  //     res.json(payload);
+  //   });
+  // });
 });
 
 // CREATE PROJECT

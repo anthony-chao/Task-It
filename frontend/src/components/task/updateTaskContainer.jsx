@@ -5,18 +5,32 @@ import { closeModal } from "../../actions/modalActions";
 import { clearReceiveErrors } from "../../actions/taskActions";
 
 const UpdateTaskForm = (props) => {
+  const { task, updateTask, closeModal } = props;
+
   const [state, setState] = useState({
-    _id: props.task._id,
-    description: props.task.description,
-    status: props.task.status,
-    projectId: props.task.projectId,
-    assignedUser: props.task.assignedUser,
+    _id: task._id,
+    description: task.description,
+    status: task.status,
+    projectId: task.projectId,
+    assignedUser: task.assignedUser,
   });
 
+  // useEffect(() => {
+  //   return () => {
+  //     clearReceiveErrors();
+  //   };
+  // }, []);
+
   useEffect(() => {
-    return () => {
-      props.clearReceiveErrors();
-    };
+    if (task) {
+      setState({
+        _id: task._id,
+        description: task.description,
+        status: task.status,
+        projectId: task.projectId,
+        assignedUser: task.assignedUser,
+      });
+    }
   }, []);
 
   const handleUpdate = (field) => {
@@ -41,8 +55,9 @@ const UpdateTaskForm = (props) => {
     const taskError = handleError();
 
     if (!taskError) {
-      props.updateTask(state);
-      props.closeModal();
+      updateTask(state);
+      setState({ description: state.description });
+      closeModal();
     }
   };
 

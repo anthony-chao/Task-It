@@ -42,8 +42,6 @@ const CreateTaskForm = (props) => {
     if (!taskError) {
       props.createTask(state);
       props.closeModal();
-    } else {
-      props.createTask(state);
     }
   };
 
@@ -59,7 +57,9 @@ const CreateTaskForm = (props) => {
             value={state.description}
             onChange={handleUpdate("description")}
           />
-          {error ? <p className="task-error">{props.errors}</p> : null}
+          {error ? (
+            <p className="task-error">Task description cannot be empty!</p>
+          ) : null}
         </label>
 
         <div className="button-container">
