@@ -21,7 +21,14 @@ const ProjectsIndex = ({ projects, fetchProjects, openModal }) => {
       <div className="create-button">
         <p onClick={handleCreateClick}>
           Create a Project
-          <FiFolderPlus size={25} style={{ color: "black", paddingLeft: 15 }} />
+          <FiFolderPlus
+            size={25}
+            style={{
+              color: "black",
+              opacity: 0.75,
+              paddingLeft: 10,
+            }}
+          />
         </p>
       </div>
 

@@ -15,7 +15,7 @@
     background-color: $background-color;
     font-family: $font-family;
     margin: 0;
-    color-scheme: dark;
+    // color-scheme: dark;
     height: 100%;
     width: 100%;
     // display: block;
@@ -56,12 +56,12 @@
   padding-top: 90px;
   color: white;
 
-  ul,
-  li {
-    list-style: none;
+  // ul,
+  // li {
+  //   list-style: none;
 
-    &:hover {
-      background-color: $default-gray;
-    }
-  }
+  //   &:hover {
+  //     background-color: $default-gray;
+  //   }
+  // }
 }

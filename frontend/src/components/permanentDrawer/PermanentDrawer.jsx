@@ -125,118 +125,78 @@ import ListItemText from "@mui/material/ListItemText";
 import { connect } from "react-redux";
 import { useHistory, useLocation } from "react-router";
 import { makeStyles } from "@mui/styles";
-import Home from "../home/Home";
+import {
+  AiOutlineHome,
+  AiFillFolderOpen,
+  AiOutlineOrderedList,
+  AiOutlineCheckSquare,
+  AiOutlineCalendar,
+} from "react-icons/ai";
+import { flexbox, style } from "@mui/system";
 
 const drawerWidth = 240;
 
-// const useStyles = makeStyles({
-//   page: {
-//     background: '#add8e6',
-//     width: '100%',
-//   },
-//   drawer: {
-//     width: drawerWidth,
-//   },
-//   drawerPaper: {
-//     width: drawerWidth,
-//   },
-//   root: {
-//     display: 'flex'
-//   }
-// })
-
 const PermanentDrawer = ({ currentUserId }) => {
-  // const classes = useStyles();
+  const drawerIcons = (text) => {
+    const styles = {
+      style: {
+        paddingBottom: 10,
+        color: "white",
+      },
+      size: 30,
+    };
 
-  const ListIcons = () => {
-    return;
+    if (text === "Home") {
+      return <AiOutlineHome style={styles.style} size={styles.size} />;
+    } else if (text === "Projects") {
+      return <AiFillFolderOpen style={styles.style} size={styles.size} />;
+    } else if (text === "Tasks") {
+      return <AiOutlineOrderedList style={styles.style} size={styles.size} />;
+    } else if (text === "Assign Task") {
+      return <AiOutlineCheckSquare style={styles.style} size={styles.size} />;
+    } else if (text === "Calendar") {
+      return <AiOutlineCalendar style={styles.style} size={styles.size} />;
+    }
   };
 
   const history = useHistory();
   const location = useLocation();
 
   const handleClick = (text) => {
-    if (text === "Projects" && location.pathname !== `/projects`) {
+    if (text === "Home" && location.pathname !== `/home`) {
+      return history.push(`/home`);
+    } else if (text === "Projects" && location.pathname !== `/projects`) {
       return history.push(`/projects`);
     } else if (text == "Tasks" && location.pathname !== `/tasks`) {
       return history.push(`/tasks`);
     } else if (text == "Assign Task" && location.pathname !== `/assigntask`) {
       return history.push(`/assigntask`);
+    } else if (text == "Calendar" && location.pathname !== `/calendar`) {
+      return history.push(`/calendar`);
     }
     return;
   };
 
   return (
-    // <div className={classes.root}>
-    //   {/* AppBar
-    //   side drawer */}
-    //   <Drawer
-    //     className={classes.drawer}
-    //     variant='permanent'
-    //     anchor='left'
-    //     classes={{ paper: classes.drawerPaper }}
-    //   >
-    //     <div>
-    //       <Typography variant="h5">
-    //         User name and Avatar
-    //       </Typography>
-    //     </div>
-    //   </Drawer>
-
-    //   <div className={classes.page}>
-    //     <div className='home-container'>
-    //     </div>
-    //   </div>
-    // </div>
-
-    // <Box sx={{ display: 'flex' }}>
-    //   <Drawer
-    //     sx={{
-    //       width: drawerWidth,
-    //       flexShrink: 0,
-    //       '& .MuiDrawer-paper': {
-    //         width: drawerWidth,
-    //         boxSizing: 'border-box',
-    //       },
-    //     }}
-    //     variant="permanent"
-    //     anchor="left"
-    //   >
-    //     <Toolbar />
-    //     <Divider style={{ height: '40px'}}/>
-    //     <List>
-    //       {['Projects', 'Tasks', 'Assign Task', 'Calendar', 'Logout'].map((text, index) => (
-    //         <ListItem key={`${text}-${index}`} disablePadding onClick={() => handleClick(text)}>
-    //           <ListItemButton>
-    //             <ListItemIcon>
-    //               {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-
-    //             </ListItemIcon>
-    //             <ListItemText primary={text} />
-    //           </ListItemButton>
-    //         </ListItem>
-    //       ))}
-    //     </List>
-    //   </Drawer>
-    // </Box>
-
-    <>
-      {["Projects", "Tasks", "Assign Task", "Calendar"].map((text, index) => (
-        <ul key={`${text}-${index}`} className="side-drawer-items">
-          <li onClick={() => handleClick(text)}>{text}</li>
-        </ul>
-      ))}
-    </>
+    <div className="side-drawer-container">
+      {["Home", "Projects", "Tasks", "Assign Task", "Calendar"].map(
+        (text, index) => (
+          <ul key={`${text}-${index}`} className="side-drawer-items">
+            <li onClick={() => handleClick(text)}>
+              {drawerIcons(text)}
+              {text}
+            </li>
+          </ul>
+        )
+      )}
+    </div>
   );
 };
 
 const mapStateToProps = (state) => ({
-  // userProjects: Object.values(state.entities.projects),
   currentUserId: state.session.user.id,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  // openModal: (formType, project) => dispatch(openModal(formType, project)),
-});
+// const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(PermanentDrawer);
+export default connect(mapStateToProps, null)(PermanentDrawer);

@@ -2,8 +2,21 @@
 
 .side-drawer-items {
   cursor: pointer;
+  padding: 10px;
 
   li {
-    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    // border: 1px solid red;
+  }
+  ul:active {
+    background-color: $default-green;
+    color: aquamarine;
+  }
+
+  &:hover {
+    background-color: $default-lightblue;
   }
 }

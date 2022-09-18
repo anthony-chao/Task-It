@@ -1,93 +1,39 @@
 @import "../variables.scss";
 
-// .project-form-container {
-//   //   border: 1px solid red;
-//   padding: 0 20px 0 20px;
-//   color: $default-blue;
-
-//   h1 {
-//     text-align: center;
-//   }
-// }
-
-// .create-project-header {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   width: 100%;
-//   height: 100%;
-//   margin-top: 20px;
-
-//   input {
-//     width: 75%;
-//     // max-width: 568px;
-//     // min-width: 200px;
-//     padding: 18px;
-//     border-radius: 10px;
-//     border: 1px solid #ccc;
-//     margin: 0 20px 10px 0;
-//     color: black;
-//     background-color: $default-gray;
-//     cursor: pointer;
-
-//     &:hover {
-//       border: 2px solid #0a1929;
-//     }
-//     &:focus {
-//       border: 2px solid $default-blue;
-//     }
-//   }
-// }
-// ------
-// .create-project-input {
-//   width: 70%;
-//   max-width: 100%;
-//   background-color: white;
-//   color: #0a1929;
-//   justify-content: center;
-// }
-
-// .create-project-header input {
-//   width: 75%;
-//   // max-width: 568px;
-//   // min-width: 200px;
-//   padding: 18px;
-//   border-radius: 10px;
-//   border: 1px solid #ccc;
-//   //   margin-bottom: 10px;
-//   color: #0a1929;
-//   &:hover {
-//     border: 2px solid #0a1929;
-//   }
-//   &:focus {
-//     border: 2px solid $default-blue;
-//   }
-// }
-
 .projects-index-container {
+  width: 100%;
   margin: 20px 0 50px 0;
   // font-family: $font-family-Rubik;
 }
 
 .create-button {
-  margin: 10px 10px 20px 10px;
-  width: 250px;
+  margin: 10px 10px 10px 10px;
+  width: 200px;
   display: flex;
   color: $default-red;
-  // border: 1px solid green;
+  padding: 10px;
+  justify-content: flex-start;
+  border: 1px solid transparent;
 
   p {
-    display: flex;
     margin: 0;
+    display: flex;
     font-size: $font-size-20;
     cursor: pointer;
+  }
+
+  &:hover {
+    border: 1px solid white;
+    border-radius: 15px;
+    background-color: $default-red;
+    color: white;
   }
 }
 
 .projects-index-grid {
   margin: 10px;
   display: grid;
-  grid-template-columns: repeat(4, 260px);
+  grid-template-columns: repeat(3, 260px);
   // grid-template-rows: repeat(3, 250px);
   column-gap: 30px;
   row-gap: 10px;
@@ -107,7 +53,7 @@
   &:hover {
     transform: scale(1.2);
     z-index: 5;
-    transition: 0.25s ease-out;
+    transition: 0.3s ease-out;
 
     &:hover,
     img {
@@ -138,7 +84,8 @@
 
       .project-text {
         font-size: $font-size-12;
-        font-weight: 300;
+        font-weight: 200;
+
         color: $default-darkgray;
         margin: 0;
         padding: 0;
@@ -187,6 +134,93 @@
     #proj-icon {
       cursor: pointer;
       vertical-align: middle;
+    }
+  }
+}
+
+// Modal styling
+.project-form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: $font-size-20;
+    align-self: center;
+    color: $default-indigo;
+    margin: 5px 0 20px 0;
+  }
+
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $default-darkgray;
+    margin: 10px;
+
+    .form-label {
+      font-size: $font-size-14;
+      width: 100%;
+    }
+
+    input {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 258px;
+      padding: 10px;
+      margin: 10px 0 10px 0;
+      border: 1px solid $default-darkgray;
+      border-radius: 6px;
+      color: $default-darkgray;
+      font-size: $font-size-14;
+      // background-color: $default-lighterblue;
+
+      &:focus {
+        outline: none;
+        border: 2px solid $default-indigo;
+        color: $default-indigo;
+      }
+    }
+
+    .project-error {
+      color: $default-red;
+      display: flex;
+      align-self: flex-start;
+      // flex-direction: flex-start;
+      align-items: flex-start;
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    .button-container {
+      margin-top: 20px;
+
+      button {
+        cursor: pointer;
+        padding: 10px;
+        margin: 10px;
+        border: 2px solid $default-indigo;
+        border-radius: 10px;
+        font-size: $font-size-16;
+        color: $default-indigo;
+
+        &:hover {
+          background-color: $default-indigo;
+          color: white;
+        }
+      }
+
+      #delete-button {
+        &:hover {
+          background-color: $default-red;
+          border: 2px solid $default-red;
+          color: white;
+        }
+      }
     }
   }
 }
