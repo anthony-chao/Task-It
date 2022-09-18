@@ -7,13 +7,12 @@ module.exports = function validateProjectInput(data) {
   data.name = validText(data.name) ? data.name : "";
   data.description = validText(data.description) ? data.description : "";
 
-  if (!Validator.isLength(data.name, { min: 5, max: 30 })) {
-    errors.name = "Project name must be between 5 and 30 characters";
+  if (!Validator.isLength(data.name, { min: 3, max: 40 })) {
+    errors.name = 'Project name must be between 3 and 40 characters';
   }
 
-  if (!Validator.isLength(data.description, { min: 5, max: 40 })) {
-    errors.description =
-      "Project description must be between 5 and 30 characters";
+  if (!Validator.isLength(data.description, { min: 3, max: 40 })) {
+    errors.description = 'Project description must be between 3 and 40 characters';
   }
 
   if (Validator.isEmpty(data.name)) {
