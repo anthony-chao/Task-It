@@ -3,20 +3,34 @@ import * as ProjectAPI from "../util/projectUtil";
 export const RECEIVE_PROJECTS = "RECEIVE_PROJECTS";
 export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
 export const REMOVE_PROJECT = "REMOVE_PROJECT";
+export const RECEIVE_PROJECT_ERRORS = "RECEIVE_PROJECT_ERRORS";
+export const CLEAR_RECEIVE_ERRORS = "CLEAR_RECEIVE_ERRORS";
 
 const receiveProjects = (projects) => ({
   type: RECEIVE_PROJECTS,
   projects: projects.data,
 });
 
-const receiveProject = project => ({
-    type: RECEIVE_PROJECT,
-    project: project.data
-})
+const receiveProject = (project) => ({
+  type: RECEIVE_PROJECT,
+  project: project.data,
+});
 
 const removeProject = (projectId) => ({
   type: REMOVE_PROJECT,
   projectId,
+});
+
+const receiveProjectErrors = (errors) => {
+  // debugger;
+  return {
+    type: RECEIVE_PROJECT_ERRORS,
+    errors,
+  };
+};
+
+export const clearReceiveErrors = () => ({
+  type: CLEAR_RECEIVE_ERRORS,
 });
 
 export const fetchProjects = () => (dispatch) => {
@@ -40,14 +54,18 @@ export const fetchProject = (projectId) => (dispatch) => {
 export const createProject = (project) => (dispatch) => {
   return ProjectAPI.createProject(project)
     .then((project) => dispatch(receiveProject(project)))
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      dispatch(receiveProjectErrors(err.response.data));
+    });
 };
 
 export const updateProject = (project) => (dispatch) => {
-  debugger;
+  // debugger;
   return ProjectAPI.updateProject(project)
     .then((project) => dispatch(receiveProject(project)))
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      dispatch(receiveProjectErrors(err.response.data));
+    });
 };
 
 export const deleteProject = (projectId) => (dispatch) => {

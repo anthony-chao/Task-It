@@ -1,16 +1,19 @@
 import { connect } from "react-redux";
-import { updateProject } from "../../actions/projectActions";
+import {
+  updateProject,
+  clearReceiveErrors,
+} from "../../actions/projectActions";
 import ProjectForm from "./ProjectForm";
 import { closeModal } from "../../actions/modalActions";
 
 const mapStateToProps = (state) => ({
-  currentUser: state.session.user.id,
   formType: "Update Project",
-  errors: state.errors.session,
+  errors: state.errors.project,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateProject: (project) => dispatch(updateProject(project)),
+  clearErrors: () => dispatch(clearReceiveErrors()),
   closeModal: () => dispatch(closeModal()),
 });
 

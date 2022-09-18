@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 
 const ProjectForm = (props) => {
   const {
-    currentUser,
     formType,
     errors,
     createProject,
     updateProject,
     project,
+    clearErrors,
     closeModal,
   } = props;
 
@@ -20,8 +20,22 @@ const ProjectForm = (props) => {
     members: [],
   });
 
+  const [error, setError] = useState({
+    empty: false,
+    length: false,
+  });
+
+  const handleError = () => {
+    if (projectInfo.description.length === 0) {
+      setError(true);
+      return true;
+    }
+    setError(false);
+    return false;
+  };
+
   useEffect(() => {
-    if (project !== undefined) {
+    if (project) {
       setProjectInfo({
         _id: project._id,
         name: project.name,
@@ -33,6 +47,12 @@ const ProjectForm = (props) => {
     }
   }, []);
 
+  useEffect(() => {
+    return () => {
+      clearErrors();
+    };
+  }, []);
+
   const handleUpdate = (field) => {
     return (e) =>
       setProjectInfo({
@@ -41,17 +61,35 @@ const ProjectForm = (props) => {
       });
   };
 
+  // const renderErrors = () => {
+  // let errorMsg = Object.values(errors);
+  // console.log(errors);
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    formType === "Create a Project"
-      ? createProject(projectInfo)
-      : updateProject(projectInfo);
-    closeModal();
+    // let projectError = handleError();
+    // if (!projectError)
+
+    const projectData = Object.assign({}, projectInfo);
+    if (formType === "Create a Project") {
+      createProject(projectData).then((response) => {
+        if (response !== undefined) {
+          closeModal();
+        }
+      });
+    } else {
+      updateProject(projectData).then((response) => {
+        if (response !== undefined) {
+          closeModal();
+        }
+      });
+    }
   };
 
   return (
     <div className="project-form-container">
-      <h1>{console.log("###", `${formType}`)}</h1>
+      <h1>{formType}</h1>
       <form className="create-project-header" onSubmit={handleSubmit}>
         <label className="create-project-label">
           Name:
@@ -62,6 +100,8 @@ const ProjectForm = (props) => {
             placeholder="Name"
             onChange={handleUpdate("name")}
           />
+          {/* {errors.name ? renderErrors() : null} */}
+          {errors.name ? <p className="proj-error">{errors.name}</p> : null}
         </label>
         <br />
         <label className="create-project-label">
@@ -73,6 +113,10 @@ const ProjectForm = (props) => {
             placeholder="Description"
             onChange={handleUpdate("description")}
           />
+          {/* {errors.description ? renderErrors() : null} */}
+          {errors.description ? (
+            <p className="proj-error">{errors.description}</p>
+          ) : null}
         </label>
         <br />
         <input
