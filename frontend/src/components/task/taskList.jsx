@@ -10,6 +10,7 @@ import { BiUndo } from "react-icons/bi";
 import { CgFileAdd } from "react-icons/cg";
 import { fetchProject } from "../../actions/projectActions";
 import backarrow from '../../assets/images/backarrow.png';
+import LoadingContainer from "../util/LoadingContainer";
 // import backarrow from '../../assets/images/backarrow-clouds.png';
 
 const TaskList = (props) => {
@@ -21,23 +22,11 @@ const TaskList = (props) => {
     fetchProjectTasks,
     openModal,
     fetchUserTasks,
-    fetchUsers,
-    fetchProject,
     projects,
   } = props;
 
   useEffect(() => {
     projectUrl ? fetchProjectTasks(projectUrl) : fetchUserTasks(currentUser.id);
-  }, [props.location.pathname]);
-
-  useEffect(() => {
-    if (projectUrl) {
-      fetchProject(projectUrl);
-    }
-  }, [props.location.pathname]);
-
-  useEffect(() => {
-    fetchUsers();
   }, [props.location.pathname]);
 
   const handleCreate = () => {
@@ -61,6 +50,8 @@ const TaskList = (props) => {
 
   return (
     <div className="projects-index-container">
+      {Object.values(users).length > 1 && (Object.values(projects).length < 2 || !projectUrl) ?  (
+        <div>
       {projectUrl ? (
         <div className="task-showpage-top">
           <p id="redirect-project-index">
@@ -116,7 +107,7 @@ const TaskList = (props) => {
         </div>
       ) : null}
 
-      {tasks.length !== 0 && Object.values(users).length !== 0 ? (
+      {tasks.length !== 0 ? (
         <div className="task-show-page">
           <ul className="tasks-index-grid">
             {tasks.map((task, index) => (
@@ -147,6 +138,7 @@ const TaskList = (props) => {
           </div>
         </div>
       ) : null}
+    </div>) : <LoadingContainer/> }
     </div>
   );
 };

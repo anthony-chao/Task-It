@@ -551,6 +551,8 @@ $clr4: #F3BCAA;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     border-radius: 50%;
     background: rgb(darken($clr2,6%),0.6);
     animation: grow 0.5s 3s cubic-bezier(0.66,-0.30,0.66,1) forwards;
