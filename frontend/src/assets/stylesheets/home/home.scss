@@ -199,15 +199,14 @@
 .home-container {
   display: flex;
   flex-direction: column;
-  position: relative;
-  // align-items: center;
+  // position: relative;
+  align-items: center;
 }
 
 .instructions-container {
-  width: 900px;
-  height: 100px;
+
+  width: 1000px;
   border: 1px solid purple;
-  // align-self: center;
 }
 
 .about-us-container {
@@ -218,10 +217,10 @@
   justify-content: center;
   border: 1px solid red;
   // align-self: center;
-  position: absolute;
+  // position: absolute;
   // top: 50%;
   // right: 70%;
-  transform: translate(50%, 25%);
+  // transform: translate(50%, 25%);
 
   #social-link {
     width: 25px;

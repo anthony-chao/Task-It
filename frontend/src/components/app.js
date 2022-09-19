@@ -15,7 +15,7 @@ const App = () => (
     <div className="main-container">
       <NavBarContainer />
       <ProtectedRoute exact path="/home" component={HomeContainer} />
-      <Chat />
+      <ProtectedRoute path="/" component={Chat} />
       <Switch>
         <ProtectedRoute
           path="/projects/:projectId"
