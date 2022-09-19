@@ -136,7 +136,7 @@ import { flexbox, style } from "@mui/system";
 
 const drawerWidth = 240;
 
-const PermanentDrawer = ({ currentUserId }) => {
+const PermanentDrawer = ({ currentUserName }) => {
   const drawerIcons = (text) => {
     const styles = {
       style: {
@@ -179,6 +179,7 @@ const PermanentDrawer = ({ currentUserId }) => {
 
   return (
     <div className="side-drawer-container">
+      <div className="user-avatar">Hi, {currentUserName}!</div>
       {["Home", "Projects", "Tasks", "Assign Task", "Calendar"].map(
         (text, index) => (
           <ul key={`${text}-${index}`} className="side-drawer-items">
@@ -194,7 +195,7 @@ const PermanentDrawer = ({ currentUserId }) => {
 };
 
 const mapStateToProps = (state) => ({
-  currentUserId: state.session.user.id,
+  currentUserName: state.session.user.firstName,
 });
 
 // const mapDispatchToProps = (dispatch) => ({});
