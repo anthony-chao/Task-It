@@ -3,6 +3,7 @@ import {
   RECEIVE_PROJECT,
   REMOVE_PROJECT,
 } from "../actions/projectActions";
+import { RECEIVE_PROJECT_TASKS } from "../actions/taskActions";
 
 const projectsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -19,6 +20,9 @@ const projectsReducer = (state = {}, action) => {
     case REMOVE_PROJECT:
       delete nextState[action.projectId];
       return nextState;
+    case RECEIVE_PROJECT_TASKS:
+      nextState = {}
+      return Object.assign(nextState, { [action.payload.projects._id]: action.payload.projects });
     default:
       return state;
   }
