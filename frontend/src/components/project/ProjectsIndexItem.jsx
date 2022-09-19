@@ -42,7 +42,7 @@ const ProjectsIndexItem = ({ project, openModal }) => {
       name: {
         paddingLeft: 10,
         margin: 5,
-        textTransform: "capitalize",
+        // textTransform: "capitalize",
         fontWeight: 500,
         fontSize: 18,
       },
