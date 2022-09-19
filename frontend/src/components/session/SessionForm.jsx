@@ -1,6 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const SessionForm = (props) => {
+
+  const userInfoRef = useRef({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  })
+
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
@@ -13,6 +21,10 @@ const SessionForm = (props) => {
       props.clearReceiveErrors();
     };
   }, []);
+
+  useEffect(() => {
+    userInfoRef.current = userInfo;
+  },[userInfo])
 
   const update = (field) => {
     return (e) =>
@@ -41,24 +53,20 @@ const SessionForm = (props) => {
     e.preventDefault();
     let email = 'demouser@branches.com';
     let password = 'password'
-    const user = {
-      email,
-      password
-    }
+    setUserInfo({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+    })
 
     const emailcb = () => {
       setTimeout(() => {
         if (email.length > 0) {
-          setUserInfo({...userInfo, email: userInfo.email + email[0]})
-          // console.log(email[0])
-          // console.log(email.slice(1))
-          // console.log(temp)
-          console.log(userInfo)
-          // console.log(userInfo.email.concat(email[0]))
+          setUserInfo({...userInfo, email: userInfoRef.current.email + email[0], password: userInfoRef.current.password})
           email = email.slice(1);
           emailcb();
         } else {
-          console.log("--------")
           passwordcb();
         }
       }, 100);
@@ -66,14 +74,12 @@ const SessionForm = (props) => {
     const passwordcb = () => {
       setTimeout(() => {
         if (password.length > 0) {
-          setUserInfo({...userInfo, password: userInfo.password.concat(password[0])})
-          console.log(password[0])
-          console.log(userInfo.password)
+          setUserInfo({...userInfo, email: userInfoRef.current.email, password: userInfoRef.current.password + password[0]})
           password = password.slice(1);
           passwordcb();
         } else {
           setTimeout(() => {
-            props.processForm(user).then(closeModal());
+            props.processForm(userInfoRef.current).then(closeModal());
           }, 500);
         }
       }, 100)

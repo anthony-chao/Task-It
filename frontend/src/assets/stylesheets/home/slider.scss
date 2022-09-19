@@ -45,6 +45,15 @@
   scroll-snap-align: center;
 }
 
+.slide-content {
+  display: flex;
+  height: 80%;
+  width: 80%;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: center;
+}
+
 .slide__text {
   font-size: 40px;
   font-weight: bold;
