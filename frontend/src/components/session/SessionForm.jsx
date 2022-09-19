@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import logo from '../../assets/images/task-it-logo.png';
 
 const SessionForm = (props) => {
 
@@ -99,11 +100,11 @@ const SessionForm = (props) => {
         <div className="modalImg">
           <img
             id="splashLogo"
-            src="https://i.ibb.co/zRxzj9T/logo-For-Andrea.png"
+            src={logo}
             alt="splashLogo"
           ></img>{" "}
         </div>
-        <h1>Welcome to Branches!</h1>
+        <h1>Welcome to Task-It!</h1>
       </div>
 
       <form onSubmit={handleSubmit} className="login-signup-form">
