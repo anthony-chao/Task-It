@@ -28,7 +28,8 @@
   padding: 18px;
 }
 
-.demo-login-button, .session-button {
+.demo-login-button,
+.session-button {
   background-color: transparent;
   color: #0a1929;
   border-radius: 12px;
@@ -37,6 +38,7 @@
   min-width: 200px;
   padding: 18px;
   margin-top: 10px;
+
   &:hover {
     color: $default-blue;
     border-color: $default-blue;
@@ -50,11 +52,11 @@
 }
 
 .session-form-footer a:hover {
-  color:  #0a1929;
+  color: #0a1929;
   text-decoration: none;
 }
 
-.session-form-footer p{
+.session-form-footer p {
   color: black;
   font-family: $font-family;
   text-align: center;
@@ -65,23 +67,23 @@
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
-  color : black;
+  color: black;
   font-family: $font-family;
 }
 
-.modalImg{
+.modalImg {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.modalImg img{
+.modalImg img {
   padding-top: 10px;
   width: 35%;
   height: auto;
 }
 
-.login-signup-form input{
+.login-signup-form input {
   width: 70%;
   max-width: 568px;
   min-width: 200px;
@@ -93,22 +95,25 @@
   color: #0a1929;
 }
 
-.email-with-error, .password-with-error, .fname-with-error, .lname-with-error {
+.email-with-error,
+.password-with-error,
+.fname-with-error,
+.lname-with-error {
   outline: 1px solid red !important;
 }
 
-.login-signup-form input:focus{
+.login-signup-form input:focus {
   border: 1px solid $default-blue;
 }
 
-.session-error{
+.session-error {
   color: red;
   font-size: 0.8rem;
   margin-top: -8px;
-  margin-left : 20px;
+  margin-left: 20px;
 }
 
-.session-form-header{
+.session-form-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,7 +121,7 @@
   height: 100%;
 }
 
-.session-form-header h1{
+.session-form-header h1 {
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -125,7 +130,7 @@
 }
 
 .exit-modal {
-  color: #0a1929  ;
+  color: #0a1929;
   position: absolute;
   top: 0;
   right: 0;
@@ -141,22 +146,22 @@
   width: 100%;
   height: 100%;
 
-    label {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 300px;
+  label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
 
-      .session-error {
-        width: 76%;
-        align-items: flex-start;
-      }
+    .session-error {
+      width: 76%;
+      align-items: flex-start;
     }
+  }
 }
 
 @keyframes blink {
   0% {
-    opacity: .5;
+    opacity: 0.5;
   }
   100% {
     opacity: 1;

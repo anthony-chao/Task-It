@@ -4,11 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: $font-size-25;
   color: $default-green;
   font-family: $font-family-Rubik;
-  padding-bottom: 14px;
-  // border-bottom: 1px solid $default-darkergray;
+  padding: 10px 10px 14px 10px;
+
+  p {
+    max-width: 205px;
+    font-size: 23px;
+  }
 }
 
 .side-drawer-items {
@@ -22,12 +25,13 @@
     padding: 5px;
     // border: 1px solid red;
   }
-  ul:active {
-    background-color: $default-green;
+
+  li:focus {
+    background-color: $default-yellow;
     color: aquamarine;
   }
 
   &:hover {
-    background-color: $default-lightblue;
+    background-color: $default-yellow;
   }
 }

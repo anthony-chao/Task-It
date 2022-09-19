@@ -7,31 +7,29 @@ import HomeContainer from "./home/Home";
 import AssignTaskContainer from "./assignTask/assignTask";
 import TaskListContainer from "./task/taskList";
 import Chat from "./chat/chat";
-import PermanentDrawer from "./permanentDrawer/PermanentDrawer";
 import ProjectsIndexContainer from "./project/ProjectsIndex";
+// import PermanentDrawer from "./permanentDrawer/PermanentDrawer";
 
 const App = () => (
-  <div className="parent-container">
-    <div className="main-container">
-      <NavBarContainer />
-      <ProtectedRoute exact path="/home" component={HomeContainer} />
-      <ProtectedRoute path="/" component={Chat} />
-      <Switch>
-        <ProtectedRoute
-          path="/projects/:projectId"
-          component={TaskListContainer}
-        />
-        <ProtectedRoute path="/tasks" component={TaskListContainer} />
-        <ProtectedRoute path="/projects" component={ProjectsIndexContainer} />
-        <ProtectedRoute path="/assigntask" component={AssignTaskContainer} />
-        <AuthRoute exact path="/" component={SplashContainer} />
-      </Switch>
+  <>
+    <NavBarContainer />
+    <ProtectedRoute path="/" component={Chat} />
+    <div className="parent-container">
+      <div className="main-container">
+        <ProtectedRoute exact path="/home" component={HomeContainer} />
+        <Switch>
+          <ProtectedRoute
+            path="/projects/:projectId"
+            component={TaskListContainer}
+          />
+          <ProtectedRoute path="/tasks" component={TaskListContainer} />
+          <ProtectedRoute path="/projects" component={ProjectsIndexContainer} />
+          <ProtectedRoute path="/assigntask" component={AssignTaskContainer} />
+          <AuthRoute exact path="/" component={SplashContainer} />
+        </Switch>
+      </div>
     </div>
-
-    <>
-      <ProtectedRoute path="/" component={PermanentDrawer} />
-    </>
-  </div>
+  </>
 );
 
 export default App;

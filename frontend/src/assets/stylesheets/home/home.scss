@@ -199,58 +199,114 @@
 .home-container {
   display: flex;
   flex-direction: column;
-  // position: relative;
   align-items: center;
+  // border: 1px solid green;
 }
 
 .instructions-container {
-
   width: 1000px;
   border: 1px solid purple;
 }
 
-.about-us-container {
+.team-container {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  width: 500px;
-  // align-content: center;
   justify-content: center;
-  border: 1px solid red;
+  gap: 40px;
+  // border: 1px solid red;
+  // align-content: center;
   // align-self: center;
   // position: absolute;
   // top: 50%;
   // right: 70%;
   // transform: translate(50%, 25%);
 
-  #social-link {
-    width: 25px;
-    height: 25px;
-    padding: 10px;
-    color: $default-orange;
+  .container {
+    width: 350px;
+    position: relative;
+    display: flex;
+    justify-content: center;
 
     &:hover {
-      color: $default-green;
+      transform: scale(1.3);
+      z-index: 5;
+      transition: 0.5s ease-out;
     }
   }
 
-  img {
-    margin-top: 20px;
-    border-radius: 10px;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
+  #name-badge {
+    margin: 0;
+    width: 350px;
+    height: 350px;
+    opacity: 0.85;
   }
 
   .anthony,
   .andrea,
   .andy,
   .michael {
+    position: absolute;
+    top: 111px;
+    left: 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .photo-container {
+    width: 105px;
+    height: 105px;
+    margin-left: 52px;
+
+    img {
+      margin: 0;
+      border-radius: 6px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .info {
+    margin-left: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 200px;
-    border: 1px solid blue;
-    margin: 10px;
+    width: 150px;
+    height: 150px;
+
+    p {
+      margin: 0 0 40px 0;
+      color: $default-red;
+      font-size: $font-size-16;
+      font-weight: 500;
+    }
+
+    #andrea {
+      margin: 0 0 2px 0;
+      line-height: 2rem;
+      color: $default-red;
+      font-size: $font-size-16;
+      font-weight: 500;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    #social-link {
+      width: 25px;
+      height: 25px;
+      padding: 6px;
+      color: $default-darkmint;
+      display: flex;
+      flex-shrink: 3;
+
+      &:hover {
+        color: $default-red;
+      }
+    }
   }
 }

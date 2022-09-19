@@ -118,6 +118,16 @@
   margin-bottom: 20px;
 }
 
+#task-backarrow {
+  margin-left: 20px;
+  width: 50px;
+
+  &:hover {
+    transform: scale(1.15);
+    transition: 0.2s ease-out;
+  }
+}
+
 .task-showpage-project-info {
   margin-left: 20px;
   display: flex;
@@ -153,13 +163,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
-
-#task-backarrow {
-  &:hover {
-    transform: scale(1.15);
-    z-index: 5;
-  } 
 }
 
 .task-item-no-buttons {
