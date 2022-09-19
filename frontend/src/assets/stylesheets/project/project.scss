@@ -10,10 +10,10 @@
   margin: 10px 10px 10px 10px;
   width: 200px;
   display: flex;
-  color: $default-red;
+  color: $default-indigo;
   padding: 10px;
-  justify-content: flex-start;
-  border: 1px solid transparent;
+  justify-content: center;
+  // border: 1px solid transparent;
 
   p {
     margin: 0;
@@ -23,9 +23,9 @@
   }
 
   &:hover {
-    border: 1px solid white;
+    // border: 1px solid transparent;
     border-radius: 15px;
-    background-color: $default-red;
+    background-color: $default-indigo;
     color: white;
   }
 }
@@ -73,7 +73,7 @@
   flex-direction: column;
   overflow-wrap: break-word;
   justify-content: space-between;
-  color: $default-red;
+  color: $default-indigo;
   // border: 1px solid black;
 
   .project-info {
@@ -126,8 +126,9 @@
       color: $default-darkgray;
 
       &:hover {
-        border: 1px solid black;
-        color: black;
+        border: 1px solid white;
+        background-color: $default-mint;
+        color: white;
       }
     }
 
