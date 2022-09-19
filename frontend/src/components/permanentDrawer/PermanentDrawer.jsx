@@ -179,7 +179,9 @@ const PermanentDrawer = ({ currentUserName }) => {
 
   return (
     <div className="side-drawer-container">
-      <div className="user-avatar">Hi, {currentUserName}!</div>
+      <div className="user-avatar">
+        <p>Hi, {currentUserName}!</p>
+      </div>
       {["Home", "Projects", "Tasks", "Assign Task", "Calendar"].map(
         (text, index) => (
           <ul key={`${text}-${index}`} className="side-drawer-items">

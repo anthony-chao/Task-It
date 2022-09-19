@@ -20,14 +20,11 @@ const Nav = (props) => {
 
   const loginButton = () => {
     return (
-      <div className="session-button">
-        <FaUserCircle
-          id="user-icon"
-          onClick={openLoginModal("login")}
-          style={{ color: "lightgray" }}
-          size={50}
-        />
-      </div>
+      <FaUserCircle
+        id="user-icon"
+        onClick={openLoginModal("login")}
+        size={55}
+      />
     );
   };
 
@@ -41,6 +38,7 @@ const Nav = (props) => {
 
   return (
     <header className="nav-header-container">
+      {loggedIn ? <PermanentDrawer /> : null}
       <div className="nav-left">
         <Link to="/">
           <div className="branches-logo-container">
@@ -51,10 +49,6 @@ const Nav = (props) => {
       </div>
 
       <div className="nav-right">
-        {/* <div className="projects-button">
-          { loggedIn ? <PermanentDrawer /> : null }
-        </div> */}
-
         <Modal />
         {loggedIn ? logoutButton() : loginButton()}
       </div>

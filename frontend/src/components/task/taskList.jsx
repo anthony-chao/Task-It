@@ -9,7 +9,7 @@ import { fetchUsers } from "../../actions/userActions";
 import { BiUndo } from "react-icons/bi";
 import { CgFileAdd } from "react-icons/cg";
 import { fetchProject } from "../../actions/projectActions";
-import backarrow from '../../assets/images/backarrow.png';
+import backarrow from "../../assets/images/backarrow.png";
 // import backarrow from '../../assets/images/backarrow-clouds.png';
 
 const TaskList = (props) => {
@@ -51,21 +51,24 @@ const TaskList = (props) => {
     (count, task) => (task.status === "Completed" ? count + 1 : count),
     0
   );
+
   const countIncomplete = tasks.reduce(
     (count, task) => (task.status !== "Completed" ? count + 1 : count),
     0
   );
-  const history = useHistory();
 
-  const styles = {};
+  const history = useHistory();
 
   return (
     <div className="projects-index-container">
       {projectUrl ? (
         <div className="task-showpage-top">
-          <p id="redirect-project-index">
-          <div id="redirect-project-index"><img src={backarrow} id="task-backarrow" alt="backarrow" onClick={() => history.push('/projects')} /></div>
-          </p>
+          <img
+            src={backarrow}
+            id="task-backarrow"
+            alt="backarrow"
+            onClick={() => history.push("/projects")}
+          />
 
           {Object.values(projects).length !== 0 && projectUrl ? (
             <div className="task-showpage-project-info">

@@ -33,7 +33,7 @@
 .projects-index-grid {
   margin: 10px;
   display: grid;
-  grid-template-columns: repeat(3, 260px);
+  grid-template-columns: repeat(auto-fit, 260px);
   // grid-template-rows: repeat(3, 250px);
   column-gap: 30px;
   row-gap: 10px;
