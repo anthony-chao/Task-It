@@ -45,22 +45,26 @@ const Splash = ({ currentUser, login, history }) => {
         <div className="splash-stage">
           <div className="splash-box">
             <div className="splash-in splash-one">
-              <p>Hello</p>
+              <h3>Task-it</h3>
+              <p>Task-it is an easy-to-use, intuitive project management tool that allows users to plan, organize and track their projects and tasks in one place.</p>
             </div>
           </div>
           <div className="splash-box">
             <div className="splash-in splash-two">
-            <p>Andrea</p>
+              <h3>Projects and Tasks</h3>
+            <p>Create projects. Create Tasks. Make your life easier by breaking down your projects into manageable pieces and mark the tasks off as you go.</p>
             </div>
           </div>
           <div className="splash-box">
             <div className="splash-in splash-three">
-            <p>and</p>
+              <h3>Assign Tasks</h3>
+              <p>Be proactive. Delegate open tasks to yourself or other team members. </p>
             </div>
           </div>
           <div className="splash-box">
             <div className="splash-in splash-four">
-            <p>Andy!</p>
+              <h3>Live Chat</h3>
+              <p>Start chatting. Communicate with your team members through our live chat functionality! </p>
             </div>
           </div>
         </div>

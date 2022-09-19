@@ -6,9 +6,11 @@ import { openModal } from '../../actions/modalActions';
 import Chart from '../dashboard/Chart';
 import { useHistory } from 'react-router-dom';
 import { fetchUsers } from '../../actions/userActions';
-import { BiUndo } from "react-icons/bi";
 import { MdNoteAdd } from 'react-icons/md';
 import { fetchProject } from '../../actions/projectActions';
+import backarrow from '../../assets/images/backarrow.png';
+// import backarrow from '../../assets/images/backarrow-clouds.png';
+import LoadingContainer from '../util/LoadingContainer';
 
 const TaskList = (props) => {
 
@@ -52,7 +54,8 @@ const TaskList = (props) => {
 
     return (
         <div className="projects-index-container">
-
+        {(Object.values(users).length !== 0) ? 
+        <div>
             {projectUrl ? 
                 <div className="task-showpage-top-buttons">
                     <div className="task-showpage-project-name">
@@ -75,7 +78,7 @@ const TaskList = (props) => {
                         </div>
                         : null }
                     </div>
-                    <p id="redirect-project-index"><BiUndo onClick={() => history.push('/projects')} icon="fa-solid fa-rotate-left" /></p>
+                    <div id="redirect-project-index"><img src={backarrow} id="task-backarrow" alt="backarrow" onClick={() => history.push('/projects')} /></div>
                     <div className="create-button"><p onClick={handleCreate}>Add Task</p><MdNoteAdd id="add-task-icon" onClick={handleCreate}/></div>
                 </div>
             : null}
@@ -83,7 +86,6 @@ const TaskList = (props) => {
             {tasks.length === 0 && projectUrl ? 
                 <div className="no-tasks-showpage">
                     <h1>There are no tasks in this project!</h1>
-                    {/* <p onClick={handleCreate}>Add Task</p> */}
                 </div>
              : null}
 
@@ -124,7 +126,8 @@ const TaskList = (props) => {
                     </div>
                 </div>
             : null}
-        </div>
+        </div> : <LoadingContainer/>}
+    </div>
     )
 
 }

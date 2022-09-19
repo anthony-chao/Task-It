@@ -108,6 +108,13 @@
   justify-content: space-around;
 }
 
+#task-backarrow {
+  &:hover {
+    transform: scale(1.15);
+    z-index: 5;
+  } 
+}
+
 .task-item-no-buttons {
   text-decoration: none;
   color: #000;
@@ -128,6 +135,10 @@
   margin-top: 10px;
   margin-left: 2px;
   padding: 0;
+}
+
+#task-description {
+  word-wrap: break-word;
 }
 
 .task-assigned-user {
@@ -183,8 +194,24 @@
 }
 
 input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+.task-action-buttons {
+  display: flex;
+  justify-content: right;
+}
+
+#task-button-icons {
   width: 25px;
   height: 25px;
+  margin-left: 5px;
+
+  &:hover {
+    transform: scale(1.15);
+    z-index: 5;
+  }
 }
 
 .rechart-container {

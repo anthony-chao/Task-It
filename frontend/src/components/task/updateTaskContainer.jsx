@@ -37,13 +37,21 @@ const UpdateTaskForm = (props) => {
     return (e) => setState({ ...state, [field]: e.currentTarget.value });
   };
 
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({
+    empty: false,
+    length: false
+  });
 
   const handleError = () => {
     if (state.description.length === 0) {
-      setError(true);
+      setError({empty: true});
       return true;
-    } else {
+    } 
+    else if (state.description.length > 120) {
+      setError({length: true});
+      return true;
+    }
+    else {
       setError(false);
       return false;
     }
@@ -73,8 +81,11 @@ const UpdateTaskForm = (props) => {
             value={state.description}
             onChange={handleUpdate("description")}
           />
-          {error ? (
-            <p className="session-error">Task field cannot be empty!</p>
+          {error.empty ? (
+            <p className="task-error">Task description cannot be empty!</p>
+          ) : null}
+          {error.length ? (
+            <p className="task-error">Task description cannot be longer than 120 characters!</p>
           ) : null}
         </label>
 

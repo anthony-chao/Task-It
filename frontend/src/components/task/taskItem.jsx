@@ -79,7 +79,7 @@ const TaskItem = (props) => {
                             />
                             <p>Task #{props.index + 1}</p>
                         </div>
-                            <div>{task.description}</div>
+                            <div id="task-description">{task.description}</div>
                     <div className="task-assigned-users">
                         <p className="task-text">Assigned Users:</p>
                         {((Object.values(users).length !== 0) && (task.assignedUser[0])) ? allUsers() : <p className="task-assigned-user">None</p>}
