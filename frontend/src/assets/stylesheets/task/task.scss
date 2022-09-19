@@ -88,6 +88,53 @@
   }
 }
 
+// Add Task styling
+.create-task-button {
+  margin: 10px 10px 10px 10px;
+  width: 140px;
+  display: flex;
+  color: $default-mint;
+  padding: 10px;
+  justify-content: center;
+  // border: 1px solid transparent;
+
+  p {
+    margin: 0;
+    display: flex;
+    font-size: $font-size-20;
+    cursor: pointer;
+  }
+
+  &:hover {
+    // border: 1px solid white;
+    border-radius: 15px;
+    background-color: $default-mint;
+    color: white;
+  }
+}
+
+// Task Showpage - Project Info styling
+.task-showpage-top {
+  margin-bottom: 20px;
+}
+
+.task-showpage-project-info {
+  margin-left: 20px;
+  display: flex;
+  column-gap: 15px;
+
+  .task-showpage-text {
+    font-size: $font-size-20;
+    color: $default-red;
+  }
+
+  .task-showpage-project-name {
+    font-size: $font-size-20;
+    font-weight: 500;
+    color: $default-red;
+  }
+}
+
 .task-index-item {
   list-style: none;
   margin: 1em;

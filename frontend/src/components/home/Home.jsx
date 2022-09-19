@@ -147,7 +147,7 @@ const Home = () => {
   return (
     <main className="home-container">
       <section className="instructions-container">
-        <p>Instructions go here</p>
+        <Slider />
       </section>
 
       <section className="about-us-container">

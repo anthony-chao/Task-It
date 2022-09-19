@@ -1,5 +1,16 @@
 @import "../variables.scss";
 
+.user-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: $font-size-25;
+  color: $default-green;
+  font-family: $font-family-Rubik;
+  padding-bottom: 14px;
+  // border-bottom: 1px solid $default-darkergray;
+}
+
 .side-drawer-items {
   cursor: pointer;
   padding: 10px;
