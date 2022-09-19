@@ -1,4 +1,10 @@
-import { RECEIVE_TASKS, RECEIVE_TASK, REMOVE_TASK } from "../actions/taskActions";
+import { 
+    RECEIVE_TASKS, 
+    RECEIVE_TASK,
+    REMOVE_TASK,
+    RECEIVE_PROJECT_TASKS,
+    RECEIVE_USER_TASKS
+} from "../actions/taskActions";
 import { RECEIVE_PROJECTS, RECEIVE_PROJECT } from "../actions/projectActions";
 
 const tasksReducer = (state = {}, action) => {
@@ -23,6 +29,18 @@ const tasksReducer = (state = {}, action) => {
         //         tasksObj[task._id] = task
         //     });
             // return Object.assign({}, state, tasksObj)
+        case RECEIVE_PROJECT_TASKS:
+            nextState = {};
+            action.payload.tasks.forEach(task => {
+                nextState = Object.assign(nextState, { [task._id] : task })
+            })
+            return nextState;
+        case RECEIVE_USER_TASKS:
+            nextState = {};
+            action.payload.tasks.forEach(task => {
+                nextState = Object.assign(nextState, { [task._id] : task })
+            })
+            return nextState;
         case RECEIVE_PROJECTS:
             return state;
         default:

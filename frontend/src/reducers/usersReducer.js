@@ -1,6 +1,6 @@
 import { RECEIVE_CURRENT_USER } from "../actions/sessionActions";
-
 import { RECEIVE_USERS } from "../actions/userActions";
+import { RECEIVE_PROJECT_TASKS, RECEIVE_USER_TASKS } from "../actions/taskActions";
 
 const usersReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -18,6 +18,17 @@ const usersReducer = (state = {}, action) => {
             nextState = Object.assign(nextState, { [user._id] : user })
         })
         return nextState;
+    case RECEIVE_PROJECT_TASKS:
+      nextState = {};
+      action.payload.users.forEach(user => {
+          nextState = Object.assign(nextState, { [user._id] : user })
+      })
+    case RECEIVE_USER_TASKS:
+      nextState = {};
+      action.payload.users.forEach(user => {
+          nextState = Object.assign(nextState, { [user._id] : user })
+      })
+      return nextState;
     default:
       return state;
   }

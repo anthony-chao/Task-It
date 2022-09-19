@@ -3,6 +3,8 @@ import * as TaskAPI from "../util/taskUtil"
 export const RECEIVE_TASKS = "RECEIVE_TASKS";
 export const RECEIVE_TASK = "RECEIVE_TASK";
 export const REMOVE_TASK = "REMOVE_TASK";
+export const RECEIVE_PROJECT_TASKS = "RECEIVE_PROJECT_TASKS"
+export const RECEIVE_USER_TASKS = "RECEIVE_USER_TASKS"
 
 const receiveTasks = tasks => ({
     type: RECEIVE_TASKS,
@@ -19,6 +21,16 @@ const removeTask = taskId => ({
     taskId
 })
 
+const receiveProjectTasks = payload => ({
+    type: RECEIVE_PROJECT_TASKS,
+    payload: payload.data
+})
+
+const receiveUserTasks = payload => ({
+    type: RECEIVE_USER_TASKS,
+    payload: payload.data
+})
+
 export const fetchAllTasks = () => dispatch => {
     return TaskAPI.fetchAllTasks()
         .then( tasks => dispatch(receiveTasks(tasks)))
@@ -26,12 +38,12 @@ export const fetchAllTasks = () => dispatch => {
 
 export const fetchProjectTasks = projectId => dispatch => {
     return TaskAPI.fetchProjectTasks(projectId)
-        .then( tasks => dispatch(receiveTasks(tasks)))
+        .then( tasks => dispatch(receiveProjectTasks(tasks)))
 }
 
 export const fetchUserTasks = userId => dispatch => {
     return TaskAPI.fetchUserTasks(userId)
-        .then( tasks => dispatch(receiveTasks(tasks)))
+        .then( tasks => dispatch(receiveUserTasks(tasks)))
 }
 
 export const fetchTask = taskId => dispatch => {
