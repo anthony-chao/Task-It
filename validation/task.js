@@ -19,9 +19,9 @@ module.exports = function validateTaskInput(data) {
     //     errors.title = "Title must be between 5 and 50 characters";
     // }
 
-    // if (!Validator.isLength(data.description, {min: 5, max: 140})) {
-    //     errors.description = "Description must be between 5 and 140 characters"
-    // }
+    if (!Validator.isLength(data.description, {min: 1, max: 120})) {
+        errors.description = "Description must be between 1 and 120 characters"
+    }
 
     return {
         errors,

@@ -9,6 +9,8 @@ import { fetchUsers } from "../../actions/userActions";
 import { BiUndo } from "react-icons/bi";
 import { CgFileAdd } from "react-icons/cg";
 import { fetchProject } from "../../actions/projectActions";
+import backarrow from '../../assets/images/backarrow.png';
+// import backarrow from '../../assets/images/backarrow-clouds.png';
 
 const TaskList = (props) => {
   const {
@@ -62,10 +64,7 @@ const TaskList = (props) => {
       {projectUrl ? (
         <div className="task-showpage-top">
           <p id="redirect-project-index">
-            <BiUndo
-              onClick={() => history.push("/projects")}
-              icon="fa-solid fa-rotate-left"
-            />
+          <div id="redirect-project-index"><img src={backarrow} id="task-backarrow" alt="backarrow" onClick={() => history.push('/projects')} /></div>
           </p>
 
           {Object.values(projects).length !== 0 && projectUrl ? (
