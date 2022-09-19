@@ -23,9 +23,9 @@ const Splash = ({ currentUser, login, history }) => {
             <div className="splash-in splash-two">
               <h3>Projects and Tasks</h3>
               <p>
-                Create projects. Create Tasks. Make your life easier by breaking
-                down your projects into manageable pieces and mark the tasks off
-                as you go.
+                Create projects and tasks. Make your life easier by breaking
+                down your projects into manageable pieces and mark tasks off as
+                you go.
               </p>
             </div>
           </div>
@@ -33,8 +33,8 @@ const Splash = ({ currentUser, login, history }) => {
             <div className="splash-in splash-three">
               <h3>Assign Tasks</h3>
               <p>
-                Be proactive. Delegate open tasks to yourself or other team
-                members.{" "}
+                Be proactive. Keep everyone organized by delegating open tasks
+                to yourself and other team members.
               </p>
             </div>
           </div>
@@ -42,8 +42,8 @@ const Splash = ({ currentUser, login, history }) => {
             <div className="splash-in splash-four">
               <h3>Live Chat</h3>
               <p>
-                Start chatting. Communicate with your team members through our
-                live chat functionality!{" "}
+                Start chatting. Bring your team together by communicating with
+                your team members through our live chat functionality!
               </p>
             </div>
           </div>

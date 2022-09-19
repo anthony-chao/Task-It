@@ -8,7 +8,8 @@ const TaskSchema = new Schema({
     },
     assignedUser: [{
         type: Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'user',
+        default: []
     }],
     projectId : {
         type: Schema.Types.ObjectId,

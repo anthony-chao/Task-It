@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/branches-logo.jpeg";
+import logo from "../../assets/images/task-it-logo.png";
 import { logout } from "../../actions/sessionActions";
 import { openModal } from "../../actions/modalActions";
 import PermanentDrawer from "../permanentDrawer/PermanentDrawer";
@@ -41,9 +41,9 @@ const Nav = (props) => {
       {loggedIn ? <PermanentDrawer /> : null}
       <div className="nav-left">
         <Link to="/">
-          <div className="branches-logo-container">
-            <img id="branches-logo" src={logo} alt="branches-logo" />
-            <p>Branches</p>
+          <div className="task-it-logo-container">
+            <img id="task-it-logo" src={logo} alt="task-it-logo" />
+            {/* <p>Branches</p> */}
           </div>
         </Link>
       </div>

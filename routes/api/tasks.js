@@ -18,18 +18,34 @@ router.get("/", (req, res) => {
 
 // GET TASKS BY PROJECT ID
 router.get("/projects/:id", (req, res) => {
+  const payload = {};
   Project.findById(req.params.id)
     .then( project => {
-      console.log(project)
+      payload.projects = project
       Task.find({projectId: project.id})
-        .then( tasks => res.json(tasks))
+        .then( tasks => {
+          payload.tasks = tasks;
+          User.find({})
+            .then(users => {
+              payload.users = users;
+              res.json(payload)
+            })
+        })
     })
 })
 
 // GET ALL TASKS FOR USER
 router.get("/user/:userId", (req,res) => {
+  const payload = {};
   Task.find({assignedUser: req.params.userId})
-    .then(tasks => res.json(tasks))
+    .then(tasks => {
+      payload.tasks = tasks;
+      User.find({})
+        .then(users => {
+          payload.users = users
+          res.json(payload)
+        })
+    })
 })
 
 // GET TASK BY ID
