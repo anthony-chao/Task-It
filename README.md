@@ -35,11 +35,10 @@ Task-It is a project management application where users can create projects and 
 * Project team members are able to use a live chat functionality to discuss issues, status updates or anything with their team members.
 * Users will be able to see who sent the message and a timestamp showing exactly when the message was sent.
 
-### PLACEHOLDER FOR GIF OF LIVE CHAT
-
 ### Assign Tasks
 * Users will have the ability to assign tasks that are not completed to anyone in the app. Upon assigning a task, the user who the task is assigned to will be able to see the task in their tasks show page.
 
+<img width="800" src="/frontend/src/assets/images/assign-task-live-chat.gif" alt="">
 
 ## Code Snippets 
 
