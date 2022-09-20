@@ -1,3 +1,3 @@
 import io from "socket.io-client";
 
-export const socket = io(process.env.PORT || "http://localhost:3000");
+export const socket = io('https://mern-task-it.herokuapp.com/');
