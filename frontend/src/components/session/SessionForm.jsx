@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import logo from '../../assets/images/task-it-logo.png';
+import logo from "../../assets/images/task-it-logo.png";
 
 const SessionForm = (props) => {
-
   const userInfoRef = useRef({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
-  })
+  });
 
   const [userInfo, setUserInfo] = useState({
     firstName: "",
@@ -25,7 +24,7 @@ const SessionForm = (props) => {
 
   useEffect(() => {
     userInfoRef.current = userInfo;
-  },[userInfo])
+  }, [userInfo]);
 
   const update = (field) => {
     return (e) =>
@@ -43,39 +42,47 @@ const SessionForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = Object.assign({}, userInfo);
-    props.processForm(user).then(response => {
-      if (!response.errors) {
-        props.login(user)
+    props.processForm(user).then((response) => {
+      if (response !== undefined && !response.errors) {
+        props.login(user);
       }
-    })
+    });
   };
 
   const demoLogin = (e) => {
     e.preventDefault();
-    let email = 'demouser@branches.com';
-    let password = 'password'
+    let email = "demouser@task-it.com";
+    let password = "password";
     setUserInfo({
       firstName: "",
       lastName: "",
       email: "",
       password: "",
-    })
+    });
 
     const emailcb = () => {
       setTimeout(() => {
         if (email.length > 0) {
-          setUserInfo({...userInfo, email: userInfoRef.current.email + email[0], password: userInfoRef.current.password})
+          setUserInfo({
+            ...userInfo,
+            email: userInfoRef.current.email + email[0],
+            password: userInfoRef.current.password,
+          });
           email = email.slice(1);
           emailcb();
         } else {
           passwordcb();
         }
       }, 75);
-    }
+    };
     const passwordcb = () => {
       setTimeout(() => {
         if (password.length > 0) {
-          setUserInfo({...userInfo, email: userInfoRef.current.email, password: userInfoRef.current.password + password[0]})
+          setUserInfo({
+            ...userInfo,
+            email: userInfoRef.current.email,
+            password: userInfoRef.current.password + password[0],
+          });
           password = password.slice(1);
           passwordcb();
         } else {
@@ -83,11 +90,11 @@ const SessionForm = (props) => {
             props.processForm(userInfoRef.current).then(props.closeModal());
           }, 500);
         }
-      }, 75)
-    }
+      }, 75);
+    };
     props.clearReceiveErrors();
     emailcb();
-  }
+  };
 
   const { formType, otherForm } = props;
 
@@ -98,11 +105,7 @@ const SessionForm = (props) => {
           &times;
         </div>
         <div className="modalImg">
-          <img
-            id="splashLogo"
-            src={logo}
-            alt="splashLogo"
-          ></img>{" "}
+          <img id="splashLogo" src={logo} alt="splashLogo"></img>{" "}
         </div>
         <h1>Welcome to Task-It!</h1>
       </div>

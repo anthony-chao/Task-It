@@ -44,8 +44,8 @@ const Chat = ({
   const sendMessage = (e) => {
     e.preventDefault();
     createMessage({ message, userName, date: timestamp });
-    socket.emit("chatMessage", { userName, message, date: timestamp });
     // Send message on socket
+    socket.emit("chatMessage", { userName, message, date: timestamp });
     setMessage("");
   };
 

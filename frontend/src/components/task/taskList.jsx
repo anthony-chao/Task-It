@@ -46,8 +46,7 @@ const TaskList = (props) => {
 
   return (
     <div className="main-container">
-      {Object.values(users).length > 1 &&
-      (Object.values(projects).length < 2 || !projectUrl) ? (
+      {Object.values(projects).length < 2 || !projectUrl ? (
         <>
           {projectUrl ? (
             <div className="task-showpage-top">
