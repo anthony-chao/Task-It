@@ -158,8 +158,8 @@
 }
 
 .task-show-page {
-  border: 10px solid black;
-  background-color: darkgray;
+  border: 15px solid #836953;
+  background-color: #CCCCC4;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -525,7 +525,7 @@ input[type="checkbox"] {
   height: 4vmin;
   top: -5px;
   width: 110%;
-  background-color: #FAF9F6;
+  background-color: #edebe4;
   border-right: 1px dotted var(--tape-edge-gray);
   border-left: 1px dotted var(--tape-edge-gray);
   opacity: 0.5;
@@ -545,7 +545,7 @@ input[type="checkbox"] {
   width: 10vmin;
   height: 4vmin;
   position: absolute;
-  background-color: #FAF9F6;
+  background-color: #edebe4;
   opacity: 0.5;
   border-right: 1px dotted var(--tape-edge-gray);
   border-left: 1px dotted var(--tape-edge-gray);

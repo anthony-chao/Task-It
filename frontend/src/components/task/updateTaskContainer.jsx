@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { updateTask } from "../../actions/taskActions";
 import { closeModal } from "../../actions/modalActions";
-import { clearReceiveErrors } from "../../actions/taskActions";
 
 const UpdateTaskForm = (props) => {
   const { task, updateTask, closeModal } = props;
@@ -14,12 +13,6 @@ const UpdateTaskForm = (props) => {
     projectId: task.projectId,
     assignedUser: task.assignedUser,
   });
-
-  // useEffect(() => {
-  //   return () => {
-  //     clearReceiveErrors();
-  //   };
-  // }, []);
 
   useEffect(() => {
     if (task) {
@@ -98,17 +91,9 @@ const UpdateTaskForm = (props) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    // projectId: ownProps.match.params.projectId
-    errors: state.errors.task,
-  };
-};
-
 const mapDispatchToProps = (dispatch) => ({
   updateTask: (task) => dispatch(updateTask(task)),
   closeModal: () => dispatch(closeModal()),
-  clearReceiveErrors: () => dispatch(clearReceiveErrors()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateTaskForm);
+export default connect(null, mapDispatchToProps)(UpdateTaskForm);
