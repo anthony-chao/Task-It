@@ -29,8 +29,7 @@ Task-It is a project management application where users can create projects and 
 * Users can view all of the tasks related to a project, as well as add, edit and delete projects.
 * Users will also have the ability to mark a task as complete or incomplete, which will update the project's completeness status.
 
-### PLACEHOLDER FOR GIF OF ADDING TASK
-
+<img width="800" src="/frontend/src/assets/images/create-task.gif" alt="">
 
 ### Live Chat
 * Project team members are able to use a live chat functionality to discuss issues, status updates or anything with their team members.
