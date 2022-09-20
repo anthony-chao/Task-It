@@ -5,13 +5,9 @@ import { connect } from "react-redux";
 import { openModal } from "../../actions/modalActions";
 import Chart from "../dashboard/Chart";
 import { useHistory } from "react-router-dom";
-import { fetchUsers } from "../../actions/userActions";
-import { BiUndo } from "react-icons/bi";
 import { CgFileAdd } from "react-icons/cg";
-import { fetchProject } from "../../actions/projectActions";
 import backarrow from "../../assets/images/backarrow.png";
 import LoadingContainer from "../util/LoadingContainer";
-// import backarrow from '../../assets/images/backarrow-clouds.png';
 
 const TaskList = (props) => {
   const {
@@ -89,7 +85,6 @@ const TaskList = (props) => {
           {tasks.length === 0 && projectUrl ? (
             <div className="no-tasks-showpage">
               <h1>There are no tasks in this project!</h1>
-              {/* <p onClick={handleCreate}>Add Task</p> */}
             </div>
           ) : null}
 
@@ -166,8 +161,6 @@ const mapDispatchToProps = (dispatch) => ({
   fetchProjectTasks: (projectId) => dispatch(fetchProjectTasks(projectId)),
   openModal: (type) => dispatch(openModal(type)),
   fetchUserTasks: (userId) => dispatch(fetchUserTasks(userId)),
-  fetchUsers: () => dispatch(fetchUsers()),
-  fetchProject: (projectId) => dispatch(fetchProject(projectId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

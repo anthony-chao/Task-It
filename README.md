@@ -1,6 +1,8 @@
 # Task-It
 
-![alt text](https://i.postimg.cc/9MBxgVG3/image-removebg-preview-2.png)
+<p align="center">
+  <img src="/frontend/src/assets/images/task-it-logo.png" alt="task-it-logo">
+</p>
 
 ## Background and Overview
 
