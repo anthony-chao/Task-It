@@ -23,24 +23,22 @@ Task-It is a project management application where users can create projects and 
 * Users are able to view all projects in the project drawer. Upon clicking on a project, the user will be redirected to a project show page that details all the project's tasks.
 * Users are able to add, edit and delete existing projects.
 
-### PLACEHOLDER FOR GIF OF ADDING PROJECT
+<img width="800" src="/frontend/src/assets/images/create-project.gif" alt="">
 
 ### Tasks
 * Users can view all of the tasks related to a project, as well as add, edit and delete projects.
 * Users will also have the ability to mark a task as complete or incomplete, which will update the project's completeness status.
 
-### PLACEHOLDER FOR GIF OF ADDING TASK
-
+<img width="800" src="/frontend/src/assets/images/create-task.gif" alt="">
 
 ### Live Chat
 * Project team members are able to use a live chat functionality to discuss issues, status updates or anything with their team members.
 * Users will be able to see who sent the message and a timestamp showing exactly when the message was sent.
 
-### PLACEHOLDER FOR GIF OF LIVE CHAT
-
 ### Assign Tasks
 * Users will have the ability to assign tasks that are not completed to anyone in the app. Upon assigning a task, the user who the task is assigned to will be able to see the task in their tasks show page.
 
+<img width="800" src="/frontend/src/assets/images/assign-task-live-chat.gif" alt="">
 
 ## Code Snippets 
 

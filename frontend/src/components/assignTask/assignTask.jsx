@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { fetchAllTasks } from "../../actions/taskActions";
 import { fetchUsers } from "../../actions/userActions";
@@ -23,6 +23,11 @@ const AssignTask = (props) => {
     const [submitted, setSubmitted] = useState({
         email: ""
     })
+
+    useEffect(() => {
+      props.fetchAllTasks();
+      props.fetchUsers();
+    }, []);
 
   const handleError = () => {
     if (!input.email || !input.task) {
