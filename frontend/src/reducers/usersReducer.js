@@ -15,18 +15,19 @@ const usersReducer = (state = {}, action) => {
         nextState = {};
         action.users.forEach(user => {
             nextState = Object.assign(nextState, { [user._id] : user })
-        })
+        });
         return nextState;
     case RECEIVE_PROJECT_TASKS:
       nextState = {};
       action.payload.users.forEach(user => {
           nextState = Object.assign(nextState, { [user._id] : user })
-      })
+      });
+      return nextState;
     case RECEIVE_USER_TASKS:
       nextState = {};
       action.payload.users.forEach(user => {
           nextState = Object.assign(nextState, { [user._id] : user })
-      })
+      });
       return nextState;
     default:
       return state;
