@@ -28,6 +28,18 @@
   }
 }
 
+.projects-index-no-project {
+  display: flex;
+  justify-content: center;
+
+  p {
+    color: $default-red;
+    font-size: $font-size-25;
+    font-weight: 500;
+    margin: 50px;
+  }
+}
+
 .projects-index-grid {
   margin: 10px;
   display: grid;

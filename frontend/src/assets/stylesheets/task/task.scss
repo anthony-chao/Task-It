@@ -115,7 +115,7 @@
 
 // Task Showpage - Project Info styling
 .task-showpage-top {
-  margin: 20px 0 20px 0;
+  margin: 20px;
 }
 
 #task-backarrow {
@@ -388,13 +388,14 @@ input[type="checkbox"] {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-top: 20px;
 
   h1 {
     color: $default-red;
   }
 
   h2 {
-    color: $default-blue;
+    color: $default-darkgreen;
     margin-top: -10px;
   }
 
@@ -405,27 +406,17 @@ input[type="checkbox"] {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    p {
-      cursor: pointer;
-      font-size: $font-size-12;
-      margin: 0 0 0 10px;
-      border: 1px solid $default-lightblue;
-      border-radius: 6px;
-      padding: 1px 3px 1px 3px;
-      background-color: $default-lightblue;
-      color: $default-blue;
-    }
   }
 
-  p {
+  button {
     cursor: pointer;
     font-size: $font-size-20;
-    margin: 0 0 0 10px;
-    border: 1px solid $default-lightblue;
-    border-radius: 6px;
-    padding: 1px 3px 1px 3px;
-    background-color: $default-lightblue;
-    color: $default-blue;
+    margin: 0 0 0 20px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: $default-lightgreen;
+    color: $default-darkgreen;
 
     &:hover {
       transform: scale(1.15);
@@ -578,7 +569,7 @@ input[type="checkbox"] {
 #assign-task-header {
   color: $default-red;
   margin-bottom: 10px;
-  font-size: $font-size-20;
+  font-size: $font-size-25;
 }
 
 .assign-task-inner-div {

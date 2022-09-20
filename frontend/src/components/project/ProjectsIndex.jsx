@@ -33,15 +33,21 @@ const ProjectsIndex = ({ projects, fetchProjects, openModal }) => {
           </p>
         </div>
 
-        <div className="projects-index-grid">
-          {projects.map((project, index) => (
-            <ProjectsIndexItem
-              key={index}
-              project={project}
-              openModal={openModal}
-            />
-          ))}
-        </div>
+        {projects.length !== 0 && projects ? (
+          <div className="projects-index-grid">
+            {projects.map((project, index) => (
+              <ProjectsIndexItem
+                key={index}
+                project={project}
+                openModal={openModal}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="projects-index-no-project">
+            <p>You currently have no projects! Go ahead create one.</p>
+          </div>
+        )}
       </main>
     </div>
   );
