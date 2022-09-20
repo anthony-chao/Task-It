@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { fetchAllTasks } from "../../actions/taskActions";
 import { fetchUsers } from "../../actions/userActions";
@@ -9,21 +9,20 @@ import { updateAssignedTask } from "../../actions/taskActions";
 import Alert from "@mui/material/Alert";
 
 const AssignTask = (props) => {
-  const [input, setInput] = useState({
-    email: "",
-    task: "",
-  });
+    const [input, setInput] = useState({
+        email: "",
+        task: "",
+    });
 
-  const [error, setError] = useState({
-    error: false,
-    success: false,
-    open: true,
-  });
+    const [error, setError] = useState({
+        error: false,
+        success: false,
+        open: true,
+    });
 
-  useEffect(() => {
-    props.fetchUsers();
-    props.fetchAllTasks();
-  }, []);
+    const [submitted, setSubmitted] = useState({
+        email: ""
+    })
 
   const handleError = () => {
     if (!input.email || !input.task) {
@@ -50,6 +49,7 @@ const AssignTask = (props) => {
       props.updateAssignedTask(taskId, userId);
       setError({ error: false });
       setError({ success: true });
+      setSubmitted({email: input.email});
     } else {
       setError({ error: true });
     }
@@ -91,7 +91,7 @@ const AssignTask = (props) => {
                     setError({ open: false });
                   }}
                 >
-                  You have successfully assigned {input.email.split(" ")[0]} a
+                  You have successfully assigned {submitted.email.split(" ")[0]} a
                   task!
                 </Alert>
               </Stack>
