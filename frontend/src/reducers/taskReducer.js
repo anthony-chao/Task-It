@@ -23,12 +23,6 @@ const tasksReducer = (state = {}, action) => {
         case REMOVE_TASK:
             delete nextState[action.taskId]
             return nextState;
-        // case RECEIVE_PROJECT:
-        //     const tasksObj = {};
-        //     action.payload.tasks.forEach(task => {
-        //         tasksObj[task._id] = task
-        //     });
-            // return Object.assign({}, state, tasksObj)
         case RECEIVE_PROJECT_TASKS:
             nextState = {};
             action.payload.tasks.forEach(task => {

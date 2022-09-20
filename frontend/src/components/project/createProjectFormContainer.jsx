@@ -6,7 +6,6 @@ import {
 import ProjectForm from "./ProjectForm";
 import { closeModal } from "../../actions/modalActions";
 
-// debugger;
 const mapStateToProps = (state) => ({
   currentUser: state.session.user.id,
   formType: "Create a Project",

@@ -7,17 +7,9 @@ module.exports = function validateTaskInput(data) {
     data.title = validText(data.title) ? data.title : "";
     data.description = validText(data.description) ? data.description : "";
 
-    // if (Validator.isEmpty(data.title)) {
-    //     errors.title = "Title field is required"
-    // }
-
     if (Validator.isEmpty(data.description)) {
         errors.description = "Description field is required"
     }
-
-    // if (!Validator.isLength(data.title, {min: 5, max: 50})) {
-    //     errors.title = "Title must be between 5 and 50 characters";
-    // }
 
     if (!Validator.isLength(data.description, {min: 1, max: 120})) {
         errors.description = "Description must be between 1 and 120 characters"

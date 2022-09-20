@@ -13,56 +13,43 @@
 @media screen and (max-width: 3000px) {
   html,
   body {
-    background-color: $background-color;
+    background-color: $default-lightyellow;
     font-family: $font-family;
     margin: 0;
     // color-scheme: dark;
-    height: 100%;
-    width: 100%;
-    // display: block;
     // overflow-x: hidden;
   }
 }
 
-.parent-container {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  display: flex;
-  // justify-content: center;
-}
-
 .main-container {
-  width: calc(100% - 200px);
-  right: 0;
-  top: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 100%;
   margin-left: 225px;
+  // border: 1px solid red;
+  // display: flex;
   // justify-content: center;
-}
 
-.side-drawer-container {
-  display: block;
-  height: 100vh;
-  width: 225px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  background-color: $default-darkgray;
-  padding-top: 60px;
-  color: white;
-
-  // ul,
-  // li {
-  //   list-style: none;
-
-  //   &:hover {
-  //     background-color: $default-gray;
+  // @media screen and (max-width: 700px) {
+  //   .side-drawer-container {
+  //     width: 100%;
+  //     height: auto;
+  //     position: relative;
+  //   }
+  //   .sidebar-drawer-container {
+  //     float: left;
+  //   }
+  //   .main-container {
+  //     margin-left: 0;
   //   }
   // }
+
+  // @media screen and (max-width: 400px) {
+  //   .side-drawer-container {
+  //     text-align: center;
+  //     float: none;
+  //   }
+  // }
+}
+
+.main-container-no-margin {
+  max-width: 100%;
 }

@@ -17,31 +17,33 @@ const ProjectsIndex = ({ projects, fetchProjects, openModal }) => {
   };
 
   return (
-    <main className="projects-index-container">
-      <div className="create-button">
-        <p onClick={handleCreateClick}>
-          Create a Project
-          <FiFolderPlus
-            size={25}
-            style={{
-              color: "black",
-              opacity: 0.75,
-              paddingLeft: 10,
-            }}
-          />
-        </p>
-      </div>
+    <div className="main-container">
+      <main className="projects-index-container">
+        <div className="create-button">
+          <p onClick={handleCreateClick}>
+            Create a Project
+            <FiFolderPlus
+              size={25}
+              style={{
+                color: "black",
+                opacity: 0.75,
+                paddingLeft: 10,
+              }}
+            />
+          </p>
+        </div>
 
-      <div className="projects-index-grid">
-        {projects.map((project, index) => (
-          <ProjectsIndexItem
-            key={index}
-            project={project}
-            openModal={openModal}
-          />
-        ))}
-      </div>
-    </main>
+        <div className="projects-index-grid">
+          {projects.map((project, index) => (
+            <ProjectsIndexItem
+              key={index}
+              project={project}
+              openModal={openModal}
+            />
+          ))}
+        </div>
+      </main>
+    </div>
   );
 };
 

@@ -37,25 +37,28 @@ const Nav = (props) => {
   };
 
   return (
-    <header className="nav-header-container">
-      {loggedIn ? <PermanentDrawer /> : null}
-      <div className="nav-left">
-        <Link to="/">
-          <div className="task-it-logo-container">
-            <img id="task-it-logo" src={logo} alt="task-it-logo" />
-            {/* <p>Branches</p> */}
-          </div>
-        </Link>
-      </div>
+    <div className={loggedIn ? "main-container" : "main-container-no-margin"}>
+      <header className="nav-header-container">
+        <div className="nav-left">
+          <Link to="/">
+            <div className="task-it-logo-container">
+              <img id="task-it-logo" src={logo} alt="task-it-logo" />
+            </div>
+          </Link>
+        </div>
 
-      <div className="nav-right">
-        <Modal />
-        {loggedIn ? logoutButton() : loginButton()}
-      </div>
-    </header>
+        <div className="nav-right">
+          <Modal />
+          {loggedIn ? logoutButton() : loginButton()}
+        </div>
+      </header>
+    </div>
   );
 };
 
+{
+  /* {loggedIn ? <PermanentDrawer /> : null} */
+}
 const mapStateToProps = (state) => {
   return {
     loggedIn: state.session.isAuthenticated,

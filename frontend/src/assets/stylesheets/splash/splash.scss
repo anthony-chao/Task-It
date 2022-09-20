@@ -1,5 +1,50 @@
 @import "../variables.scss";
 
+.splash-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 20px 0;
+    font-size: $font-size-25;
+    color: $default-darkgray;
+
+    p {
+      margin: 8px;
+    }
+
+    p:last-child {
+      margin: 8px;
+      font-size: $font-size-25;
+      animation: bounce-in-right 2.15s ease;
+      animation-delay: 3.25s;
+      @keyframes bounce-in-right {
+        0% {
+          opacity: 0;
+          transform: translateX(2000px);
+        }
+        60% {
+          opacity: 1;
+          transform: translateX(-30px);
+        }
+        80% {
+          transform: translateX(10px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+}
+
+// Folded Paper Animation
+
 $clr1: #bcd7d8;
 $clr2: #f8f3e8;
 $clr3: darken($clr2, 2%);
@@ -7,7 +52,7 @@ $clr4: #f3bcaa;
 
 @mixin center {
   position: absolute;
-  top: 55%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -47,7 +92,6 @@ $clr4: #f3bcaa;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
     border-radius: 50%;
     background: rgb(darken($clr2, 6%), 0.6);

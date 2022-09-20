@@ -14,7 +14,7 @@ class Dnd extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: events
+      events: events,
     };
 
     this.moveEvent = this.moveEvent.bind(this);
@@ -30,21 +30,21 @@ class Dnd extends React.Component {
     nextEvents.splice(idx, 1, updatedEvent);
 
     this.setState({
-      events: nextEvents
+      events: nextEvents,
     });
   }
 
   resizeEvent = (resizeType, { event, start, end }) => {
     const { events } = this.state;
 
-    const nextEvents = events.map(existingEvent => {
+    const nextEvents = events.map((existingEvent) => {
       return existingEvent.id == event.id
         ? { ...existingEvent, start, end }
         : existingEvent;
     });
 
     this.setState({
-      events: nextEvents
+      events: nextEvents,
     });
   };
 
@@ -59,6 +59,7 @@ class Dnd extends React.Component {
         defaultView={BigCalendar.Views.MONTH}
         defaultDate={new Date(2015, 3, 12)}
       />
+      // <p>Working on this for future...</p>
     );
   }
 }
