@@ -22,7 +22,6 @@ const removeProject = (projectId) => ({
 });
 
 const receiveProjectErrors = (errors) => {
-  // debugger;
   return {
     type: RECEIVE_PROJECT_ERRORS,
     errors,
@@ -60,7 +59,6 @@ export const createProject = (project) => (dispatch) => {
 };
 
 export const updateProject = (project) => (dispatch) => {
-  // debugger;
   return ProjectAPI.updateProject(project)
     .then((project) => dispatch(receiveProject(project)))
     .catch((err) => {

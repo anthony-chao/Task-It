@@ -4,8 +4,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
-  border-bottom: 1px solid $default-darkgray;
+  width: 100%;
+  background-color: $default-lightyellow;
+  border-bottom: 1px solid $default-gray;
 
   a {
     text-decoration: none;
@@ -13,13 +14,14 @@
 }
 
 .nav-left {
-  display: flex;
-  // align-items: center;
-  padding: 10px 0px 10px 20px;
+  margin: 20px 0 20px 60px;
 
   .task-it-logo-container {
-    display: flex;
-    align-items: center;
+    #task-it-logo {
+      width: auto;
+      height: 80px;
+      opacity: 0.75;
+    }
 
     &:hover {
       -o-transform: scale(1.075);
@@ -28,11 +30,6 @@
       transform: scale(1.075);
       transition: 0.25s ease-out;
     }
-  }
-
-  #task-it-logo {
-    width: auto;
-    height: 80px;
   }
 
   p {
@@ -48,9 +45,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  // padding: 10px 0 10px 30px;
-  // border: 1px solid red;
-  margin-right: 80px;
+  margin-right: 60px;
 
   #user-icon {
     cursor: pointer;
@@ -73,7 +68,7 @@
       }
     }
     &:hover {
-      color: $default-yellow;
+      color: $default-darkgray;
     }
   }
 }
@@ -81,13 +76,10 @@
 .logout-button {
   cursor: pointer;
   color: $default-darkgray;
-  background-color: $default-brightyellow;
   font-size: $font-size-20;
-  text-transform: capitalize;
-  line-height: 0;
-  letter-spacing: 0;
+  background-color: $default-brightyellow;
   border: 1px solid $default-darkgray;
-  padding: 25px 15px 25px 15px;
+  padding: 10px 15px 10px 15px;
   border-radius: 20px;
 
   &:hover {

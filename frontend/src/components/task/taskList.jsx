@@ -49,10 +49,10 @@ const TaskList = (props) => {
   const history = useHistory();
 
   return (
-    <div className="projects-index-container">
+    <div className="main-container">
       {Object.values(users).length > 1 &&
       (Object.values(projects).length < 2 || !projectUrl) ? (
-        <div>
+        <>
           {projectUrl ? (
             <div className="task-showpage-top">
               <img
@@ -142,7 +142,7 @@ const TaskList = (props) => {
               </div>
             </div>
           ) : null}
-        </div>
+        </>
       ) : (
         <LoadingContainer />
       )}

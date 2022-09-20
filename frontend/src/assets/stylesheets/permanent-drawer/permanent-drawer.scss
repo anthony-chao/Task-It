@@ -1,10 +1,23 @@
 @import "../variables.scss";
 
+.side-drawer-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 225px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: $default-darkgray;
+  padding-top: 60px;
+  color: $default-brightyellow;
+}
+
 .user-avatar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: $default-green;
+  color: $default-lightgreen;
   font-family: $font-family-Rubik;
   padding: 10px 10px 14px 10px;
 
@@ -23,15 +36,13 @@
     flex-direction: column;
     align-items: center;
     padding: 5px;
-    // border: 1px solid red;
   }
 
   li:focus {
     background-color: $default-yellow;
-    color: aquamarine;
   }
 
   &:hover {
-    background-color: $default-yellow;
+    background-color: $default-gray;
   }
 }

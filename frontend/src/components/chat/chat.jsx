@@ -5,8 +5,12 @@ import { socket } from "../../util/socketUtil";
 import { BsFillChatSquareQuoteFill } from "react-icons/bs";
 import { fetchMessages, createMessage } from "../../util/messageUtil";
 
-
-const Chat = ({ currentUserFirstName, currentUserLastName, fetchMessages, createMessage }) => {
+const Chat = ({
+  currentUserFirstName,
+  currentUserLastName,
+  fetchMessages,
+  createMessage,
+}) => {
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
   const [toggledChat, setToggledChat] = useState(false);
@@ -15,18 +19,17 @@ const Chat = ({ currentUserFirstName, currentUserLastName, fetchMessages, create
 
   useEffect(() => {
     const messageArray = [];
-    fetchMessages()
-      .then(chatMessages => {
-        chatMessages.data.forEach(chatMessage => {
-          let allMessages = {};
-          allMessages.message = chatMessage.message;
-          allMessages.userName = chatMessage.userName;
-          allMessages.date = chatMessage.date
-          messageArray.push(allMessages)
-        })
-        setChat(chat.concat(messageArray));
-      })
-  }, [])
+    fetchMessages().then((chatMessages) => {
+      chatMessages.data.forEach((chatMessage) => {
+        let allMessages = {};
+        allMessages.message = chatMessage.message;
+        allMessages.userName = chatMessage.userName;
+        allMessages.date = chatMessage.date;
+        messageArray.push(allMessages);
+      });
+      setChat(chat.concat(messageArray));
+    });
+  }, []);
 
   useEffect(() => {
     socket.on("chatMessage", (payload) => {
@@ -40,7 +43,7 @@ const Chat = ({ currentUserFirstName, currentUserLastName, fetchMessages, create
 
   const sendMessage = (e) => {
     e.preventDefault();
-    createMessage({message, userName, date: timestamp})
+    createMessage({ message, userName, date: timestamp });
     socket.emit("chatMessage", { userName, message, date: timestamp });
     // Send message on socket
     setMessage("");
@@ -86,11 +89,7 @@ const Chat = ({ currentUserFirstName, currentUserLastName, fetchMessages, create
         <div className="chat-box">
           {chat.map((payload, index) => {
             return (
-              <p
-                className="chat-message"
-                ref={chatEndRef}
-                key={index}
-              >
+              <p className="chat-message" ref={chatEndRef} key={index}>
                 {payload.userName}: {payload.message}
                 <span className="chat-timestamp">{payload.date}</span>
               </p>
@@ -107,7 +106,7 @@ const Chat = ({ currentUserFirstName, currentUserLastName, fetchMessages, create
         className="closed-chat-container"
         onClick={() => setToggledChat(!toggledChat)}
       >
-        <BsFillChatSquareQuoteFill className="chat-icon" size={70} />
+        <BsFillChatSquareQuoteFill className="chat-icon" size={75} />
       </div>
     );
   };
@@ -121,7 +120,7 @@ const mapStateToProps = (state) => {
     currentUserFirstName: state.session.user.firstName,
     currentUserLastName: state.session.user.lastName,
     fetchMessages: () => fetchMessages(),
-    createMessage: message => createMessage(message)
+    createMessage: (message) => createMessage(message),
   };
 };
 

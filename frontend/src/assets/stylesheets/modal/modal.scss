@@ -38,17 +38,19 @@
   min-width: 200px;
   padding: 18px;
   margin-top: 10px;
+  cursor: pointer;
 
   &:hover {
-    color: $default-blue;
-    border-color: $default-blue;
-    animation: blink 1.5s ease-in-out;
+    color: white;
+    border-color: white;
+    background-color: $default-purple;
   }
 }
 
 .session-form-footer a {
-  color: $default-blue;
+  color: $default-purple;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .session-form-footer a:hover {
@@ -60,7 +62,7 @@
   color: black;
   font-family: $font-family;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 16px;
 }
 
 .modal-child h1 {

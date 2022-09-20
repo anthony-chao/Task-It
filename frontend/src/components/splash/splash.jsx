@@ -6,7 +6,13 @@ import Home from "../home/Home";
 const Splash = ({ currentUser, login, history }) => {
   const splashContent = () => {
     return (
-      <div className="splashContainer">
+      <>
+        <div className="splash-container">
+          <div className="welcome-container">
+            <p>Welcome to Task-It..</p>
+            <p>..to continue, please login..</p>
+          </div>
+        </div>
         <div className="splash-frame"></div>
         <div className="splash-stage">
           <div className="splash-box">
@@ -48,7 +54,7 @@ const Splash = ({ currentUser, login, history }) => {
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   };
 

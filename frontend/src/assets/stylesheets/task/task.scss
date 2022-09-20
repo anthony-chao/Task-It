@@ -90,7 +90,7 @@
 
 // Add Task styling
 .create-task-button {
-  margin: 10px 10px 10px 10px;
+  margin: 10px;
   width: 140px;
   display: flex;
   color: $default-mint;
@@ -115,12 +115,12 @@
 
 // Task Showpage - Project Info styling
 .task-showpage-top {
-  margin-bottom: 20px;
+  margin: 20px 0 20px 0;
 }
 
 #task-backarrow {
   margin-left: 20px;
-  width: 50px;
+  width: 40px;
 
   &:hover {
     transform: scale(1.15);
@@ -129,7 +129,7 @@
 }
 
 .task-showpage-project-info {
-  margin-left: 20px;
+  margin: 10px 20px 10px 20px;
   display: flex;
   column-gap: 15px;
 
@@ -525,7 +525,7 @@ input[type="checkbox"] {
   height: 4vmin;
   top: -5px;
   width: 110%;
-  background-color: #FAF9F6;
+  background-color: #faf9f6;
   border-right: 1px dotted var(--tape-edge-gray);
   border-left: 1px dotted var(--tape-edge-gray);
   opacity: 0.5;
@@ -545,7 +545,7 @@ input[type="checkbox"] {
   width: 10vmin;
   height: 4vmin;
   position: absolute;
-  background-color: #FAF9F6;
+  background-color: #faf9f6;
   opacity: 0.5;
   border-right: 1px dotted var(--tape-edge-gray);
   border-left: 1px dotted var(--tape-edge-gray);
@@ -577,6 +577,7 @@ input[type="checkbox"] {
 #assign-task-header {
   color: $default-red;
   margin-bottom: 10px;
+  font-size: $font-size-20;
 }
 
 .assign-task-inner-div {
@@ -585,7 +586,8 @@ input[type="checkbox"] {
   display: flex;
   justify-content: center;
   border: 10px solid #d8d1c5;
-  background-color: #cde2ca;
+  background-color: #c8e0c6;
+  margin-top: 50px;
 }
 
 .assign-task-inner-div > div {
@@ -596,11 +598,11 @@ input[type="checkbox"] {
   cursor: pointer;
   font-size: $font-size-20;
   margin: 30px 0 0 90px;
-  border: 1px solid $default-lightblue;
-  border-radius: 6px;
-  padding: 1px 3px 1px 3px;
-  background-color: $default-lightblue;
-  color: $default-blue;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: $default-lightgreen;
+  color: $default-darkgreen;
 
   &:hover {
     transform: scale(1.15);
@@ -619,4 +621,5 @@ input[type="checkbox"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 20px;
 }
