@@ -90,19 +90,25 @@ const TaskList = (props) => {
 
           {tasks.length === 0 && !projectUrl ? (
             <div className="no-tasks-showpage">
-              <h1>Hi {currentUser.firstName}! </h1>
-              <h2>You currently have no assigned tasks!</h2>
-              <h3>
+              <h1>
+                Hi {currentUser.firstName}, you currently have no assigned
+                tasks!
+              </h1>
+              <h2>
                 Click here to assign yourself some tasks:{" "}
-                <p onClick={() => history.push("/assigntask")}>Assign Tasks</p>
-              </h3>
+                <button onClick={() => history.push("/assigntask")}>
+                  Assign Task
+                </button>
+              </h2>
             </div>
           ) : null}
 
           {tasks.length !== 0 && !projectUrl ? (
             <div className="no-tasks-showpage">
-              <h1>Hi {currentUser.firstName}!</h1>
-              <h2>Listed are all your assigned tasks:</h2>
+              <h1>
+                Hi {currentUser.firstName}, listed are all your assigned tasks:
+              </h1>
+              {/* <h2>Listed are all your assigned tasks:</h2> */}
             </div>
           ) : null}
 

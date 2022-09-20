@@ -77,13 +77,13 @@
   cursor: pointer;
   color: $default-darkgray;
   font-size: $font-size-20;
-  background-color: $default-brightyellow;
+  background-color: $default-lightgreen;
   border: 1px solid $default-darkgray;
   padding: 10px 15px 10px 15px;
   border-radius: 20px;
 
   &:hover {
-    color: $default-brightyellow;
+    color: $default-lightgreen;
     background-color: $default-darkgray;
     border-color: $default-darkgray;
   }

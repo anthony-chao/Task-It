@@ -8,10 +8,8 @@ const Splash = ({ currentUser, login, history }) => {
     return (
       <>
         <div className="splash-container">
-          <div className="welcome-container">
-            <p>Welcome to Task-It..</p>
-            <p>..to continue, please login..</p>
-          </div>
+          <p>Welcome to Task-It..</p>
+          <p>..to continue, please login..</p>
         </div>
         <div className="splash-frame"></div>
         <div className="splash-stage">
