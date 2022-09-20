@@ -37,7 +37,7 @@ const server = require("http").createServer(app);
 const socket = require("socket.io");
 const io = socket(server, {
   cors: {
-    origin: ["http://localhost:3000", "https://mern-branches.herokuapp.com/"],
+    origin: ["http://localhost:3000", "https://mern-task-it.herokuapp.com/"],
   },
 });
 
