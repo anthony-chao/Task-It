@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
 const Project = require("../../models/Project");
+const { collection } = require("../../models/Task");
 
 const Task = require("../../models/Task");
 const User = require("../../models/User");
@@ -115,7 +116,21 @@ router.patch("/assignTask/:id", (req, res) => {
 // DELETE A TASK
 router.delete("/:id", (req,res) => {
   Task.findByIdAndDelete(req.params.id)
-    .then(task => res.json(task.id))
+    .then(task => {
+      Project.findOne({tasks: task.id})
+        .then( project => {
+          project.tasks.pull(task.id)
+          project.save()
+        })
+      User.find({tasks: task.id})
+        .then( users => {
+          const updatedUsers = users.map( user => {
+            user.tasks.pull(task.id)
+            user.save()
+          })
+          res.json(updatedUsers)
+        })
+    })
 })
 
 module.exports = router;

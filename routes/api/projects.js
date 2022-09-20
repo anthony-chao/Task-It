@@ -14,7 +14,6 @@ router.get("/test", (req, res) =>
 );
 
 // GET ALL PROJECTS
-
 router.get("/", (req, res) => {
   const payload = {};
   Project.find({})
@@ -22,11 +21,6 @@ router.get("/", (req, res) => {
       payload.projects = projects;
       res.json(projects)
     })
-  // Task.find({})
-  //   .then( tasks => {
-  //     payload.tasks = tasks;
-  //     res.json(payload)
-  //   })
 });
 
 // GET PROJECT BY PROJECT ID
@@ -36,15 +30,6 @@ router.get("/:id", (req, res) => {
       .catch(err =>
           res.status(404).json({ noprojectfound: 'No project found with that ID' })
       );
-  // Project.findById(req.params.id).then((project) => {
-  //   const payload = {};
-  //   console.log(project)
-  //   payload.projects = project;
-  //   Task.find({ projectId: req.params.id }).then((tasks) => {
-  //     payload.tasks = tasks;
-  //     res.json(payload);
-  //   });
-  // });
 });
 
 // CREATE PROJECT
@@ -105,8 +90,6 @@ router.patch("/:id",
     console.log(project);
     project.name = req.body.name;
     project.description = req.body.description;
-    // project.members = req.body.members;
-    // project.tasks = req.body.tasks;
 
     project
       .save()
@@ -119,72 +102,36 @@ router.patch("/:id",
 
 // DELETE PROJECT BY ID
 router.delete("/:id", (req, res) => {
-  Project.findByIdAndDelete(req.params.id).then((project) =>
-    res.json(project.id)
-  );
+  Project.findByIdAndDelete(req.params.id)
+    .then(project => {
+      Task.find({projectId: project.id})
+        .then( tasks => {
+          tasks.forEach( task => {
+            Task.findByIdAndDelete(task.id)
+              .then(() => {
+                User.find({tasks: task.id})
+                  .then( users => {
+                    const updatedUsersTasks = users.map( user => {
+                      user.tasks.pull(task.id)
+                      user.save()
+                    })
+                  })
+              })
+          })
+        })
+      User.find({projects: project.id})
+        .then(users => {
+          const updatedUsers = users.map( user => {
+            user.projects.pull(project.id)
+            user.save()
+          })
+          res.json(updatedUsers)
+        })
+    });
 });
-
-// router.patch('/:id/addMember', (req, res) => {
-//       // const { errors, isValid } = validateProjectInput(req.body);
-
-//       // if (!isValid) {
-//       //   return res.status(400).json(errors);
-//       // }
-//     Project.findById(req.params.id)
-//       .then(project => {
-//         User.findOne({email: req.body.email})
-//           .then( user => {
-//             project.members.push(user.id)
-//             project.save()
-//             .then(res.json(project))
-//           })
-//           .catch(err => res.status(404).json({usernotfound: "No user found with this email"}))
-//       })
-
-//     }
-// );
-
-// router.patch('/:id/deleteMember', (req, res) => {
-//   // const { errors, isValid } = validateProjectInput(req.body);
-
-//   // if (!isValid) {
-//   //   return res.status(400).json(errors);
-//   // }
-
-//     Project.findById(req.params.id)
-//       .then( project => {
-//         User.findOne({email: req.body.email})
-//           .then( user => {
-//             project.members.pull(user.id)
-//             project.save()
-//             .then(res.json(project))
-//           })
-//           .catch(err => res.status(404).json({usernotfound: "No user found with this email"}))
-//       })
-
-// });
 
 // GET PROJECT'S TASKS
 router.get("/:id/tasks", (req, res) => {
-  // Project.findById(req.params.id)
-  //   .then( project => {
-  //     const projectTasks = {};
-  //     Promise.all(
-  //       project.tasks.map( task => {
-  //         Task.findById(task)
-  //           .then(searchedTask => {
-  //             return searchedTask
-  //           })
-  //         }))
-  //       .then(tasks => {
-  //         tasks.forEach(task => {
-  //           console.log(task)
-  //           projectTasks[task._id] = task
-  //         })
-  //         res.json(projectTasks)
-  //       })
-  //   })
-  //   .catch(err => console.log(err))
   Task.find({ projectId: req.params.id }).then((tasks) => res.json(tasks));
 });
 
@@ -194,11 +141,11 @@ router.post(
   "/:id/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    // const { errors, isValid } = validateTaskInput(req.body);
+    const { errors, isValid } = validateTaskInput(req.body);
 
-    // if (!isValid) {
-    //   return res.status(400).json(errors);
-    // }
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
 
     const newTask = new Task({
       title: req.body.title,
