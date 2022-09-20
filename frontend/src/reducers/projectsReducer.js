@@ -11,6 +11,7 @@ const projectsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_PROJECTS:
+      nextState = {};
       action.projects.forEach((project) => {
         nextState = Object.assign(nextState, { [project._id]: project });
       });
