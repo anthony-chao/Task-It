@@ -15,6 +15,10 @@ const AssignTask = (props) => {
         task: ""
     })
 
+    const [submitted, setSubmitted] = useState({
+        email: ""
+    })
+
     const [error, setError] = useState({
         error: false,
         success: false,
@@ -48,6 +52,7 @@ const AssignTask = (props) => {
             props.updateAssignedTask(taskId, userId);
             setError({error: false});
             setError({success: true});
+            setSubmitted({email: input.email});
         }
         else {
             setError({error: true})
@@ -72,7 +77,7 @@ const AssignTask = (props) => {
                 : null }
                 { (error.success) ? 
                     <Stack sx={{ width: '100%' }} spacing={2}>
-                        <Alert id="assign-task-alert" severity="success" onClose={() => {setError({open: false})}}>You have successfully assigned {input.email.split(" ")[0]} a task!</Alert>
+                        <Alert id="assign-task-alert" severity="success" onClose={() => {setError({open: false})}}>You have successfully assigned {submitted.email.split(" ")[0]} a task!</Alert>
                     </Stack>
                 : null }
                 <form onSubmit={handleSubmit}>
