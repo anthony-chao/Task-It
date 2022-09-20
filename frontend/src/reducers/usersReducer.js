@@ -12,7 +12,6 @@ const usersReducer = (state = {}, action) => {
         [action.currentUser.id]: action.currentUser,
       });
     case RECEIVE_USERS:
-        // return Object.assign({}, state, { allUsers: action.users})
         nextState = {};
         action.users.forEach(user => {
             nextState = Object.assign(nextState, { [user._id] : user })

@@ -69,7 +69,7 @@ const SessionForm = (props) => {
         } else {
           passwordcb();
         }
-      }, 100);
+      }, 75);
     }
     const passwordcb = () => {
       setTimeout(() => {
@@ -79,10 +79,10 @@ const SessionForm = (props) => {
           passwordcb();
         } else {
           setTimeout(() => {
-            props.processForm(userInfoRef.current).then(closeModal());
+            props.processForm(userInfoRef.current).then(props.closeModal());
           }, 500);
         }
-      }, 100)
+      }, 75)
     }
     props.clearReceiveErrors();
     emailcb();

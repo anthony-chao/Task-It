@@ -19,11 +19,8 @@ const TaskSchema = new Schema({
     status: {
         type: String,
         enum: ["Completed", "Incomplete"],
+        default: "Incomplete"
     }
-    // subtasks: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'TaskSchema'
-    // }]
 })
 
 module.exports = Task = mongoose.model('tasks', TaskSchema)
