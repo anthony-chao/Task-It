@@ -1,5 +1,16 @@
 @import "../variables.scss";
 
+.closed-chat-container {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 2.5rem;
+  color: $default-orange;
+
+  .chat-icon {
+    z-index: 99;
+  }
+}
+
 .opened-chat-container:not(:first-child) {
   display: flex;
   flex-direction: column-reverse;
