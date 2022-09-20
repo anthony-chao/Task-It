@@ -141,7 +141,7 @@ const PermanentDrawer = ({ currentUserName }) => {
     const styles = {
       style: {
         paddingBottom: 10,
-        color: "white",
+        color: (58, 58, 58),
       },
       size: 30,
     };
@@ -171,25 +171,23 @@ const PermanentDrawer = ({ currentUserName }) => {
       return history.push(`/tasks`);
     } else if (text == "Assign Task" && location.pathname !== `/assigntask`) {
       return history.push(`/assigntask`);
-    } else if (text == "Calendar" && location.pathname !== `/calendar`) {
-      return history.push(`/calendar`);
     }
     return;
   };
 
   return (
     <div className="side-drawer-container">
-      <div className="user-avatar">Hi, {currentUserName}!</div>
-      {["Home", "Projects", "Tasks", "Assign Task", "Calendar"].map(
-        (text, index) => (
-          <ul key={`${text}-${index}`} className="side-drawer-items">
-            <li onClick={() => handleClick(text)}>
-              {drawerIcons(text)}
-              {text}
-            </li>
-          </ul>
-        )
-      )}
+      <div className="user-avatar">
+        <p>Hi, {currentUserName}!</p>
+      </div>
+      {["Home", "Projects", "Tasks", "Assign Task"].map((text, index) => (
+        <ul key={`${text}-${index}`} className="side-drawer-items">
+          <li onClick={() => handleClick(text)}>
+            {drawerIcons(text)}
+            {text}
+          </li>
+        </ul>
+      ))}
     </div>
   );
 };

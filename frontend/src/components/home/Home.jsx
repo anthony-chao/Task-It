@@ -5,7 +5,6 @@ import "react-tabs/style/react-tabs.css";
 // import Dnd from './Calendar';
 import Chat from "../chat/chat";
 import { connect } from "react-redux";
-// import { fetchUserProjects, fetchProject, fetchProjects } from '../../actions/projectActions';
 import LoadingContainer from "../util/LoadingContainer";
 // import { openModal } from "../../actions/modalActions";
 // import dashboardGif from '../../assets/images/dashboard.gif'
@@ -16,7 +15,8 @@ import anthony from "../../assets/images/profile-photos/anthony.jpg";
 import andrea from "../../assets/images/profile-photos/andrea.jpg";
 import andy from "../../assets/images/profile-photos/andy.jpg";
 import michael from "../../assets/images/profile-photos/michael.jpg";
-import Slider from "./slider"
+import Slider from "./slider";
+import nameBadge from "../../assets/images/name-tag.png";
 
 // const Dashboard = (props) => {
 
@@ -145,129 +145,155 @@ import Slider from "./slider"
 
 const Home = () => {
   return (
-    <main className="home-container">
-      <section className="instructions-container">
-        <Slider />
-      </section>
+    <div className="main-container">
+      <main className="home-container">
+        <section className="instructions-container">
+          <Slider />
+        </section>
 
-      <section className="about-us-container">
-        <div className="anthony">
-          <div className="photo-container">
-            <img src={anthony} alt="anthony-profile" />
+        <section className="team-container">
+          <div className="container">
+            <img id="name-badge" src={nameBadge} alt="name-badge" />
+            <div className="anthony">
+              <div className="photo-container">
+                <img src={anthony} alt="anthony-profile" />
+              </div>
+              <div className="info">
+                <p>Anthony Chao</p>
+                <div className="socials">
+                  <a
+                    href="https://github.com/anthony-chao"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BsGithub id="social-link" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/anthony-chao-cpa-983299133/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BsLinkedin id="social-link" />
+                  </a>
+                  <a
+                    href="https://angel.co/u/anthony-chao-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaAngellist id="social-link" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="socials">
-            <a
-              href="https://github.com/anthony-chao"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsGithub id="social-link" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/anthony-chao-cpa-983299133/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsLinkedin id="social-link" />
-            </a>
-            <a
-              href="https://angel.co/u/anthony-chao-1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaAngellist id="social-link" />
-            </a>
-          </div>
-        </div>
 
-        <div className="andrea">
-          <div className="photo-container">
-            <img src={andrea} alt="andrea-profile" />
+          <div className="container">
+            <img id="name-badge" src={nameBadge} alt="name-badge" />
+            <div className="andrea">
+              <div className="photo-container">
+                <img src={andrea} alt="andrea-profile" />
+              </div>
+              <div className="info">
+                <span id="andrea">Andrea de Guzman</span>
+                <div className="socials">
+                  <a
+                    href="https://github.com/pa-dg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BsGithub id="social-link" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/patricia-deguzman/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BsLinkedin id="social-link" />
+                  </a>
+                  <a
+                    href="https://angel.co/u/patricia-andrea-de-guzman"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaAngellist id="social-link" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="socials">
-            <a
-              href="https://github.com/pa-dg"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsGithub id="social-link" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/patricia-deguzman/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsLinkedin id="social-link" />
-            </a>
-            <a
-              href="https://angel.co/u/patricia-andrea-de-guzman"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaAngellist id="social-link" />
-            </a>
-          </div>
-        </div>
 
-        <div className="andy">
-          <div className="photo-container">
-            <img src={andy} alt="andrea-profile" />
+          <div className="container">
+            <img id="name-badge" src={nameBadge} alt="name-badge" />
+            <div className="andy">
+              <div className="photo-container">
+                <img src={andy} alt="andrea-profile" />
+              </div>
+              <div className="info">
+                <p>Andy Liu</p>
+                <div className="socials">
+                  <a
+                    href="https://github.com/andyliu1527"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BsGithub id="social-link" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/andyliu1527/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BsLinkedin id="social-link" />
+                  </a>
+                  <a
+                    href="https://angel.co/u/andyliu1527"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaAngellist id="social-link" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="socials">
-            <a
-              href="https://github.com/andyliu1527"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsGithub id="social-link" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/andyliu1527/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsLinkedin id="social-link" />
-            </a>
-            <a
-              href="https://angel.co/u/andyliu1527"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaAngellist id="social-link" />
-            </a>
-          </div>
-        </div>
 
-        <div className="michael">
-          <div className="photo-container">
-            <img src={michael} alt="andrea-profile" />
+          <div className="container">
+            <img id="name-badge" src={nameBadge} alt="name-badge" />
+            <div className="michael">
+              <div className="photo-container">
+                <img src={michael} alt="andrea-profile" />
+              </div>
+              <div className="info">
+                <p>Michael Ng</p>
+                <div className="socials">
+                  <a
+                    href="https://github.com/MichaelNgCen"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BsGithub id="social-link" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/michaelngcen/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BsLinkedin id="social-link" />
+                  </a>
+                  <a
+                    href="https://angel.co/u/michael-ng-cen"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaAngellist id="social-link" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="socials">
-            <a
-              href="https://github.com/MichaelNgCen"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsGithub id="social-link" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/michaelngcen/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsLinkedin id="social-link" />
-            </a>
-            <a
-              href="https://angel.co/u/michael-ng-cen"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaAngellist id="social-link" />
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
   );
 };
 

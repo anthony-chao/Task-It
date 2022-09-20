@@ -1,13 +1,15 @@
-# Branches
+# Task-It
 
-![alt text](https://i.postimg.cc/9MBxgVG3/image-removebg-preview-2.png)
+<p align="center">
+  <img src="/frontend/src/assets/images/task-it-logo.png" alt="task-it-logo">
+</p>
 
 ## Background and Overview
 
-Branches is a project management application where users can create projects and tasks for themselves or team members, as well as visualize the completion status of said project. Additionally, users will be able to utilize a live chat where they can communicate with other team members. This app provides you the opportunity to get and stay organized with others!
+Task-It is a project management application where users can create projects and tasks for themselves or team members, as well as visualize the completion status of said project. Additionally, users will be able to utilize a live chat where they can communicate with other team members. This app provides you the opportunity to get and stay organized with others!
 
 ## Technologies Used
-* Branches was built using a MongoDB NoSQL database, Express web application framework, React-Redux frontend, and Node.js backend.
+* Task-It was built using a MongoDB NoSQL database, Express web application framework, React-Redux frontend, and Node.js backend.
 * Additionally, we utilized Socket.io for the live-chat functionality.
 
 ## Functionality and MVP

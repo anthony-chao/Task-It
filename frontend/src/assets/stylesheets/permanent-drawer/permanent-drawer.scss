@@ -1,14 +1,30 @@
 @import "../variables.scss";
 
+.side-drawer-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 225px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: $default-darkgray;
+  padding-top: 60px;
+  color: $default-brightyellow;
+}
+
 .user-avatar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: $font-size-25;
-  color: $default-green;
+  color: $default-lightgreen;
   font-family: $font-family-Rubik;
-  padding-bottom: 14px;
-  // border-bottom: 1px solid $default-darkergray;
+  padding: 10px 10px 14px 10px;
+
+  p {
+    max-width: 205px;
+    font-size: 23px;
+  }
 }
 
 .side-drawer-items {
@@ -20,14 +36,13 @@
     flex-direction: column;
     align-items: center;
     padding: 5px;
-    // border: 1px solid red;
   }
-  ul:active {
-    background-color: $default-green;
-    color: aquamarine;
+
+  li:focus {
+    background-color: $default-yellow;
   }
 
   &:hover {
-    background-color: $default-lightblue;
+    background-color: $default-gray;
   }
 }

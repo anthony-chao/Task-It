@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/branches-logo.jpeg";
+import logo from "../../assets/images/task-it-logo.png";
 import { logout } from "../../actions/sessionActions";
 import { openModal } from "../../actions/modalActions";
 import PermanentDrawer from "../permanentDrawer/PermanentDrawer";
@@ -20,14 +20,11 @@ const Nav = (props) => {
 
   const loginButton = () => {
     return (
-      <div className="session-button">
-        <FaUserCircle
-          id="user-icon"
-          onClick={openLoginModal("login")}
-          style={{ color: "lightgray" }}
-          size={50}
-        />
-      </div>
+      <FaUserCircle
+        id="user-icon"
+        onClick={openLoginModal("login")}
+        size={55}
+      />
     );
   };
 
@@ -40,28 +37,28 @@ const Nav = (props) => {
   };
 
   return (
-    <header className="nav-header-container">
-      <div className="nav-left">
-        <Link to="/">
-          <div className="branches-logo-container">
-            <img id="branches-logo" src={logo} alt="branches-logo" />
-            <p>Branches</p>
-          </div>
-        </Link>
-      </div>
+    <div className={loggedIn ? "main-container" : "main-container-no-margin"}>
+      <header className="nav-header-container">
+        <div className="nav-left">
+          <Link to="/">
+            <div className="task-it-logo-container">
+              <img id="task-it-logo" src={logo} alt="task-it-logo" />
+            </div>
+          </Link>
+        </div>
 
-      <div className="nav-right">
-        {/* <div className="projects-button">
-          { loggedIn ? <PermanentDrawer /> : null }
-        </div> */}
-
-        <Modal />
-        {loggedIn ? logoutButton() : loginButton()}
-      </div>
-    </header>
+        <div className="nav-right">
+          <Modal />
+          {loggedIn ? logoutButton() : loginButton()}
+        </div>
+      </header>
+    </div>
   );
 };
 
+{
+  /* {loggedIn ? <PermanentDrawer /> : null} */
+}
 const mapStateToProps = (state) => {
   return {
     loggedIn: state.session.isAuthenticated,

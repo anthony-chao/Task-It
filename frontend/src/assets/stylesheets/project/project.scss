@@ -1,9 +1,7 @@
 @import "../variables.scss";
 
 .projects-index-container {
-  width: 100%;
-  margin: 20px 0 50px 0;
-  // font-family: $font-family-Rubik;
+  margin: 30px;
 }
 
 .create-button {
@@ -33,7 +31,7 @@
 .projects-index-grid {
   margin: 10px;
   display: grid;
-  grid-template-columns: repeat(3, 260px);
+  grid-template-columns: repeat(auto-fit, 260px);
   // grid-template-rows: repeat(3, 250px);
   column-gap: 30px;
   row-gap: 10px;
@@ -189,7 +187,6 @@
       color: $default-red;
       display: flex;
       align-self: flex-start;
-      // flex-direction: flex-start;
       align-items: flex-start;
     }
 
