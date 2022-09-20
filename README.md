@@ -23,7 +23,7 @@ Task-It is a project management application where users can create projects and 
 * Users are able to view all projects in the project drawer. Upon clicking on a project, the user will be redirected to a project show page that details all the project's tasks.
 * Users are able to add, edit and delete existing projects.
 
-<img src="/frontend/src/assets/images/create-project.gif" alt="">
+<img height="300" src="/frontend/src/assets/images/create-project.gif" alt="">
 
 ### Tasks
 * Users can view all of the tasks related to a project, as well as add, edit and delete projects.
