@@ -151,7 +151,6 @@ const AssignTask = (props) => {
 const mapStateToProps = (state) => {
   return {
     allUsers: state.entities.users ? Object.values(state.entities.users) : null,
-    // allTasks: Object.values(state.entities.tasks)
     allTasks: Object.values(state.entities.tasks).filter(
       (task) => task.status === "Incomplete"
     ),

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { updateTask, deleteTask, fetchTask } from "../../actions/taskActions";
-import { openModal, closeModal } from "../../actions/modalActions";
+import { updateTask } from "../../actions/taskActions";
+import { openModal } from "../../actions/modalActions";
 import { BiEditAlt, BiTrashAlt } from "react-icons/bi";
 
 const TaskItem = (props) => {
-  const { task, users, deleteTask, updateTask, openModal } = props;
+  const { task, users, updateTask, openModal } = props;
 
   const [state, setState] = useState(task);
 
@@ -99,7 +99,6 @@ const TaskItem = (props) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteTask: (taskId) => dispatch(deleteTask(taskId)),
   updateTask: (task) => dispatch(updateTask(task)),
   openModal: (type) => dispatch(openModal(type)),
 });
