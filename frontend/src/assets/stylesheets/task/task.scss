@@ -249,6 +249,7 @@ input[type="checkbox"] {
 }
 
 .task-action-buttons {
+  cursor: pointer;
   display: flex;
   justify-content: right;
 }

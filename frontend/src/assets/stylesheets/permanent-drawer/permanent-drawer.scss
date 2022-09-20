@@ -10,7 +10,7 @@
   top: 0;
   background-color: $default-darkgray;
   padding-top: 60px;
-  color: $default-brightyellow;
+  color: white;
 }
 
 .user-avatar {
@@ -43,6 +43,6 @@
   }
 
   &:hover {
-    background-color: $default-gray;
+    background-color: rgb(192, 191, 191);
   }
 }

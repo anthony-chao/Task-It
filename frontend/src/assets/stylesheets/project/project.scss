@@ -133,6 +133,10 @@
     #proj-icon {
       cursor: pointer;
       vertical-align: middle;
+
+      &:hover {
+        transform: scale(1.2);
+      }
     }
   }
 }
