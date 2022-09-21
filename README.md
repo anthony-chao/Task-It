@@ -18,7 +18,7 @@ Task-It is a project management application where users can create projects and 
 ### User Authentication
 * Users will be able to sign up and create a new account, as well as log in to existing accounts (also accessible via demo login). Only logged in users will be able to use the functionality of the app.
 
-### PLACEHOLDER FOR GIF OF CREATING A NEW USER OR SIGN IN
+<img width="800" src="/frontend/src/assets/images/login-demo.gif" alt="">
 
 ### Projects
 * Users are able to view all projects in the project drawer. Upon clicking on a project, the user will be redirected to a project show page that details all the project's tasks.
