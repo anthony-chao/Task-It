@@ -11,11 +11,12 @@ Task-It is a project management application where users can create projects and 
 ## Technologies Used
 * Task-It was built using a MongoDB NoSQL database, Express web application framework, React-Redux frontend, and Node.js backend.
 * Additionally, we utilized Socket.io for the live-chat functionality.
+* We also used Axios for API calls, Rechart.js for the progress chart, and Material UI for autocomplete functionality.
 
 ## Functionality and MVP
 
 ### User Authentication
-* Users will be able to sign up and create a new account, as well as log in to existing accounts (also accessible via demo login). Only logged in usersw will be able to use the functionality of the app.
+* Users will be able to sign up and create a new account, as well as log in to existing accounts (also accessible via demo login). Only logged in users will be able to use the functionality of the app.
 
 ### PLACEHOLDER FOR GIF OF CREATING A NEW USER OR SIGN IN
 
@@ -42,49 +43,54 @@ Task-It is a project management application where users can create projects and 
 
 ## Code Snippets 
 
-Below is a code snippet of our implementation of Websocket for the live chat. The main difficulty with getting this set up was getting the time to render on the chat messages. We rendered the time through deconstructing the timestamp into an hour and minute, and then appending that time to each message.
+Below is a code snippet of the Chat.jsx Component for the live chat implementation. There are two challenges that we encountered during development. First was enabling the chat messages to persist in the chat history once a user is re-logged-in. We resolved this issue by saving the messages in the database and mapping them to the chat box when the component renders. Second was rendering the chat time-stamps in real time. The solution to this was creating a Date object that keeps track of the current time and saving the message in the database with it in the date field. 
 ```
- const userName = (currentUserFirstName + " " + currentUserLastName);
+   useEffect(() => {
+    const messageArray = [];
+    fetchMessages().then((chatMessages) => {
+      chatMessages.data.forEach((chatMessage) => {
+        let allMessages = {};
+        allMessages.message = chatMessage.message;
+        allMessages.userName = chatMessage.userName;
+        allMessages.date = chatMessage.date;
+        messageArray.push(allMessages);
+      });
+      setChat(chat.concat(messageArray));
+    });
+  }, []);
+
+  useEffect(() => {
+    socket.on("chatMessage", (payload) => {
+      setChat([...chat, payload]);
+    });
+  });
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chat]);
+
+  const sendMessage = (e) => {
+    e.preventDefault();
+    createMessage({ message, userName, date: timestamp });
+    // Send message on socket
+    socket.emit("chatMessage", { userName, message, date: timestamp });
+    setMessage("");
+  };
+
+  const scrollToBottom = () => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const userName = currentUserFirstName + " " + currentUserLastName;
   const currentDate = new Date();
-  const timestamp = currentDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-
-  const chatBox = () => {
-    return (
-      <main className="opened-chat-container">
-        <div className="close-chat" onClick={() => setToggledChat(!toggledChat)}>&times;</div>
-        <form onSubmit={sendMessage} className="chat-footer">
-            <input className="chat-input"
-              type="text" 
-              name="message" 
-              value={message}
-              placeholder="Chat here"
-              onChange={(e) => {setMessage(e.target.value)}}
-              required
-            />
-            <button type='submit'>
-              <TbSend size={30} />
-            </button>
-        </form>
-
-       <div className="chat-box">
-        {chat.map((payload, index) => {
-          return (
-            <>
-              <p className="chat-message" key={index} ref={chatEndRef}>
-                {payload.userName}: {payload.message}
-                <span className="chat-timestamp">{timestamp}</span>
-              </p>
-            </>
-          )
-        })}
-      </div>
-    </main>
-  )
-};
+  const timestamp = currentDate.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 ```
 
 ## Team
-* Patricia Andrea de Guzman
-* Andy Liu
-* Michael Ng Cen
-* Anthony Chao
+* [Patricia Andrea de Guzman](https://github.com/pa-dg)
+* [Andy Liu](https://github.com/andyliu1527)
+* [Michael Ng Cen](https://github.com/MichaelNgCen)
+* [Anthony Chao](https://github.com/anthony-chao)

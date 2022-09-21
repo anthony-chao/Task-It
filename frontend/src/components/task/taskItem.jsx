@@ -61,7 +61,7 @@ const TaskItem = (props) => {
       }
       {
         return [...new Set(array)].map((user) => (
-          <p className="task-assigned-user">{user}</p>
+          <p key={`${Math.floor(Math.random() * 20)}`} className="task-assigned-user">{user}</p>
         ));
       }
     }
