@@ -1,5 +1,9 @@
 import React from "react";
 import { HashLink } from "react-router-hash-link";
+import CreateProjectGif from "../../assets/images/create-project.gif";
+import CreateTaskGif from "../../assets/images/create-task.gif";
+import TaskCompletionGif from "../../assets/images/task-completion.gif"
+import AssignTaskGif from "../../assets/images/assign-task-live-chat.gif"
 
 const Slider = (props) => {
   return (
@@ -8,6 +12,7 @@ const Slider = (props) => {
         <div className="slides">
           <div id="slides__1" className="slide">
             <div className="slide-content">
+              <img className="instructions-gif"src={CreateProjectGif} />
               <p className="slide__text">
                 Create A Project To Keep Track Of Your Progress!
               </p>
@@ -25,9 +30,10 @@ const Slider = (props) => {
           </div>
           <div id="slides__2" className="slide">
             <div className="slide-content">
-              <span className="slide__text">
+              <img className="instructions-gif"src={CreateTaskGif} />
+              <p className="slide__text">
                 Create A Task To Add To Your Project
-              </span>
+              </p>
             </div>
             <HashLink
               className="slide__prev"
@@ -42,9 +48,10 @@ const Slider = (props) => {
           </div>
           <div id="slides__3" className="slide">
             <div className="slide-content">
-              <span className="slide__text">
+              <img className="instructions-gif"src={TaskCompletionGif} />
+              <p className="slide__text">
                 Check Off A Task To Track Completion
-              </span>
+              </p>
             </div>
             <HashLink
               className="slide__prev"
@@ -59,7 +66,8 @@ const Slider = (props) => {
           </div>
           <div id="slides__4" className="slide">
             <div className="slide-content">
-              <span className="slide__text">Assign A User A Task</span>
+              <img className="instructions-gif"src={AssignTaskGif} />
+              <p className="slide__text">Chat With Other Users And Assign A User A Task</p>
             </div>
             <HashLink
               className="slide__prev"
