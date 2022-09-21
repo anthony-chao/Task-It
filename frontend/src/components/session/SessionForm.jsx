@@ -61,13 +61,14 @@ const SessionForm = (props) => {
     });
 
     const emailcb = () => {
-      setTimeout(() => {
+      const emailTimeout = setTimeout(() => {
         if (email.length > 0) {
           setUserInfo({
             ...userInfo,
             email: userInfoRef.current.email + email[0],
             password: userInfoRef.current.password,
           });
+          clearTimeout(emailTimeout);
           email = email.slice(1);
           emailcb();
         } else {
@@ -76,13 +77,14 @@ const SessionForm = (props) => {
       }, 75);
     };
     const passwordcb = () => {
-      setTimeout(() => {
+      const passwordTimeout = setTimeout(() => {
         if (password.length > 0) {
           setUserInfo({
             ...userInfo,
             email: userInfoRef.current.email,
             password: userInfoRef.current.password + password[0],
           });
+          clearTimeout(passwordTimeout);
           password = password.slice(1);
           passwordcb();
         } else {
